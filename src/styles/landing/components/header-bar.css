@@ -1,0 +1,9 @@
+.header-bar {
+    top: 0;
+    position: sticky;
+    background: var(--c-secondary-dark);
+
+    .logo {
+        height: 50px;
+    }
+}

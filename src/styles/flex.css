@@ -1,0 +1,45 @@
+.row {
+    display: flex;
+}
+
+.col, .list {
+    display: flex;
+    flex-direction: column;
+}
+
+._h-d-f {
+    display: flex;
+}
+
+._h-fw-w {
+    flex-wrap: wrap;
+}
+
+._h-jc-c {
+    justify-content: center;
+}
+
+._h-ai-c {
+    align-items: center;
+}
+
+._h-gap-smx {
+    gap: 5px
+}
+
+._h-gap-sm {
+    gap: 10px
+}
+
+._h-gap-md {
+    gap: 15px
+}
+
+._h-gap-lg {
+    gap: 30px
+}
+
+._h-gap-xl {
+    gap: 45px
+}
+

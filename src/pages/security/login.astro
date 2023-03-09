@@ -1,0 +1,20 @@
+---
+import '../../styles/base.css'
+import BaseLayout from '../../layouts/base.astro'
+import '../../styles/landing/index.css'
+import AuthForm from "../../components/security/auth-form.vue";
+
+---
+
+<BaseLayout>
+    <section class="section-auth">
+        <div class="container">
+            <div class="row _h-jc-c _h-gap-md">
+                <div class="col _h-jc-c _h-gap-lg __fill-white">
+                    <h1>Login</h1>
+                    <AuthForm/>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

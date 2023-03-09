@@ -1,0 +1,43 @@
+:root {
+    --t-ff-primary: 'Literata';
+    --t-ff-secondary: 'Noto Sans';
+
+    --t-fz: 18px;
+    --t-fz-h1: calc(var(--t-fz) + 46px);
+    --t-fz-h2: calc(var(--t-fz) + 30px);
+    --t-fz-h3: calc(var(--t-fz) + 28px);
+    --t-fz-h4: calc(var(--t-fz) + 18px);
+    --t-fz-h5: calc(var(--t-fz) + 8px);
+    --t-fz-h6: calc(var(--t-fz) + 4px);
+
+    --t-fz-text: var(--t-fz);
+}
+
+._t-fz-text {
+    font-size: var(--t-fz-text);
+}
+
+._t-fz-h1 {
+    font-size: var(--t-fz-h1);
+}
+
+._t-fz-h2 {
+    font-size: var(--t-fz-h2);
+}
+
+._t-fz-h3 {
+    font-size: var(--t-fz-h3);
+}
+._t-fz-h4 {
+    font-size: var(--t-fz-h4);
+}
+._t-fz-h5 {
+    font-size: var(--t-fz-h5);
+}
+._t-fz-h6 {
+    font-size: var(--t-fz-h6);
+}
+
+._t-ff-primary {
+    font-family: var(--t-ff-primary);
+}

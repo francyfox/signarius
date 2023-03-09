@@ -1,0 +1,28 @@
+section {
+    min-height: 100vh;
+
+    .container > .row {
+        height: 100%;
+    }
+
+    .container > .row > .col {
+        padding: 40px 2em;
+        max-width: calc((100% / 3) - 85px);
+    }
+
+    .subtitle {
+        line-height: 1.4;
+    }
+}
+
+section {
+    transition: background-position .1s ease-in-out;
+}
+
+.section-hero {
+    background: url("../../../public/img/landing/section-hero.jpg") center center / cover fixed;
+}
+
+.section-features {
+    background: url("../../../public/img/landing/section-features.jpg") center center / cover fixed;
+}
