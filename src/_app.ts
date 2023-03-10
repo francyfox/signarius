@@ -1,11 +1,12 @@
 import type { App } from 'vue';
 import VueDirectus from 'vue-directus';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import VueApollo from 'vue-apollo'
-import ApolloClient from 'apollo-boost'
 
-
+const cache = new InMemoryCache()
 const apolloClient = new ApolloClient({
-    uri: 'http://0.0.0.0:8055/graphql'
+    cache,
+    uri: 'http://localhost:4042/graphql',
 })
 
 const apolloProvider = new VueApollo({
@@ -13,11 +14,11 @@ const apolloProvider = new VueApollo({
 })
 
 export default (app: App) => {
-    app.use(apolloProvider),
     app.use(VueDirectus, {
         apiUrl: 'http://0.0.0.0:8055/',
         auth: "storage",
         transport: {},
         storage: {},
-    })
+    });
+    app.use(apolloProvider);
 }
