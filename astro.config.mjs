@@ -8,7 +8,11 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), vue()],
+  integrations: [
+      mdx(),
+    sitemap(),
+    vue({ appEntrypoint: '/src/_app' })
+  ],
   vite: {
     css: {
       devSourcemap: true

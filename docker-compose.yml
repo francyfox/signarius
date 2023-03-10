@@ -5,6 +5,8 @@ services:
     image: postgis/postgis:13-master
     volumes:
       - ./data/database:/var/lib/postgresql/data
+      - ./extensions:/directus/extensions
+      - ./uploads:/directus/uploads
     networks:
       - directus
     environment:
@@ -52,8 +54,8 @@ services:
       CACHE_STORE: 'redis'
       CACHE_REDIS: 'redis://cache:6379'
 
-      ADMIN_EMAIL: 'admin@example.com'
-      ADMIN_PASSWORD: 'd1r3ctu5'
+      ADMIN_EMAIL: '7info7web@gmail.com'
+      ADMIN_PASSWORD: '123'
 
       # Make sure to set this in production
       # (see https://docs.directus.io/self-hosted/config-options#general)

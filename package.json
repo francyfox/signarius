@@ -15,12 +15,17 @@
     "@astrojs/sitemap": "^1.1.0",
     "@astrojs/vercel": "^3.2.0",
     "@astrojs/vue": "^2.0.1",
+    "@vue/composition-api": "^1.7.1",
+    "apollo-boost": "^0.4.9",
     "astro": "^2.1.2",
     "astro-icon": "^0.8.0",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.15",
+    "graphql": "^16.6.0",
     "postcss": "^8.4.21",
     "postcss-nested": "^6.0.1",
-    "vue": "^3.2.30"
+    "vue": "^3.2.30",
+    "vue-apollo": "^3.1.0",
+    "vue-directus": "^1.0.1"
   }
 }
