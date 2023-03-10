@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import { defineComponent, defineProps, ref } from 'vue'
-import { gql } from 'apollo-boost';
-import { Query } from 'vue-apollo'
+import { defineComponent } from 'vue'
+// import { gql } from 'apollo-boost';
+// import { Query } from 'vue-apollo'
 export default defineComponent({
   data () {
     return {
