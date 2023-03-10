@@ -19,6 +19,5 @@ export default (app: App) => {
         auth: "storage",
         transport: {},
         storage: {},
-    });
-    app.use(apolloProvider);
+    })
 }
