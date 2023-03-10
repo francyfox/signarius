@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
       mdx(),
     sitemap(),
-    vue({ appEntrypoint: '/src/_app' })
+    vue({ })
   ],
   vite: {
     css: {
