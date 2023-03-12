@@ -4,8 +4,7 @@
       <label for="email">
         E-mail
       </label>
-      <input v-model="form.email"
-             type="email"
+      <input v-model="form.email.value" type="email"
              id="email"
              name="email"
              required
@@ -16,7 +15,7 @@
       <label for="password">
         Password
       </label>
-      <input v-model="form.password"
+      <input v-model="form.password.value"
              type="password"
              id="password"
              name="password"
@@ -25,29 +24,28 @@
       >
     </fieldset>
 
-    <button @click.prevent="send" type="submit">Auth</button>
+    <button @click.prevent="auth" type="submit">Auth</button>
   </form>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-// import { gql } from 'apollo-boost';
-// import { Query } from 'vue-apollo'
-export default defineComponent({
-  data () {
-    return {
-      form: {
-        email: 'test',
-        password: ''
-      }
-    }
-  },
-  methods: {
-    send () {
-      alert(this.$data.form.email)
-    }
-  }
-})
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useDirectus } from "vue-directus";
+
+const sdk = useDirectus();
+const form = {
+  email: ref('7info7web@gmail.com'),
+  password: ref('123')
+}
+const auth = async () => {
+  const email = form.email.value;
+  const password = form.password.value;
+
+  console.log(sdk);
+  const response = await sdk.auth.login({ email, password });
+  console.log(response);
+}
+
 </script>
 
 <style scoped>

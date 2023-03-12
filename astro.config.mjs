@@ -9,7 +9,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: 'https://example.com',
   integrations: [
-      mdx(),
+    mdx(),
     sitemap(),
     vue({ appEntrypoint: '/src/_app' })
   ],
