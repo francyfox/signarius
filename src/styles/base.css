@@ -3,6 +3,7 @@
 @import "colors.css";
 @import "typography.css";
 @import "flex.css";
+@import "components/form/input.css";
 
 :root {
     --b-container-w: 1440px;

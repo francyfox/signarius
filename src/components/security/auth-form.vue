@@ -1,53 +1,43 @@
-<template>
-  <form action="#" method="post">
-    <fieldset class="row _h-ai-c _h-gap-md">
-      <label for="email">
-        E-mail
-      </label>
-      <input v-model="form.email.value" type="email"
-             id="email"
-             name="email"
-             required
-      >
-      {{ form.email }}
-    </fieldset>
-    <fieldset class="row _h-ai-c _h-gap-md">
-      <label for="password">
-        Password
-      </label>
-      <input v-model="form.password.value"
-             type="password"
-             id="password"
-             name="password"
-             minlength="3"
-             required
-      >
-    </fieldset>
-
-    <button @click.prevent="auth" type="submit">Auth</button>
-  </form>
-</template>
-
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useDirectus } from "vue-directus";
+import { FormKitSchema } from '@formkit/vue'
+import SchemaAuth from '../../schema/form/schema.auth'
+import { openDB } from "idb";
+import { SchemaDb } from "../../schema/schema.db";
 
 const sdk = useDirectus();
-const form = {
-  email: ref('7info7web@gmail.com'),
-  password: ref('123')
-}
-const auth = async () => {
-  const email = form.email.value;
-  const password = form.password.value;
+const errors = ref<string[]>([]);
+const data = reactive({
+  email: '7info7web@gmail.com',
+  password: '123'
+})
 
-  console.log(sdk);
-  const response = await sdk.auth.login({ email, password });
-  console.log(response);
+
+const handleSubmit = async (formData, node) => {
+  const { email, password } = formData;
+
+  try {
+    const _db = await openDB<SchemaDb>('sa-db', 1);
+    const response = await sdk.auth.login({ email, password });
+    _db.onversionchange = () => {
+      console.log('sdsd')
+      _db.createObjectStore('token', { keyPath: 'id' });
+      const transaction = _db.transaction('token', 'readwrite')
+      const users = transaction.objectStore('token')
+      const request = users.add(response.access_token)
+      console.log(request)
+    }
+  } catch (e) {
+    errors.value = []
+    errors.value.push(e.message);
+  }
 }
 
 </script>
 
-<style scoped>
-
-</style>
+<template>
+  <FormKit type="form" v-model="data" :errors="errors" submit-label="Login" @submit="handleSubmit">
+    <FormKitSchema :schema="SchemaAuth"/>
+  </FormKit>
+</template>

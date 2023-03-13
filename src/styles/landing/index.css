@@ -7,6 +7,7 @@ section {
 
     .container > .row > .col {
         padding: 40px 2em;
+        width: 100%;
         max-width: calc((100% / 3) - 85px);
     }
 

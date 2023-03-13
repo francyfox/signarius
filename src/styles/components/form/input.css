@@ -1,0 +1,83 @@
+input {
+    border: 0;
+
+    &:focus, &:focus-within {
+        outline: 0 !important;
+        box-shadow: 0 0 0 2px var(--c-primary);
+    }
+    
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px rgb(var(--c-rgb-white)) inset;
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 2px var(--c-primary-border);
+    }
+
+    &[type="text"], &[type="email"], &[type="password"] {
+        padding: 5px 5px;
+        min-height: 30px;
+        border-radius: 3px;
+        background-color: var(--c-dark);
+        color: rgb(var(--c-rgb-white));
+        transition: box-shadow .1s ease-in-out;
+    }
+}
+
+.formkit {
+    &-outer {
+        margin-bottom: 0.7em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &[data-invalid="true"] input:focus {
+            box-shadow: 0 0 0 2px var(--c-secondary-dark);
+        }
+    }
+
+    &-label {
+        display: flex;
+        margin-bottom: 0.5em;
+    }
+
+    &-help {
+        padding: 0.3em 0;
+        font-size: var(--t-fz-help);
+    }
+
+    &-message {
+        margin-bottom: 0.2em;
+        padding: 0.3em;
+        background: var(--c-secondary-dark);
+        font-size: var(--t-fz-help);
+        border-radius: 3px;
+    }
+
+    &-messages {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+button[type="submit"] {
+    border: 0;
+    padding: 0.5em 1.2em;
+    background: var(--c-primary-border);
+    color: rgb(var(--c-rgb-white));
+    border-radius: 3px;
+    transition: background-color .1s ease-in-out, box-shadow .1s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background: var(--c-primary);
+        box-shadow: 0 0 0 3px var(--c-primary-border);
+    }
+
+    &:hover:active {
+        background: var(--c-light);
+        box-shadow: 0 0 0 3px var(--c-light);
+        color: var(--c-dark);
+    }
+}

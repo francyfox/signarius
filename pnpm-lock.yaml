@@ -7,7 +7,9 @@ specifiers:
   '@astrojs/sitemap': ^1.1.0
   '@astrojs/vercel': ^3.2.0
   '@astrojs/vue': ^2.0.1
-  '@types/axios': ^0.14.0
+  '@formkit/addons': 1.0.0-beta.15
+  '@formkit/auto-animate': 1.0.0-beta.6
+  '@formkit/vue': 1.0.0-beta.15
   '@vue/composition-api': ^1.7.1
   astro: ^2.1.2
   astro-icon: ^0.8.0
@@ -16,6 +18,7 @@ specifiers:
   cssnano: ^5.1.15
   gql-query-builder: ^3.8.0
   graphql: ^16.6.0
+  idb: ^7.1.1
   postcss: ^8.4.21
   postcss-nested: ^6.0.1
   vue: ^3.2.30
@@ -28,7 +31,9 @@ dependencies:
   '@astrojs/sitemap': 1.1.0
   '@astrojs/vercel': 3.2.0_astro@2.1.2
   '@astrojs/vue': 2.0.1_astro@2.1.2+vue@3.2.47
-  '@types/axios': 0.14.0
+  '@formkit/addons': 1.0.0-beta.15
+  '@formkit/auto-animate': 1.0.0-beta.6
+  '@formkit/vue': 1.0.0-beta.15_vue@3.2.47
   '@vue/composition-api': 1.7.1_vue@3.2.47
   astro: 2.1.2
   astro-icon: 0.8.0
@@ -37,6 +42,7 @@ dependencies:
   cssnano: 5.1.15_postcss@8.4.21
   gql-query-builder: 3.8.0
   graphql: 16.6.0
+  idb: 7.1.1
   postcss: 8.4.21
   postcss-nested: 6.0.1_postcss@8.4.21
   vue: 3.2.47
@@ -817,6 +823,110 @@ packages:
     dev: false
     optional: true
 
+  /@formkit/addons/1.0.0-beta.15:
+    resolution: {integrity: sha512-kPEVU8ghdSNKt7AUARlbbWS1gfugQL+wVIGqZaoii5F6rHLQ1k1zuP3ykZEriW6LanEB0fdBk5PTNRpHAtXw5A==}
+    dependencies:
+      '@formkit/auto-animate': 1.0.0-beta.6
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/inputs': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/auto-animate/1.0.0-beta.6:
+    resolution: {integrity: sha512-PVDhLAlr+B4Xb7e+1wozBUWmXa6BFU8xUPR/W/E+TsQhPS1qkAdAsJ25keEnFrcePSnXHrOsh3tiFbEToOzV9w==}
+    dev: false
+
+  /@formkit/core/1.0.0-beta.15:
+    resolution: {integrity: sha512-BOqUUF8iF+H9fQMsQFqc753/LBeNkMixmS3tCMpo1kjUjPq/hSmj+f1V07CqQldmQa7y1NJGClWd2mYU3uQKRA==}
+    dependencies:
+      '@formkit/utils': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/dev/1.0.0-beta.15:
+    resolution: {integrity: sha512-9V30tFaZjYFJYsO3KDyvBIXzn32Qaa9kdR5jhnZn9TwOJ+UynLlyBgM0raH8lpz3xL0jdsRDtpFzabFROPlmoQ==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/i18n/1.0.0-beta.15:
+    resolution: {integrity: sha512-D9YGw6eGs1HgnpEmQWjc2ezVA8JMMs8Zcl34w+6Yujp/KaPFnrzArP0/Ick223HpZjho2+cni/WNNTfpK1/pgw==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+      '@formkit/validation': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/inputs/1.0.0-beta.15:
+    resolution: {integrity: sha512-wGLfq87HXSwU4yzW0GNkP7I7Dsjlh8Mx5yaVP3waocBm3p4azrayUfLrtTSBktVhDDPzk4qFhmIO+oYlBz0LJQ==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/observer/1.0.0-beta.15:
+    resolution: {integrity: sha512-ZoAplwLG5XRfc5S2s+kIyykf6Mj/lX4ILwn5jrkQHaYMeUAkzUql6W1ClqinTVzumbJt6QUKjQkanBX7AEO40w==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/rules/1.0.0-beta.15:
+    resolution: {integrity: sha512-SS/oI8X7H+l5VlJcIl2YfSE26bPZgLDG6AEc1aWosB3ugeLUg+yucXonbro7yR/DUKchEzvZHKKZnQdTOguc9A==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+      '@formkit/validation': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/themes/1.0.0-beta.15:
+    resolution: {integrity: sha512-bn1dYYVlPb6u2TEQsriXStfPgj+m7+4yKLWc2SbtmNpGqmkSCiIQjVIcHpcERHW0x0BcYzDOXnJ+vbo7SXJqyQ==}
+    peerDependencies:
+      tailwindcss: ^3.2.0
+      unocss: ^0.31.0
+      windicss: ^3.0.0
+    peerDependenciesMeta:
+      tailwindcss:
+        optional: true
+      unocss:
+        optional: true
+      windicss:
+        optional: true
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/utils/1.0.0-beta.15:
+    resolution: {integrity: sha512-YEtKhvQb2vnsvpYauLHB6G0NkP+13aHg/1SdOAYZV64FQOuPsHbhHSZKP8JiIPzDHXt8Vut+v+wUMXvYX3rTIQ==}
+    dev: false
+
+  /@formkit/validation/1.0.0-beta.15:
+    resolution: {integrity: sha512-qlOBBl9anwH3Yx9PD+sYYZY8L+vCz/Q4n17GLZp88BYeO+gD3VW0k9vVPGPXcdYkOZMcpJu87QNSZ2o1tSuRQw==}
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/observer': 1.0.0-beta.15
+    dev: false
+
+  /@formkit/vue/1.0.0-beta.15_vue@3.2.47:
+    resolution: {integrity: sha512-DxIn+3uYAivbs8fg7EAG7Oui0Cln2DFRcheswuOAiHrXRktVSJ3uDumDyIPUg9ACUAyLSVKHG62/HPpcl9JCsg==}
+    peerDependencies:
+      vue: ^3.2.1
+    dependencies:
+      '@formkit/core': 1.0.0-beta.15
+      '@formkit/dev': 1.0.0-beta.15
+      '@formkit/i18n': 1.0.0-beta.15
+      '@formkit/inputs': 1.0.0-beta.15
+      '@formkit/observer': 1.0.0-beta.15
+      '@formkit/rules': 1.0.0-beta.15
+      '@formkit/themes': 1.0.0-beta.15
+      '@formkit/utils': 1.0.0-beta.15
+      '@formkit/validation': 1.0.0-beta.15
+      vue: 3.2.47
+    transitivePeerDependencies:
+      - tailwindcss
+      - unocss
+      - windicss
+    dev: false
+
   /@graphql-typed-document-node/core/3.1.2_graphql@16.6.0:
     resolution: {integrity: sha512-9anpBMM9mEgZN4wr2v8wHJI2/u5TnnggewRN6OlvXTTnuVyoY19X6rOv9XTqKRw6dcGKwZsBi8n0kDE2I5i4VA==}
     peerDependencies:
@@ -986,15 +1096,6 @@ packages:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
       '@types/estree': 1.0.0
-    dev: false
-
-  /@types/axios/0.14.0:
-    resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==}
-    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
-    dependencies:
-      axios: 1.3.4
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /@types/babel__core/7.20.0:
@@ -2588,6 +2689,10 @@ packages:
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
+    dev: false
+
+  /idb/7.1.1:
+    resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
     dev: false
 
   /ieee754/1.2.1:
