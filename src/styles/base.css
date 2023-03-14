@@ -68,6 +68,7 @@ section, header, footer {
 
 h1 {
     font-weight: 300;
+    font-size: var(--t-fz-h1);
 }
 
 .title {

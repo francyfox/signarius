@@ -1,5 +1,6 @@
 input {
     border: 0;
+    font-size: var(--t-fz-text);
 
     &:focus, &:focus-within {
         outline: 0 !important;
@@ -39,6 +40,7 @@ input {
     &-label {
         display: flex;
         margin-bottom: 0.5em;
+        font-size: var(--t-fz-h6);
     }
 
     &-help {
@@ -67,6 +69,7 @@ button[type="submit"] {
     background: var(--c-primary-border);
     color: rgb(var(--c-rgb-white));
     border-radius: 3px;
+    font-size: var(--t-fz-h6);
     transition: background-color .1s ease-in-out, box-shadow .1s ease-in-out;
 
     &:hover {

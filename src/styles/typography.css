@@ -11,7 +11,7 @@
     --t-fz-h6: calc(var(--t-fz) + 4px);
 
     --t-fz-text: var(--t-fz);
-    --t-fz-help: calc(var(--t-fz) - 4px);
+    --t-fz-help: calc(var(--t-fz) - 2px);
 }
 
 ._t-fz-text {
