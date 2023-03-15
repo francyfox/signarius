@@ -1,0 +1,19 @@
+.section-dashboard {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    background: var(--c-dark);
+    overflow-x: hidden;
+
+    .container {
+        flex-shrink: 0;
+        max-width: 1024px;
+    }
+
+    aside {
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        background: var(--c-dark);
+    }
+}

@@ -1,22 +1,14 @@
 import type { App } from 'vue';
+import { createPinia } from 'pinia'
 import VueDirectus from 'vue-directus';
 import * as gql from 'gql-query-builder'
-import axios, { AxiosInstance } from 'axios';
 import { createAutoAnimatePlugin } from '@formkit/addons'
 import { plugin, defaultConfig } from '@formkit/vue'
 
-const gqlAxios: AxiosInstance = axios.create({
-    baseURL: "http://0.0.0.0:8055/graphql",
-    headers: {
-        'Access-Control-Allow-Origin': "*",
-        "Content-type": "application/json"
-    },
-});
-
-
+const pinia = createPinia()
 export default (app: App) => {
+    app.use(pinia)
     app.config.globalProperties.$gql = gql
-    app.config.globalProperties.$axiosGQL = gqlAxios
     app.use(plugin, defaultConfig({
         plugins: [
             createAutoAnimatePlugin()

@@ -1,0 +1,8 @@
+.dashboard-bar {
+    width: 100%;
+    top: 0;
+    position: sticky;
+    background: var(--c-secondary-dark);
+    min-height: 50px;
+    overflow-x: hidden;
+}

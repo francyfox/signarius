@@ -1,18 +1,25 @@
 ---
 import '../../../styles/base.css'
 import AdminLayout from '../../../layouts/admin.astro'
-import '../../../styles/landing/index.css'
+import UserProvider from "../../../components/user-provider.vue";
+import '../../../styles/dashboard/index.css'
+import DashboardHeader from "../../../components/dashboard/dashboard-header.vue";
 
 ---
 
 <AdminLayout>
-    <section class="section-auth">
-        <div class="container">
-            <div class="row _h-jc-c _h-gap-md">
-                <div class="col _h-jc-c _h-gap-lg __fill-white">
-                    Dashboard
+    <UserProvider>
+        <DashboardHeader client:idle client:only />
+        <section class="section-dashboard">
+            <aside class="left-panel"></aside>
+            <div class="container __fill-white">
+                <div class="row _h-jc-c _h-gap-md">
+                    <div class="col _h-jc-c _h-gap-lg __fill-white">
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <aside class="right-panel"></aside>
+        </section>
+    </UserProvider>
 </AdminLayout>

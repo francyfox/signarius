@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import { useDirectus } from "vue-directus";
 import { FormKitSchema } from '@formkit/vue'
 import SchemaAuth from '../../schema/form/schema.auth'
-import { UserDb, UserStore } from "../../module/user/user.store";
+import { UserStore } from "../../module/user/user.store";
 import { User } from "../../module/user/user.store";
 
 const sdk = useDirectus();

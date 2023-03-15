@@ -3,5 +3,10 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@app/*": ["src/*"]
+    }
   }
 }
