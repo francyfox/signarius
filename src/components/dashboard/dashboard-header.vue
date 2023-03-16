@@ -3,6 +3,7 @@
     <div class="container">
       <div class="row">
         <Avatar/>
+
       </div>
     </div>
   </header>

@@ -28,7 +28,7 @@ export class UserDb extends Dexie {
   users!: Table<User>;
 
   constructor() {
-    super('UserStore');
+    super('DbUser');
     this.version(1).stores({
       users: 'id, first_name, last_name, email, password, avatar, location, title, description, tags, language, theme, tfa_secret, email_notifications, status, ' +
         'role, token, last_page, last_access, provider, external_identifier, auth_data'
@@ -36,4 +36,4 @@ export class UserDb extends Dexie {
   }
 }
 
-export const UserStore = new UserDb();
+export const IndexDBUser = new UserDb();

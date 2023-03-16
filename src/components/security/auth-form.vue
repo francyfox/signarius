@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { useDirectus } from "vue-directus";
 import { FormKitSchema } from '@formkit/vue'
+import { useUserStore } from "@app/store/store";
+import { storeToRefs } from 'pinia'
 import SchemaAuth from '../../schema/form/schema.auth'
-import { UserStore } from "../../module/user/user.store";
-import { User } from "../../module/user/user.store";
 
-const sdk = useDirectus();
+const store = useUserStore();
+const { auth } = store;
+const { id } = storeToRefs(store);
 const errors = ref<string[]>([]);
 const data = reactive({
-  email: '7info7web@gmail.com',
+  email: 'test@mail.ru',
   password: '123'
 })
 
@@ -17,17 +18,9 @@ const handleSubmit = async (formData, node) => {
   const { email, password } = formData;
 
   try {
-    const response = await sdk.auth.login({ email, password });
-    const userClient = await UserStore.users.where({ email }).first();
-    const userServer = await sdk.users.me.read() as User;
-    userServer.token = response.access_token;
+    await auth(email, password);
 
-    if (userClient) {
-      await UserStore.users.update(userClient.id!, userServer);
-    } else {
-      await UserStore.users.add(userServer);
-    }
-    window.location.href = `/user/${userServer.id}/dashboard`
+    window.location.href = `/user/${id.value}/dashboard`
   } catch (e) {
     errors.value = [];
     errors.value.push(e.message);
