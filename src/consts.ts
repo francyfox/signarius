@@ -5,3 +5,5 @@ export const SITE_TITLE = 'My personal website.';
 export const SITE_DESCRIPTION = 'Welcome to my website!';
 
 export const REFRESH_TOKEN_NAME = 'directus_refresh_token';
+
+export const DIRECTUS_HOST = 'http://127.0.0.1:8055'

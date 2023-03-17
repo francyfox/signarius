@@ -1,0 +1,35 @@
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    li, a {
+        width: 100%;
+        display: flex;
+    }
+
+    &.__panel-menu {
+        li {
+            a {
+                padding: 20px;
+                align-items: center;
+                gap: 10px;
+                color: rgb(var(--c-rgb-white));
+                background: rgba(var(--c-rgb-white), .1);
+                font-size: var(--t-fz-h6);
+                text-decoration: none;
+                transition: color .1s ease-in-out, background-color .1s ease-in-out;
+
+                &:hover {
+                    color: var(--c-dark-900);
+                    background: var(--c-primary);
+                }
+
+                &.action {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

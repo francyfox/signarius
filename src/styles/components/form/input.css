@@ -19,7 +19,7 @@ input {
         padding: 5px 5px;
         min-height: 30px;
         border-radius: 3px;
-        background-color: var(--c-dark);
+        background-color: var(--c-dark-900);
         color: rgb(var(--c-rgb-white));
         transition: box-shadow .1s ease-in-out;
     }
@@ -81,6 +81,6 @@ button[type="submit"] {
     &:hover:active {
         background: var(--c-light);
         box-shadow: 0 0 0 3px var(--c-light);
-        color: var(--c-dark);
+        color: var(--c-dark-900);
     }
 }

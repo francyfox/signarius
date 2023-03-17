@@ -4,6 +4,7 @@ import VueDirectus from 'vue-directus';
 import * as gql from 'gql-query-builder'
 import { createAutoAnimatePlugin } from '@formkit/addons'
 import { plugin, defaultConfig } from '@formkit/vue'
+import { DIRECTUS_HOST } from "@app/consts";
 
 const pinia = createPinia()
 export default (app: App) => {
@@ -16,7 +17,7 @@ export default (app: App) => {
     }))
 
     app.use(VueDirectus, {
-        apiUrl: 'http://0.0.0.0:8055/',
+        apiUrl: DIRECTUS_HOST,
         auth: "storage",
         transport: {},
         storage: {},

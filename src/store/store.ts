@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { IndexDBUser, User } from "@app/module/db/db.user";
 import { useDirectus } from "vue-directus";
 import { getCookie, setCookie } from "@app/helpers";
-import { REFRESH_TOKEN_NAME } from "@app/consts";
+import { DIRECTUS_HOST, REFRESH_TOKEN_NAME } from "@app/consts";
 
 export const useUserStore = defineStore('user', () => {
   const id = ref(null);
@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user', () => {
     // @ts-ignore
     id.value = user?.id;
     avatar.value = (user.avatar !== null)
-      ?  `http://127.0.0.1:8055/${avatar.value}/assets/${user.avatar}`
+      ?  `${DIRECTUS_HOST}/assets/${user.avatar}`
       : '/img/logo_mini.svg';
     fullname.value = `${user?.first_name} ${user?.last_name}`;
     token.value = user.token;
@@ -44,10 +44,16 @@ export const useUserStore = defineStore('user', () => {
       await IndexDBUser.users.add(userServer);
     }
   }
-
-  async function reAuth () {
-    getCookie('')
+  async function refresh () {
+    await sdk.auth.refresh()
   }
 
-  return { id, avatar, fullname, setUserData, auth };
+  return {
+    id,
+    avatar, fullname,
+    setUserData,
+    loadUserDataFromDB,
+    auth,
+    refresh
+  };
 })

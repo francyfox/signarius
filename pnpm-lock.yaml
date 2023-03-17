@@ -10,6 +10,7 @@ specifiers:
   '@formkit/addons': 1.0.0-beta.15
   '@formkit/auto-animate': 1.0.0-beta.6
   '@formkit/vue': 1.0.0-beta.15
+  '@mdi/font': ^7.1.96
   '@vue/composition-api': ^1.7.1
   astro: ^2.1.2
   astro-icon: ^0.8.0
@@ -34,6 +35,7 @@ dependencies:
   '@formkit/addons': 1.0.0-beta.15
   '@formkit/auto-animate': 1.0.0-beta.6
   '@formkit/vue': 1.0.0-beta.15_vue@3.2.47
+  '@mdi/font': 7.1.96
   '@vue/composition-api': 1.7.1_vue@3.2.47
   astro: 2.1.2
   astro-icon: 0.8.0
@@ -993,6 +995,10 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: false
+
+  /@mdi/font/7.1.96:
+    resolution: {integrity: sha512-Imag6npmfkBDi2Ze2jiZVAPTDIKLxhz2Sx82xJ2zctyAU5LYJejLI5ChnDwiD9bMkQfVuzEsI98Q8toHyC+HCg==}
     dev: false
 
   /@mdx-js/mdx/2.3.0:

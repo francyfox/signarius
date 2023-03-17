@@ -5,4 +5,8 @@
     background: var(--c-secondary-dark);
     min-height: 50px;
     overflow-x: hidden;
+
+    .avatar {
+        border: 2px solid var(--c-secondary);
+    }
 }

@@ -49,7 +49,7 @@ html {
     font-weight: 300;
     line-height: 1.2;
     color: rgb(var(--c-rgb-white));
-    background: var(--c-dark);
+    background: var(--c-dark-900);
 }
 
 body {
@@ -78,6 +78,10 @@ h1 {
 svg {
     width: 32px;
     height: 32px;
+}
+
+.mdi {
+    font-size: 32px;
 }
 
 a {
