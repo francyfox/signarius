@@ -17,6 +17,12 @@ specifiers:
   autoprefixer: ^10.4.13
   cssnano: ^5.1.15
   dexie: ^3.2.3
+  filepond: ^4.30.4
+  filepond-plugin-file-validate-size: ^2.2.8
+  filepond-plugin-file-validate-type: ^1.2.8
+  filepond-plugin-image-crop: ^2.0.6
+  filepond-plugin-image-preview: ^4.6.11
+  filepond-plugin-image-resize: ^2.0.10
   gql-query-builder: ^3.8.0
   graphql: ^16.6.0
   pinia: ^2.0.33
@@ -42,6 +48,12 @@ dependencies:
   autoprefixer: 10.4.13_postcss@8.4.21
   cssnano: 5.1.15_postcss@8.4.21
   dexie: 3.2.3
+  filepond: 4.30.4
+  filepond-plugin-file-validate-size: 2.2.8_filepond@4.30.4
+  filepond-plugin-file-validate-type: 1.2.8_filepond@4.30.4
+  filepond-plugin-image-crop: 2.0.6_filepond@4.30.4
+  filepond-plugin-image-preview: 4.6.11_filepond@4.30.4
+  filepond-plugin-image-resize: 2.0.10_filepond@4.30.4
   gql-query-builder: 3.8.0
   graphql: 16.6.0
   pinia: 2.0.33_nl35ja3bquglpolb4ogn4n6pq4
@@ -2335,6 +2347,50 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    dev: false
+
+  /filepond-plugin-file-validate-size/2.2.8_filepond@4.30.4:
+    resolution: {integrity: sha512-yzb8scATmkWqPTP7oKQz6L8WwJm6Xmgc/fuq6DFGRaLz0I7372BUvBsxagBk/hypMIjvieNzhggm33Y60x3rcw==}
+    peerDependencies:
+      filepond: '>=3.1.2 <5.x'
+    dependencies:
+      filepond: 4.30.4
+    dev: false
+
+  /filepond-plugin-file-validate-type/1.2.8_filepond@4.30.4:
+    resolution: {integrity: sha512-UBTqIWbk5+5R0GBELI8svu01MHWjFSLfc9DfCMvFtHKXLdJMxY1p37ChC4YKQjhfODaTuvLnNVRsukMGMFZBBg==}
+    peerDependencies:
+      filepond: '>=1.x <5.x'
+    dependencies:
+      filepond: 4.30.4
+    dev: false
+
+  /filepond-plugin-image-crop/2.0.6_filepond@4.30.4:
+    resolution: {integrity: sha512-bSy/KND4EP/QtW8MxIj23qgSEPUVRrT8XdktJ+OU9y8xRjFjTG+qcuw1LsycARQYRtzi8cZrD3P4POOITfkywQ==}
+    peerDependencies:
+      filepond: '>=3.x <5.x'
+    dependencies:
+      filepond: 4.30.4
+    dev: false
+
+  /filepond-plugin-image-preview/4.6.11_filepond@4.30.4:
+    resolution: {integrity: sha512-0EmQ9HnOb/X0xc5rLcNRhhmdUbp7oiicRwQrcr90ZfVmPJOOZoX3ZGUEsEPj7luMI55huguhcVozdESxtqnuRw==}
+    peerDependencies:
+      filepond: '>=4.x <5.x'
+    dependencies:
+      filepond: 4.30.4
+    dev: false
+
+  /filepond-plugin-image-resize/2.0.10_filepond@4.30.4:
+    resolution: {integrity: sha512-irX+J275u8Ph1KcciCeSQmxeFjbu0+co5XVCkiwdSNnz6KiqrCKN7RXTvEbdgSdDzyi5omr2oP1rKWps5L1RsQ==}
+    peerDependencies:
+      filepond: '>=3.x <5.x'
+    dependencies:
+      filepond: 4.30.4
+    dev: false
+
+  /filepond/4.30.4:
+    resolution: {integrity: sha512-FCwsMvG9iiEs6uobdDrTaKsCgsqys0NuLgPPD8n37AYVYBiiDkrPkk9MSIU5rT2FahYcL1bScYI9huIPtlzqyA==}
     dev: false
 
   /fill-range/7.0.1:

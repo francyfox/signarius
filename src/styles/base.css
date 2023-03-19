@@ -3,6 +3,7 @@
 @import "colors.css";
 @import "typography.css";
 @import "flex.css";
+@import "offset.css";
 @import "components/form/input.css";
 
 :root {
@@ -54,6 +55,16 @@ html {
 
 body {
     position: relative;
+}
+
+a {
+    color: var(--c-primary);
+    transition: color .1s ease-in-out;
+
+    &:hover {
+        color: var(--c-secondary);
+        text-decoration: none;
+    }
 }
 
 section, header, footer {
@@ -109,5 +120,13 @@ a {
             }
         }
     }
+}
+
+.__scrolled {
+    overflow-y: auto;
+}
+
+._h-100 {
+    height: 100%;
 }
 

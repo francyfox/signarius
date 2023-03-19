@@ -9,13 +9,18 @@
             {{ fullname }}
           </strong>
         </a>
+
+        <form action="/search" method="get" class="_h-d-f ">
+          <input type="search">
+          <button type="submit">Find</button>
+        </form>
       </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "@app/store/store";
+import { useUserStore } from "@app/store/store.user";
 import { storeToRefs } from 'pinia'
 import Avatar from "./avatar.vue";
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { FormKitSchema } from '@formkit/vue'
-import { useUserStore } from "@app/store/store";
+import { useUserStore } from "@app/store/store.user";
 import { storeToRefs } from 'pinia'
 import SchemaAuth from '../../schema/form/schema.auth'
 

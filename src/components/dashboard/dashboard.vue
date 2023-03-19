@@ -6,13 +6,7 @@
         <aside class="left-panel">
           <panel-menu/>
         </aside>
-        <div class="container __fill-white">
-          <div class="row _h-jc-c _h-gap-md">
-            <div class="col _h-jc-c _h-gap-lg __fill-white">
-
-            </div>
-          </div>
-        </div>
+        <slot/>
         <aside class="right-panel"></aside>
       </section>
     </provider-user>
@@ -26,6 +20,9 @@
 import DashboardHeader from "@components/dashboard/dashboard-header.vue";
 import ProviderUser from "@components/provider/provider-user.vue";
 import PanelMenu from "@components/dashboard/panel-menu.vue";
+import ProviderPostCollection from "@components/provider/provider-postCollection.vue";
+import PostList from "@components/dashboard/post/post-list.vue";
+import PostListContainer from "@components/dashboard/post/post-list-container.vue";
 </script>
 
 <style scoped>

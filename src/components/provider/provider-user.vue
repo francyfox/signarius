@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "@app/store/store.js";
-const store = await useUserStore();
+import { useUserStore } from "@app/store/store.user";
+const store = useUserStore();
 const { loadUserDataFromDB } = store;
 
 const urlChunks = window.location.href.split('/')

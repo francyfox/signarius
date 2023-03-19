@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "@app/store/store";
+import { useUserStore } from "@app/store/store.user";
 import { storeToRefs } from 'pinia'
 
 const store = useUserStore();

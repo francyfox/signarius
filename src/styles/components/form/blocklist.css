@@ -1,0 +1,9 @@
+.block-list {
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background: var(--c-dark-900);
+    &--wrap {
+
+    }
+}

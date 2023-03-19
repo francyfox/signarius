@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+._h-ai-fs {
+    align-items: flex-start;
+}
+
 ._h-gap-smx {
     gap: 5px
 }

@@ -3,9 +3,12 @@ import '../../../styles/base.css'
 import AdminLayout from '../../../layouts/admin.astro'
 import '../../../styles/dashboard/index.css'
 import Dashboard from "../../../components/dashboard/dashboard.vue";
+import PostListContainer from "../../../components/dashboard/post/post-list-container.vue";
 
 ---
 
 <AdminLayout>
-   <Dashboard client:only/>
+   <Dashboard client:only>
+       <PostListContainer client:only   />
+   </Dashboard>
 </AdminLayout>

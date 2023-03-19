@@ -1,6 +1,12 @@
 <template>
   <nav class="menu __panel-menu">
     <li>
+      <a href="dashboard">
+        <span class="mdi mdi-view-dashboard"></span>
+        Dashboard
+      </a>
+    </li>
+    <li>
       <a href="post-list">
         <span class="mdi mdi-cube"></span>
         My Posts
