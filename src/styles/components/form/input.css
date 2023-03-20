@@ -82,6 +82,8 @@ textarea {
 }
 
 .btn, button[type="submit"]  {
+    display: flex;
+    align-items: center;
     border: 0;
     padding: 0.5em 1.2em;
     border-radius: 3px;

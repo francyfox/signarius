@@ -17,19 +17,27 @@
         </div>
       </div>
     </FormKit>
-
-
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import SchemaPost from "@app/schema/form/schema.post";
-import FilePond from "@components/file-pond.vue";
+import FilePond from "@components/global/file-pond.vue";
 import Blocklist from "@components/dashboard/post/blocklist.vue";
 
 const errors = ref<string[]>([]);
 const data = reactive({});
+
+import { useEditor, EditorContent } from '@tiptap/vue-3'
+import StarterKit from '@tiptap/starter-kit'
+
+const editor = useEditor({
+  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+  extensions: [
+    StarterKit,
+  ],
+})
 
 
 async function handleSubmit() {

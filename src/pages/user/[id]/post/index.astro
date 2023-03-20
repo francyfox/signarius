@@ -2,8 +2,9 @@
 import '@app/styles/base.css'
 import AdminLayout from '@app/layouts/admin.astro'
 import '@app/styles/dashboard/index.css'
-import Dashboard from "@app/components/dashboard/dashboard.vue";
-import PostForm from "@app/components/dashboard/post/post-form.vue";
+import Dashboard from "@components/dashboard/dashboard.vue";
+import PostForm from "@components/dashboard/post/post-form.vue";
+import Modal from "@components/modal/modal.vue";
 
 ---
 
@@ -12,3 +13,4 @@ import PostForm from "@app/components/dashboard/post/post-form.vue";
         <PostForm client:only/>
     </Dashboard>
 </AdminLayout>
+<Modal id={'formBlockList'} component={'block-editor'} client:only/>

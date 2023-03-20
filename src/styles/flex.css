@@ -19,6 +19,10 @@
     justify-content: center;
 }
 
+._h-jc-sb {
+    justify-content: space-between;
+}
+
 ._h-ai-c {
     align-items: center;
 }
