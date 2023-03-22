@@ -2,7 +2,7 @@
   <dialog class="modal" :id="id" open>
     <div class="_h-d-f _h-jc-c _h-ai-c">
       <div class="modal--wrap">
-        <form method="dialog">
+        <form class="col _h-gap-md" method="dialog">
           <template v-if="component">
             <keep-alive>
               <ModalComponent/>

@@ -1,27 +1,63 @@
 <template>
-  <div class="block-editor">
+  <div class="block-editor col _h-gap-sm">
+    <template v-if="editor">
+      <bubble-menu  class="block-editor--bubble-menu"
+                    :tippy-options="{ duration: 300 }"
+                    :editor="editor">
+        <ul class="row _h-fw-w _h-gap-sm">
+          <template v-if="editor">
+            <li v-for="btn in SchemaBubbleMenu(editor)">
+              <menu-bar-btn :label="btn.label"
+                            :mdi="btn.mdi"
+                            :action="btn.action"
+                            :is-active="btn.isActive"
+              />
+            </li>
+          </template>
+        </ul>
+      </bubble-menu>
+    </template>
     <menu-bar :editor="editor" class="block-editor--bar"/>
     <editor-content :editor="editor" class="block-editor--content" />
+    <div class="block-editor--counter _h-d-f _t-fz-text _c-white">
+      <span class="_h-d-f">
+        {{ editor?.storage.characterCount.characters() }} characters
+        /
+        {{ editor?.storage.characterCount.words()}} words
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useEditor, EditorContent } from '@tiptap/vue-3'
+import {
+  useEditor,
+  EditorContent,
+  BubbleMenu,
+} from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Bold from '@tiptap/extension-bold'
+import CharacterCount from '@tiptap/extension-character-count'
+import { Color } from '@tiptap/extension-color'
+import TextStyle from '@tiptap/extension-text-style'
 import MenuBar from "@components/global/editor/menu-bar.vue";
+import MenuBarBtn from "@components/global/editor/menu-bar-btn.vue";
+import { SchemaBubbleMenu } from "@app/schema/editor/schema.editor.bar";
 
 const editor = useEditor({
   content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
   extensions: [
     StarterKit,
     Link.configure(),
-    Bold
+    CharacterCount.configure(),
+    Bold,
+    TextStyle,
+    Color,
   ],
 })
 </script>
 
 <style lang="postcss">
-
+@import "../../../styles/components/block-editor.css";
 </style>

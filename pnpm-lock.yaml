@@ -12,7 +12,10 @@ specifiers:
   '@formkit/vue': 1.0.0-beta.15
   '@mdi/font': ^7.1.96
   '@tiptap/extension-bold': 2.0.0-beta.220
+  '@tiptap/extension-character-count': 2.0.0-beta.220
+  '@tiptap/extension-color': 2.0.0-beta.220
   '@tiptap/extension-link': 2.0.0-beta.220
+  '@tiptap/extension-text-style': 2.0.0-beta.220
   '@tiptap/pm': 2.0.0-beta.220
   '@tiptap/starter-kit': 2.0.0-beta.220
   '@tiptap/vue-3': 2.0.0-beta.220
@@ -48,7 +51,10 @@ dependencies:
   '@formkit/vue': 1.0.0-beta.15_vue@3.2.47
   '@mdi/font': 7.1.96
   '@tiptap/extension-bold': 2.0.0-beta.220
+  '@tiptap/extension-character-count': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
+  '@tiptap/extension-color': 2.0.0-beta.220_xuepda3gvyfp52cfvyjg5zmvee
   '@tiptap/extension-link': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
+  '@tiptap/extension-text-style': 2.0.0-beta.220
   '@tiptap/pm': 2.0.0-beta.220
   '@tiptap/starter-kit': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
   '@tiptap/vue-3': 2.0.0-beta.220_htj2fswe27wsqb7rziordzcpiq
@@ -1211,6 +1217,15 @@ packages:
       '@tiptap/core': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
     dev: false
 
+  /@tiptap/extension-character-count/2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220:
+    resolution: {integrity: sha512-D2AbDi7Q429Ua6U+MdEtxyIEue8KEATOGfmvDlSv5wS+EsUbh6fkG/6yUKFtke2DaePXqbpkxfwXgLT0JP4zTg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0-beta.209
+      '@tiptap/pm': ^2.0.0-beta.209
+    dependencies:
+      '@tiptap/pm': 2.0.0-beta.220
+    dev: false
+
   /@tiptap/extension-code-block/2.0.0-beta.220_ohumfzynigfck3hzagxvh2a4ky:
     resolution: {integrity: sha512-fgA7yTfHqhBtMJF7I9FPJ6UWuZPtxOQiN45Iv9LNmFIB6YRucdpmF+daZ27sElu0a+eICZyXwVn4w4iJphifuw==}
     peerDependencies:
@@ -1227,6 +1242,15 @@ packages:
       '@tiptap/core': ^2.0.0-beta.209
     dependencies:
       '@tiptap/core': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
+    dev: false
+
+  /@tiptap/extension-color/2.0.0-beta.220_xuepda3gvyfp52cfvyjg5zmvee:
+    resolution: {integrity: sha512-a2P1jlCHsc3ICcVFEfStF0xTeDe8nkJ2FB5QLFAPe1VZi6AgFAGG0FLC904Zfb988Rr+TZK8AQku/X1MlMqa/A==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0-beta.209
+      '@tiptap/extension-text-style': ^2.0.0-beta.209
+    dependencies:
+      '@tiptap/extension-text-style': 2.0.0-beta.220
     dev: false
 
   /@tiptap/extension-document/2.0.0-beta.220_7w7m52asdh3tod4ocz57yex63q:
@@ -1351,6 +1375,12 @@ packages:
       '@tiptap/core': ^2.0.0-beta.209
     dependencies:
       '@tiptap/core': 2.0.0-beta.220_@tiptap+pm@2.0.0-beta.220
+    dev: false
+
+  /@tiptap/extension-text-style/2.0.0-beta.220:
+    resolution: {integrity: sha512-eKavMVrVrnHq/iR1ksyPvoJTfiT6rxDKYZoN8WifqRyOz/y+TjuqH/AzV6NgAU+mSu6c0AY7a3Y0FfFU2BV7JA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0-beta.209
     dev: false
 
   /@tiptap/extension-text/2.0.0-beta.220_7w7m52asdh3tod4ocz57yex63q:
