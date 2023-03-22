@@ -4,7 +4,9 @@
 
 TODO:
 
-- ✅ Extandable Markdown (MD, MDX)
+- :no_entry: Extandable TipTap Editor.
+- - Import/Export MD/PDF
+- - Custom Components
 - :no_entry: Post contains blocklist. Every text block have own triggers (modal, sound, e.t.c actions)
 - :no_entry: Assert comment to textblock. Make comments part of post message.
 - :no_entry: Corporate blogging features:
