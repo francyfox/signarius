@@ -4,14 +4,16 @@
 
 TODO:
 
-- ✅ Extandable Markdown (MD, MDX)
+- :no_entry: Extandable TipTap Editor.
+- - Import/Export MD/PDF
+- - Custom Components
 - :no_entry: Post contains blocklist. Every text block have own triggers (modal, sound, e.t.c actions)
 - :no_entry: Assert comment to textblock. Make comments part of post message.
 - :no_entry: Corporate blogging features:
 - - mandatory familiarization
 - - 
 
-## 🧞 Commands
+## 🧞 Astro Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -24,10 +26,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 👀 Want to learn more about Astro?
 
 Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
