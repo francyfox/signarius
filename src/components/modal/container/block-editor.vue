@@ -42,7 +42,7 @@ import CharacterCount from '@tiptap/extension-character-count'
 import { Color } from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
 import MenuBar from "@components/global/editor/menu-bar.vue";
-import MenuBarBtn from "@components/global/editor/menu-bar-btn.vue";
+import MenuBarBtn from "@components/global/editor/btn/menu-bar-btn.vue";
 import { SchemaBubbleMenu } from "@app/schema/editor/schema.editor.bar";
 
 const editor = useEditor({

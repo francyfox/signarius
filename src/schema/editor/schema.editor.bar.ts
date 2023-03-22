@@ -2,7 +2,7 @@ import { Editor } from "@tiptap/vue-3";
 
 export enum BtnTypes {
   btn = 'menu-bar-btn',
-  pallete = 'menu-bar-pallete'
+  palette = 'menu-bar-palette'
 }
 
 export interface IEditorBarIcon {
@@ -11,25 +11,26 @@ export interface IEditorBarIcon {
 }
 
 export interface IEditorBarBtn extends IEditorBarIcon {
-  action: () => boolean,
-  isActive: () => boolean
+  action?: () => boolean,
+  isActive?: () => boolean
 }
 
-export interface IEditorBarPallete extends IEditorBarBtn {
+export interface IEditorBarPalette extends IEditorBarBtn {
   type: BtnTypes
-  input?: () => boolean,
+  editor?: Editor
+  color?: () => string
 }
 
-export interface IEditorBarComponent extends IEditorBarBtn, IEditorBarPallete {}
+export interface IEditorBarComponent extends IEditorBarBtn, IEditorBarPalette {}
 
-export const SchemaEditorBar = (editor: Editor): Array<IEditorBarComponent> => {
+export const SchemaEditorBar = (editor: Editor, states: any): Array<IEditorBarComponent> => {
   return [
     {
-      type: BtnTypes.pallete,
-      label: 'bold',
-      mdi: 'format-bold',
-      action: () => editor.chain().toggleBold().run(),
-      isActive: () => editor.isActive('bold'),
+      type: BtnTypes.palette,
+      label: 'color',
+      mdi: 'palette-advanced',
+      editor: editor,
+      color: () => editor.getAttributes('textStyle').color
     }
   ]
 }
