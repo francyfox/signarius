@@ -26,17 +26,21 @@
 import { Editor } from "@tiptap/vue-3";
 import { computed, ref } from "vue";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   label: string,
   mdi: string,
   editor: Editor
-  color: () => string
-}>()
+  color: () => string,
+  click?: null | (() => boolean),
+  isActive?: null | (() => boolean),
+  disabled?: () => boolean
+}>(), {
+  click: () => null,
+  isActive: () => null,
+  disabled: () => false
+})
 
-const paletteColor = ref('#FFFFFF')
-
-
-// const paletteColor = computed(() => props.color() ?? '#FFFFFF')
+const paletteColor = ref('#FFFFFF');
 
 function inputHandler(color: string) {
   paletteColor.value = color;
@@ -60,7 +64,7 @@ function inputHandler(color: string) {
     border-radius: 0 3px 3px 0;
 
     &:hover {
-      background: var(--c-light);
+      background: var(--c-secondary-dark);
     }
 
     input {

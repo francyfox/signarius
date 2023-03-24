@@ -1,5 +1,7 @@
 <template>
- <menu-bar-component v-bind="btn"/>
+  <keep-alive>
+    <menu-bar-component v-bind="btn"/>
+  </keep-alive>
 </template>
 
 <script setup lang="ts">

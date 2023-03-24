@@ -14,28 +14,28 @@
     --t-fz-help: calc(var(--t-fz) - 2px);
 }
 
-._t-fz-text {
+._t-fz-text, .content p {
     font-size: var(--t-fz-text);
 }
 
-._t-fz-h1 {
+._t-fz-h1, .content h1 {
     font-size: var(--t-fz-h1);
 }
 
-._t-fz-h2 {
+._t-fz-h2, .content h2 {
     font-size: var(--t-fz-h2);
 }
 
-._t-fz-h3 {
+._t-fz-h3, .content h3 {
     font-size: var(--t-fz-h3);
 }
-._t-fz-h4 {
+._t-fz-h4, .content h4 {
     font-size: var(--t-fz-h4);
 }
-._t-fz-h5 {
+._t-fz-h5, .content h5 {
     font-size: var(--t-fz-h5);
 }
-._t-fz-h6 {
+._t-fz-h6, .content h6 {
     font-size: var(--t-fz-h6);
 }
 

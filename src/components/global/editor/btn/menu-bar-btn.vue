@@ -1,20 +1,29 @@
 <template>
   <button type="button"
           :title="label"
-          :class="{ 'is-active': isActive ? isActive: null }"
-          @click="action"
+          @click.prevent="click"
+          :disabled="disabled()"
+          :class="{ 'is-active': isActive() ? isActive(): null }"
   >
     <span :class="`mdi mdi-${mdi}`"></span>
   </button>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+
+const props = withDefaults(defineProps<{
   label: string,
   mdi: string,
-  action: () => boolean,
-  isActive: () => boolean
-}>()
+  click?: null | (() => boolean),
+  isActive?: (() => null) | (() => boolean),
+  disabled?: (() => null) | (() => boolean),
+}>(), {
+  click: () => null,
+  isActive: () => null,
+  disabled: () => false
+});
+
+console.log(props.click)
 </script>
 
 <style scoped>

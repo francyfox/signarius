@@ -1,0 +1,39 @@
+.popup {
+    position: relative;
+
+    &--menu {
+        padding-bottom: 0.4em;
+        visibility: hidden;
+        opacity: 0;
+        top: calc(100% + 5px);
+        left: 0;
+        position: absolute;
+        width: 100%;
+        min-width: 150px;
+        max-width: 200px;
+        border-radius: 3px 3px 3px 3px;
+
+        background: var(--c-dark-900);
+        z-index: 10;
+        transition: opacity .1s ease-in-out, visibility .1s ease-in-out;
+
+        &.is-active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        li a {
+            width: 100%;
+            padding: 0.2em 0.4em;
+
+            &:hover {
+                background: var(--c-dark-800);
+            }
+
+            &:active, &.is-active {
+                color: rgb(var(--c-rgb-white));
+                background: var(--c-secondary-dark);
+            }
+        }
+    }
+}
