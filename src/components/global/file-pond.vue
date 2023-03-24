@@ -1,118 +1,53 @@
-<script lang="ts">
-import type { ComponentPropsOptions, EmitsOptions } from 'vue'
-import type { FilePond, FilePondEvent } from 'filepond'
-import {
-  OptionTypes,
-  create,
-  supported,
-  registerPlugin,
-  getOptions,
-} from 'filepond'
+<script setup lang="ts">
+import vueFilePond from "vue-filepond";
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size'
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop'
 import FilePondPluginImageResize from 'filepond-plugin-image-resize'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode'
 import 'filepond/dist/filepond.min.css'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
-const plugins = [
-  FilePondPluginFileValidateSize,
-  FilePondPluginFileValidateType,
-  FilePondPluginImagePreview,
-  FilePondPluginImageCrop,
-  FilePondPluginImageResize,
-]
-const types = {
-  boolean: Boolean,
-  int: Number,
-  number: Number,
-  string: String,
-  array: Array,
-  object: Object,
-  function: Function,
-  // action: Function, not used
-  serverapi: Object,
-  // regex: String, not used
-}
-// Setup initial prop types and update when plugins are added
-const getNativeConstructorFromType = (type: keyof typeof types) => {
-  if (!type) {
-    return String
-  }
-  return types[type]
-}
-const _OptionTypes = OptionTypes as Record<string, keyof typeof types>
-// Activated props
-const propsOptions: ComponentPropsOptions = {}
-// Events that need to be mapped to emitters
-const eventNames: EmitsOptions = []
-const defaultOptions = getOptions() as Record<string, any>
-for (const prop in _OptionTypes) {
-  // don't add events to the props array
-  if (/^on/.test(prop)) {
-    eventNames.push(prop.replace('on', ''))
-    continue
-  }
-  // get property type ( can be either a String or the type defined within FilePond )
-  propsOptions[prop] = {
-    type: getNativeConstructorFromType(_OptionTypes[prop]),
-    default: defaultOptions[prop],
-  }
-}
-registerPlugin(...plugins)
-</script>
+import { ref } from "vue";
 
-<script setup lang="ts">
-import { onMounted, onUnmounted, ref, defineEmits, defineProps } from 'vue'
-const props = defineProps({...propsOptions})
-const emit = defineEmits(['input', ...eventNames])
-const pond = ref<FilePond | null>(null)
-const inputElement = ref<HTMLInputElement | null>(null)
-onMounted(() => {
-  if (inputElement.value && supported()) {
-    const options = Object.assign({}, props)
-    pond.value = create(inputElement.value, options)
-    for (const eventName of eventNames) {
-      const event = eventName as FilePondEvent
-      if (event) {
-        pond.value.on(event, (...event) => {
-          emit('input', pond.value ? pond.value.getFiles() : [])
-          emit(eventName, ...event)
-        })
-      }
-    }
-  }
-})
-onUnmounted(() => {
-  if (pond.value) {
-    for (const eventName of eventNames) {
-      const event = eventName as FilePondEvent
-      if (event) {
-        pond.value.off(event, (event) => {
-          emit(eventName, event)
-        })
-      }
-    }
-    pond.value.destroy()
-  }
-})
-</script>
+const FilePond = vueFilePond(
+    FilePondPluginFileValidateSize,
+    FilePondPluginFileValidateType,
+    FilePondPluginImagePreview,
+    FilePondPluginImageCrop,
+    FilePondPluginImageResize,
+);
 
+const props = withDefaults(defineProps<{
+  name: string,
+  className?: string,
+  labelIdle?: string,
+  allowMultiple?: boolean,
+  acceptedFileTypes?: string,
+  files?: any,
+  init?: any
+  addFile?: any
+}>(), {
+  allowMultiple: false,
+  acceptedFileTypes: 'image/jpeg, image/png',
+});
+
+const fileInput = ref()
+const filesData = ref<Array<string>>([])
+
+function filesChange() {
+  filesData.value = fileInput.value.getFiles();
+  console.log(filesData.value)
+}
+
+</script>
 
 <template>
-  <div class="filepond--wrapper">
-    <input
-        :id="props.id"
-        ref="inputElement"
-        type="file"
-        :name="props.name"
-        :class="props.className"
-        :required="props.required"
-        :accept="props.acceptedFileTypes"
-        :multiple="props.allowMultiple"
-        :capture="props.captureMethod"
-    />
-  </div>
+  <file-pond
+      ref="fileInput"
+      v-bind="props"
+      v-on:addfile="filesChange"
+  />
 </template>
 
 <style lang="postcss">
@@ -134,5 +69,9 @@ onUnmounted(() => {
 
 .filepond--panel-root {
   background-color: var(--c-dark-900);
+}
+
+.filepond--drop-label {
+  color: rgb(var(--c-rgb-white));
 }
 </style>

@@ -22,8 +22,6 @@ const props = withDefaults(defineProps<{
   isActive: () => null,
   disabled: () => false
 });
-
-console.log(props.click)
 </script>
 
 <style scoped>

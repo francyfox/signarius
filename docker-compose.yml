@@ -1,5 +1,17 @@
 version: '3'
 services:
+#  astro:
+#    build:
+#      context: .
+#      dockerfile: ./.docker/astro/Dockerfile
+#    restart: unless-stopped
+#    container_name: astro
+#    ports:
+#      - 3000:3000
+#    networks:
+#      - directus
+#    command: pnpm run dev --host
+
   database:
     container_name: database
     image: postgis/postgis:13-master
@@ -43,6 +55,33 @@ services:
       # Make sure to set this in production
       # (see https://docs.directus.io/self-hosted/config-options#general)
       # PUBLIC_URL: 'https://directus.example.com'
+
+  pgbackups:
+    container_name: Backup
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    volumes:
+      - ./dump:/backups
+    links:
+      - database
+    depends_on:
+      - database
+    environment:
+      - POSTGRES_HOST=database
+      - POSTGRES_DB=signarius
+      - POSTGRES_USER=fox
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_EXTRA_OPTS=-Z9 --schema=public --blobs
+      - SCHEDULE=@daily
+      - BACKUP_KEEP_DAYS=7
+      - BACKUP_KEEP_WEEKS=4
+      - BACKUP_KEEP_MONTHS=6
+      - HEALTHCHECK_PORT=81
+    networks:
+      - directus
+
+volumes:
+  pgadmin-data:
 
 networks:
   directus:

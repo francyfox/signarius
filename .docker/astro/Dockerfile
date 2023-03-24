@@ -1,11 +1,9 @@
-FROM node:lts AS runtime
+FROM node:18-alpine AS base
+RUN npm i -g pnpm
+
+#FROM base AS dependencies
 WORKDIR /app
-
 COPY . .
+RUN pnpm i
 
-RUN pnpm install
-RUN pnpm run build
-
-ENV HOST=0.0.0.0
-ENV PORT=3000
 EXPOSE 3000

@@ -15,13 +15,15 @@ input {
         box-shadow: 0 0 0 2px var(--c-primary-border);
     }
 
-    &[type="text"], &[type="email"], &[type="password"] {
+    &[type="text"], &[type="email"], &[type="password"], &[type="url"] {
         padding: 5px 5px;
         min-height: 30px;
         border-radius: 3px;
         background-color: var(--c-dark-900);
         color: rgb(var(--c-rgb-white));
         transition: box-shadow .1s ease-in-out;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 

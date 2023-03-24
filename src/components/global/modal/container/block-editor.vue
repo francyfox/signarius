@@ -54,9 +54,8 @@ const editor = useEditor({
     Image
   ],
 })
-console.log(editor)
 </script>
 
 <style lang="postcss">
-@import "../../../styles/components/block-editor.css";
+@import "../../../../styles/components/block-editor.css";
 </style>

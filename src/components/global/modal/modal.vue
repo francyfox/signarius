@@ -38,11 +38,11 @@ const props = defineProps<{
 }>();
 
 const ModalComponent = defineAsyncComponent(() =>
-    import(`../../components/modal/container/${props.component}.vue`)
+    import(`../../../components/global/modal/container/${props.component}.vue`)
 )
 
 </script>
 
 <style lang="postcss">
-@import "../../styles/components/form/modal.css";
+@import "../../../styles/components/form/modal.css";
 </style>

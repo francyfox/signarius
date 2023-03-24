@@ -46,7 +46,7 @@ export const SchemaEditorBar = (editor: Editor): Array<IEditorBarComponent> => {
       mdi: 'palette',
       editor: editor,
       color: () => editor.getAttributes('textStyle').color ?? '#FFFFFF'
-    }
+    },
   ]
 }
 

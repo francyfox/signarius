@@ -16,6 +16,16 @@
             <span class="mdi mdi-format-header-pound"></span>
           </button>
         </popup>
+        <popup component="image-browse"
+               :is-open="imageOpened"
+               :editor="editor"
+        >
+          <button type="button"
+                  @click.prevent="imageOpened = !imageOpened"
+          >
+            <span class="mdi mdi-image"></span>
+          </button>
+        </popup>
       </template>
     </ul>
   </div>
@@ -34,6 +44,7 @@ const props = defineProps<{
 }>();
 
 const headerOpened = ref(false);
+const imageOpened = ref(true);
 
 const headerMenu = [
   { text: 'Header h1', click: () => props.editor.chain().focus().toggleHeading({ level: 1 }).run(), active: () => props.editor.isActive('heading', { level: 1 }) },

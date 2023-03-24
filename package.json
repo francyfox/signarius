@@ -38,6 +38,7 @@
     "cssnano": "^5.1.15",
     "dexie": "^3.2.3",
     "filepond": "^4.30.4",
+    "filepond-plugin-file-encode": "^2.1.10",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-crop": "^2.0.6",
@@ -49,6 +50,7 @@
     "postcss": "^8.4.21",
     "postcss-nested": "^6.0.1",
     "vue": "^3.2.30",
-    "vue-directus": "^1.0.1"
+    "vue-directus": "^1.0.1",
+    "vue-filepond": "^7.0.3"
   }
 }

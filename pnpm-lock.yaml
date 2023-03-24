@@ -29,6 +29,7 @@ specifiers:
   cssnano: ^5.1.15
   dexie: ^3.2.3
   filepond: ^4.30.4
+  filepond-plugin-file-encode: ^2.1.10
   filepond-plugin-file-validate-size: ^2.2.8
   filepond-plugin-file-validate-type: ^1.2.8
   filepond-plugin-image-crop: ^2.0.6
@@ -41,6 +42,7 @@ specifiers:
   postcss-nested: ^6.0.1
   vue: ^3.2.30
   vue-directus: ^1.0.1
+  vue-filepond: ^7.0.3
 
 dependencies:
   '@apollo/client': 3.7.10_graphql@16.6.0
@@ -71,6 +73,7 @@ dependencies:
   cssnano: 5.1.15_postcss@8.4.21
   dexie: 3.2.3
   filepond: 4.30.4
+  filepond-plugin-file-encode: 2.1.10_filepond@4.30.4
   filepond-plugin-file-validate-size: 2.2.8_filepond@4.30.4
   filepond-plugin-file-validate-type: 1.2.8_filepond@4.30.4
   filepond-plugin-image-crop: 2.0.6_filepond@4.30.4
@@ -83,6 +86,7 @@ dependencies:
   postcss-nested: 6.0.1_postcss@8.4.21
   vue: 3.2.47
   vue-directus: 1.0.1_vue@3.2.47
+  vue-filepond: 7.0.3_filepond@4.30.4+vue@3.2.47
 
 packages:
 
@@ -2772,6 +2776,14 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    dev: false
+
+  /filepond-plugin-file-encode/2.1.10_filepond@4.30.4:
+    resolution: {integrity: sha512-SCz6Pvu/30WV2knw+zMuJ4bB+vBE7niMg2Vte3NXY9K5qfBpX0Ido35PKUrxLatSMeWiwVakhwindt2n591jJw==}
+    peerDependencies:
+      filepond: '>=3.x <5.x'
+    dependencies:
+      filepond: 4.30.4
     dev: false
 
   /filepond-plugin-file-validate-size/2.2.8_filepond@4.30.4:
@@ -5811,6 +5823,16 @@ packages:
       - debug
       - supports-color
       - vite
+    dev: false
+
+  /vue-filepond/7.0.3_filepond@4.30.4+vue@3.2.47:
+    resolution: {integrity: sha512-pYZ5TxGwFiiiVlRdzlJl0AyHE0/rEZiHm/0sYhIleFjV2VdGWTyxSqErN/AQwrwv32AeiNbui46vVB06Dl07ow==}
+    peerDependencies:
+      filepond: '>=4.7.4 < 5.x'
+      vue: '>=3 < 4'
+    dependencies:
+      filepond: 4.30.4
+      vue: 3.2.47
     dev: false
 
   /vue/3.2.47:

@@ -2,6 +2,7 @@
     position: relative;
 
     &--menu {
+        padding-top: 0.4em;
         padding-bottom: 0.4em;
         visibility: hidden;
         opacity: 0;
@@ -12,6 +13,7 @@
         min-width: 150px;
         max-width: 200px;
         border-radius: 3px 3px 3px 3px;
+        box-shadow: 0 0 0 2px rgba(var(--c-rgb-white), 20%);
 
         background: var(--c-dark-900);
         z-index: 10;
@@ -25,6 +27,7 @@
         li a {
             width: 100%;
             padding: 0.2em 0.4em;
+            text-decoration: none;
 
             &:hover {
                 background: var(--c-dark-800);
@@ -34,6 +37,25 @@
                 color: rgb(var(--c-rgb-white));
                 background: var(--c-secondary-dark);
             }
+        }
+
+        &:has(.popup--container) {
+            padding: 0.4em;
+            min-width: 280px;
+            max-width: 280px;
+        }
+    }
+
+    &--container {
+        padding: 0.4em;
+        box-sizing: border-box;
+
+        input {
+            background: rgba(var(--c-rgb-white), 5%);
+        }
+
+        .filepond--panel-root {
+            background: rgba(var(--c-rgb-white), 5%);
         }
     }
 }
