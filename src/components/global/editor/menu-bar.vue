@@ -44,7 +44,7 @@ const props = defineProps<{
 }>();
 
 const headerOpened = ref(false);
-const imageOpened = ref(true);
+const imageOpened = ref(false);
 
 const headerMenu = [
   { text: 'Header h1', click: () => props.editor.chain().focus().toggleHeading({ level: 1 }).run(), active: () => props.editor.isActive('heading', { level: 1 }) },

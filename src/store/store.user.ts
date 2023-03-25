@@ -6,20 +6,23 @@ import { getCookie, setCookie } from "@app/helpers";
 import { DIRECTUS_HOST, REFRESH_TOKEN_NAME } from "@app/consts";
 
 export const useUserStore = defineStore('user', () => {
-  const id = ref(null);
+  const id = ref('');
   const avatar = ref('/img/logo_mini.svg');
   const fullname = ref('');
   const token = ref('')
   const sdk = useDirectus();
 
   async function setUserData (user: User) {
-    // @ts-ignore
-    id.value = user?.id;
-    avatar.value = (user.avatar !== null)
-      ?  `${DIRECTUS_HOST}/assets/${user.avatar}`
-      : '/img/logo_mini.svg';
-    fullname.value = `${user?.first_name} ${user?.last_name}`;
-    token.value = user.token;
+    if (user.avatar) {
+      id.value = user.id;
+      avatar.value = (user.avatar !== null || true)
+        ?  `${DIRECTUS_HOST}/assets/${user.avatar}`
+        : '/img/logo_mini.svg';
+      fullname.value = `${user?.first_name} ${user?.last_name}`;
+      token.value = user.token;
+    } else {
+      throw new Error('user.avatar is undefined')
+    }
   }
 
   async function loadUserDataFromDB (id: string) {
@@ -50,7 +53,8 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     id,
-    avatar, fullname,
+    avatar,
+    fullname,
     setUserData,
     loadUserDataFromDB,
     auth,

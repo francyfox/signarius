@@ -21,6 +21,10 @@
     color: var(--c-light);
 }
 
+.__fill-error {
+    background: var(--c-secondary-dark);
+}
+
 .container {
     &.__fill-white {
         background: rgb(var(--c-rgb-white), 4%);

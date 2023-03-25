@@ -10,7 +10,7 @@ const { auth } = store;
 const { id } = storeToRefs(store);
 const errors = ref<string[]>([]);
 const data = reactive({
-  email: 'test@mail.ru',
+  email: 'laura_ashra@gmail.ru',
   password: '123'
 })
 

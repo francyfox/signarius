@@ -2,8 +2,13 @@
   <div class="block-editor col _h-gap-sm">
     <template v-if="editor">
       <bubble-menu  class="block-editor--bubble-menu"
-                    :tippy-options="{ duration: 300 }"
-                    :editor="editor">
+                    :tippy-options="{
+                        placement: 'bottom',
+                        duration: 200,
+                    }"
+                    :editor="editor"
+                    :should-show="({ editor: e }) => e.isActive('paragraph')"
+      >
         <ul class="row _h-fw-w _h-gap-sm">
           <template v-if="editor">
             <li v-for="btn in SchemaBubbleMenu(editor)">
@@ -41,6 +46,8 @@ import TextStyle from '@tiptap/extension-text-style'
 import MenuBar from "@components/global/editor/menu-bar.vue"
 import MenuBarBtn from "@components/global/editor/btn/menu-bar-btn.vue"
 import { SchemaBubbleMenu } from "@app/schema/editor/schema.editor.bar"
+import { ResizableMedia } from '@components/global/editor/extension/resizableMedia'
+import { Editor } from "@tiptap/vue-3";
 
 const editor = useEditor({
   content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
@@ -51,9 +58,14 @@ const editor = useEditor({
     CharacterCount.configure(),
     TextStyle,
     Color,
-    Image
+    Image,
+    ResizableMedia,
   ],
-})
+});
+
+function showTextBubble (editor: Editor) {
+  return editor.isActive('paragraph')
+}
 </script>
 
 <style lang="postcss">

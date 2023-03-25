@@ -79,6 +79,12 @@
         strong {
             font-weight: 700;
         }
+
+        img {
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
     }
 
     &--counter {
@@ -88,6 +94,40 @@
             padding: 0.2em;
             background: var(--c-dark-700);
             border-radius: 3px;
+        }
+    }
+
+    &--media {
+        position: relative;
+
+        &:hover {
+            .horizontal-resize-handle, .vertical-resize-handle{
+                opacity: 1;
+            }
+        }
+        .horizontal-resize-handle, .vertical-resize-handle {
+            opacity: 0;
+            background: var(--c-primary);
+            box-shadow: 0 0 0 4px rgba(var(--c-rgb-white), 8%);
+            border-radius: 3px;
+            transition: opacity .1s ease-in-out;
+        }
+
+        .horizontal-resize-handle {
+            cursor: col-resize;
+            position: absolute;
+            top: 50%;
+            left: calc(100% - (30% - 20px));
+            z-index: 50;
+            width: calc(50% - 30px);
+            min-width: 40px;
+            height: 8px;
+            transform: rotate(90deg);
+        }
+
+        .vertical-resize-handle {
+            width: 4px;
+            height: calc(50% - 20px);
         }
     }
 }

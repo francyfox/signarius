@@ -14,28 +14,37 @@
 
 <script setup lang="ts">
 import FilePond from "@components/global/file-pond.vue";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { Editor } from "@tiptap/vue-3";
+import { isImgUrl } from "@app/helpers";
 
 const props = defineProps<{
   editor: Editor
 }>();
 const emit = defineEmits(['close'])
 
-console.log(props.editor);
 const editorFile = ref()
 const form = ref({
   file: '',
   url: 'http://localhost:3000/img/logo_mini.svg'
 });
 
-const errors = ref([])
+const errors: Ref<Array<string>> = ref([])
 
-function handleSubmit() {
-  if (form.value.url.length !== 0) {
-    props.editor.commands.setImage({ src: form.value.url });
+async function handleSubmit() {
+  const valid = await isImgUrl(form.value.url);
+  if (form.value.url.length !== 0 && valid) {
+    props.editor.commands.setMedia({
+      src: form.value.url,
+      'media-type': 'img',
+      width: '300',
+      height: '300'
+    });
     form.value.url = '';
     emit('close');
+  } else {
+    errors.value = [];
+    errors.value.push('Url is not valid');
   }
 }
 

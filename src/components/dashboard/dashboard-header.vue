@@ -9,7 +9,6 @@
             {{ fullname }}
           </strong>
         </a>
-
         <form action="/search" method="get" class="_h-d-f ">
           <input type="search">
           <button type="submit">Find</button>
