@@ -23,6 +23,14 @@
     justify-content: space-between;
 }
 
+._h-jc-fs {
+    justify-content: flex-start;
+}
+
+._h-jc-fe {
+    justify-content: flex-end;
+}
+
 ._h-ai-c {
     align-items: center;
 }

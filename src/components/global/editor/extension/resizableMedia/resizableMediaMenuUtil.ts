@@ -11,16 +11,16 @@ export const resizableMediaActions: ResizableMediaAction[] = [
   {
     tooltip: 'Align left',
     action: (updateAttributes) => updateAttributes({
-      dataAlign: 'left',
+      dataAlign: '_h-jc-fs',
       dataFloat: null,
     }),
-    icon: '<span class="mdi mdi-format-align-left"></span>',
+    icon: 'format-align-left',
     isActive: (attrs) => attrs.dataAlign === 'left'
   },
   {
     tooltip: 'Align center',
     action: (updateAttributes) => updateAttributes({
-      dataAlign: 'center',
+      dataAlign: '_h-jc-c',
       dataFloat: null,
     }),
     icon: 'format-align-center',
@@ -29,7 +29,7 @@ export const resizableMediaActions: ResizableMediaAction[] = [
   {
     tooltip: 'Align right',
     action: (updateAttributes) => updateAttributes({
-      dataAlign: 'right',
+      dataAlign: '_h-jc-fe',
       dataFloat: null,
     }),
     icon: 'format-align-right',
@@ -39,16 +39,16 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     tooltip: 'Float left',
     action: (updateAttributes) => updateAttributes({
       dataAlign: null,
-      dataFloat: 'left',
+      dataFloat: '_h-f-l',
     }),
-    icon: 'format-align-right',
+    icon: 'format-float-left',
     isActive: (attrs) => attrs.dataFloat === 'left'
   },
   {
     tooltip: 'Float right',
     action: (updateAttributes) => updateAttributes({
       dataAlign: null,
-      dataFloat: 'right',
+      dataFloat: '_h-f-r',
     }),
     icon: 'format-float-right',
     isActive: (attrs) => attrs.dataFloat === 'right'

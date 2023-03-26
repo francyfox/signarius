@@ -227,20 +227,21 @@ const isAlign = computed<boolean>(() => !!props.node.attrs.dataAlign)
 <template>
   <node-view-wrapper
     as="article"
-    class="media-node-view _h-d-f"
-    :class="[`${isFloat && `f-${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `align-${props.node.attrs.dataAlign}` || ''}`]"
+    class="media-node-view"
   >
     <tippy :interactive="true" v-tippy='{
         duration: 200,
         animation: "shift-toward-subtle",
         moveTransition: "transform 0.2s ease-in-out", }'>
-      <div class="block-editor--media">
+      <div class="block-editor--media"
+           :class="[`${isFloat && `${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `_h-d-f ${props.node.attrs.dataAlign}` || ''}`]"
+      >
         <img
           v-if="mediaType === 'img'"
           v-bind="node.attrs"
           ref="resizableImg"
           class="rounded-lg"
-          :class="[`${isFloat && `float-${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `align-${props.node.attrs.dataAlign}` || ''}`]"
+          :class="[`${isFloat && `${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `${props.node.attrs.dataAlign}` || ''}`]"
           draggable="true"
         >
 
@@ -249,7 +250,7 @@ const isAlign = computed<boolean>(() => !!props.node.attrs.dataAlign)
           v-bind="node.attrs"
           ref="resizableImg"
           class="rounded-lg"
-          :class="[`${isFloat && `float-${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `align-${props.node.attrs.dataAlign}` || ''}`]"
+          :class="[`${isFloat && `${props.node.attrs.dataFloat}` || ''}`, `${isAlign && `${props.node.attrs.dataAlign}` || ''}`]"
           draggable="true"
           controls="true"
         >
@@ -279,6 +280,7 @@ const isAlign = computed<boolean>(() => !!props.node.attrs.dataAlign)
             <li v-for="(mediaAction, i) in resizableMediaActions"
                 :key="i">
               <button
+                  :title="mediaAction.tooltip"
                   v-tippy="{ content: mediaAction.tooltip, placement: 'top' }"
                   :content="mediaAction.tooltip"
                   class="btn btn-sm btn-ghost image-action-button"

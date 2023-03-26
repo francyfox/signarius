@@ -62,17 +62,21 @@
     }
 
     &--content {
+        padding: 0.5em;
+        border-radius: 3px;
+
+        &[aria-expanded="true"] {
+            background: rgba(var(--c-rgb-white), 8%);
+        }
+
         .ProseMirror {
-            padding: 0.5em;
             color: rgb(var(--c-rgb-white));
             transition: background-color .1s ease-in-out;
-            border-radius: 3px;
             font-size: var(--t-fz-text);
             line-height: 1.4;
 
             &-focused {
                 outline: 0;
-                background: rgba(var(--c-rgb-white), 8%);
             }
         }
 
@@ -81,9 +85,14 @@
         }
 
         img {
+            margin-top: 0.2em;
+            margin-bottom: 0.2em;
+            display: flex;
             max-width: 100%;
             object-fit: cover;
             border-radius: 3px;
+            overflow: hidden;
+            box-sizing: border-box;
         }
     }
 
@@ -105,6 +114,16 @@
                 opacity: 1;
             }
         }
+
+        &._h-f-l {
+            margin-right: 0.5em;
+
+        }
+
+        &._h-f-r {
+            margin-left: 0.5em;
+        }
+
         .horizontal-resize-handle, .vertical-resize-handle {
             opacity: 0;
             background: var(--c-primary);

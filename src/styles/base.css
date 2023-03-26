@@ -2,7 +2,8 @@
 @import "normalize.css";
 @import "colors.css";
 @import "typography.css";
-@import "flex.css";
+@import "helpers/flex.css";
+@import "helpers/block.css";
 @import "offset.css";
 @import "components/form/input.css";
 
