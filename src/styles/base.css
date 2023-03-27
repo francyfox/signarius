@@ -4,6 +4,7 @@
 @import "typography.css";
 @import "helpers/flex.css";
 @import "helpers/block.css";
+@import "helpers/inline.css";
 @import "offset.css";
 @import "components/form/input.css";
 
@@ -80,6 +81,7 @@ section, header, footer {
 }
 
 h1 {
+    margin: 0 0 0.2em;
     font-weight: 300;
     font-size: var(--t-fz-h1);
 }

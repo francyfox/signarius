@@ -29,16 +29,6 @@ import Blocklist from "@components/dashboard/post/blocklist.vue";
 const errors = ref<string[]>([]);
 const data = reactive({});
 
-import { useEditor, EditorContent } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
-
-const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-  extensions: [
-    StarterKit,
-  ],
-})
-
 
 async function handleSubmit() {
 

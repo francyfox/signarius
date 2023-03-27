@@ -91,6 +91,8 @@ textarea {
     border-radius: 3px;
     font-size: var(--t-fz-h6);
     transition: background-color .1s ease-in-out, box-shadow .1s ease-in-out;
+    max-width: 100%;
+    box-sizing: border-box;
 
     &.__primary {
         background: var(--c-primary-border);
@@ -105,6 +107,11 @@ textarea {
         &:hover:active {
             background: var(--c-light);
             box-shadow: 0 0 0 3px var(--c-light);
+            color: var(--c-dark-900);
+        }
+
+        &.is-active {
+            background: var(--c-light);
             color: var(--c-dark-900);
         }
     }

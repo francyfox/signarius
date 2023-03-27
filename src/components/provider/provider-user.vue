@@ -1,5 +1,4 @@
 <template>
-  <error-msg provider="user" :error="error"/>
   <slot/>
 </template>
 

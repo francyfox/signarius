@@ -8,6 +8,11 @@
         <div class="bar _t-ff-primary">
           Free open source project based on Astro
         </div>
+        <div class="actions">
+          <a href="/security/login" class="_c-white">
+            <strong>Login</strong>
+          </a>
+        </div>
       </div>
     </div>
   </header>

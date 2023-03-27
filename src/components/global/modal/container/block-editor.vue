@@ -1,35 +1,3 @@
-<template>
-  <div class="block-editor col _h-gap-sm">
-    <template v-if="editor">
-      <bubble-menu  class="block-editor--bubble-menu"
-                    :tippy-options="{
-                        placement: 'bottom',
-                        duration: 200,
-                    }"
-                    :editor="editor"
-                    :should-show="({ editor: e }) => e.isActive('paragraph')"
-      >
-        <ul class="row _h-fw-w _h-gap-sm">
-          <template v-if="editor">
-            <li v-for="btn in SchemaBubbleMenu(editor)">
-              <menu-bar-btn v-bind="btn"/>
-            </li>
-          </template>
-        </ul>
-      </bubble-menu>
-    </template>
-    <menu-bar :editor="editor" class="block-editor--bar"/>
-    <editor-content :editor="editor" class="block-editor--content content" />
-    <div class="block-editor--counter _h-d-f _t-fz-text _c-white">
-      <span class="_h-d-f">
-        {{ editor?.storage.characterCount.characters() }} characters
-        /
-        {{ editor?.storage.characterCount.words()}} words
-      </span>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import {
   useEditor,
@@ -39,7 +7,6 @@ import {
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import CharacterCount from '@tiptap/extension-character-count'
-import Paragraph from '@tiptap/extension-paragraph'
 import Image from '@tiptap/extension-image'
 import { Color } from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
@@ -48,12 +15,18 @@ import MenuBarBtn from "@components/global/editor/btn/menu-bar-btn.vue"
 import { SchemaBubbleMenu } from "@app/schema/editor/schema.editor.bar"
 import { ResizableMedia } from '@components/global/editor/extension/resizableMedia'
 import { Editor } from "@tiptap/vue-3";
+import TreeNode from "@components/global/editor/tree-node.vue";
+import { useEditorStore } from "@app/store/store.editor";
+import { storeToRefs } from 'pinia'
+import { toRaw } from "vue";
+
+const store = useEditorStore();
+const { JSONContent, headingNode } = storeToRefs(store);
 
 const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+  content: '<h1>Tiptap ffefwf wef ewf wefewfwf efewf ewf</h1><h2>is awesome</h2><p>I’m running Tiptap with Vue.js. 🎉</p>',
   extensions: [
     StarterKit,
-    Paragraph,
     Link.configure(),
     CharacterCount.configure(),
     TextStyle,
@@ -61,6 +34,20 @@ const editor = useEditor({
     Image,
     ResizableMedia,
   ],
+  onCreate: ({ editor }) => {
+    const json = editor.getJSON().content;
+    JSONContent.value = json;
+    headingNode.value = (json)
+        ? json.filter((i) => i.type === 'heading')
+        : null;
+  },
+  onUpdate: ({ editor }) => {
+    const json = editor.getJSON().content;
+    JSONContent.value = json;
+    headingNode.value = (json)
+        ? json.filter((i) => i.type === 'heading')
+        : null;
+  }
 });
 
 function showTextBubble (editor: Editor) {
@@ -68,6 +55,44 @@ function showTextBubble (editor: Editor) {
 }
 </script>
 
+<template>
+  <div class="block-list _h-d-f _h-gap-sm">
+    <div class="col _h-ai-fs _h-gap-sm">
+      <div class="block-editor col _h-gap-sm">
+        <template v-if="editor">
+          <bubble-menu  class="block-editor--bubble-menu"
+                        :tippy-options="{
+                        placement: 'bottom',
+                        duration: 200,
+                    }"
+                        :editor="editor"
+                        :should-show="({ editor: e }) => e.isActive('paragraph')"
+          >
+            <ul class="row _h-fw-w _h-gap-sm">
+              <template v-if="editor">
+                <li v-for="btn in SchemaBubbleMenu(editor)">
+                  <menu-bar-btn v-bind="btn"/>
+                </li>
+              </template>
+            </ul>
+          </bubble-menu>
+        </template>
+        <menu-bar :editor="editor" class="block-editor--bar"/>
+        <editor-content :editor="editor" class="block-editor--content content" />
+        <div class="block-editor--counter _h-d-f _t-fz-text _c-white">
+      <span class="_h-d-f">
+        {{ editor?.storage.characterCount.characters() }} characters
+        /
+        {{ editor?.storage.characterCount.words()}} words
+      </span>
+        </div>
+      </div>
+    </div>
+    <tree-node/>
+  </div>
+
+</template>
+
 <style lang="postcss">
-@import "../../../../styles/components/block-editor.css";
+@import "../../../../styles/components/editor/block-editor.css";
 </style>
