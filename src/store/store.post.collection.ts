@@ -7,6 +7,7 @@ import { IndexDBPostCollection, IPost } from "@app/module/post/post.collection";
 export const usePostCollectionStore = defineStore('postCollection', () => {
   const sdk = useDirectus();
   const posts = ref();
+  const post = ref()
 
   function postImageURL(id: string): string {
     return (id)
@@ -21,6 +22,14 @@ export const usePostCollectionStore = defineStore('postCollection', () => {
     posts.value = response?.data as Array<IPost>
   }
 
+  async function loadPostFromSdk(id: string) {
+    const response = await sdk.items('post').readOne(id, {
+      fields: ['*', 'textblock.item.text'],
+    });
+
+    post.value = response as IPost
+  }
+
   async function loadPostsFromDb() {
     posts.value = IndexDBPostCollection.posts.toArray();
   }
@@ -28,7 +37,9 @@ export const usePostCollectionStore = defineStore('postCollection', () => {
 
   return {
     posts,
+    post,
     loadPostsFromSdk,
+    loadPostFromSdk,
     loadPostsFromDb,
     postImageURL
   }

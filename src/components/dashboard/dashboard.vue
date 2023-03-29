@@ -21,9 +21,6 @@
 import DashboardHeader from "@components/dashboard/dashboard-header.vue";
 import ProviderUser from "@components/provider/provider-user.vue";
 import PanelMenu from "@components/dashboard/panel-menu.vue";
-import ProviderPostCollection from "@components/provider/provider-postCollection.vue";
-import PostList from "@components/dashboard/post/post-list.vue";
-import PostListContainer from "@components/dashboard/post/post-list-container.vue";
 import NotifyStack from "@components/global/notify-stack.vue";
 </script>
 

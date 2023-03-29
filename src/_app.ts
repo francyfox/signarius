@@ -8,6 +8,12 @@ import { DIRECTUS_HOST } from "@app/consts";
 
 const pinia = createPinia()
 export default (app: App) => {
+    app.config.globalProperties.$filters = {
+        truncate(text, stop, clamp) {
+            return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
+        }
+    }
+
     app.use(pinia)
     app.config.globalProperties.$gql = gql
     app.use(plugin, defaultConfig({

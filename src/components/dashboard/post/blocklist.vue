@@ -7,7 +7,7 @@
                 type="button">
           Change
         </button>
-        [3] text blocks collected
+        open text editor
       </div>
     </div>
   </div>

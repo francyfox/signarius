@@ -8,9 +8,9 @@ export interface IPost {
   date_created: Date;
   user_updated: string;
   date_updated: Date;
-  name:         string;
+  header:       string;
   miniature:    string;
-  desc:         string;
+  descriptor:   string;
   blocklist:    number[];
 }
 

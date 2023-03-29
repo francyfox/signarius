@@ -1,36 +1,45 @@
 <template>
   <div class="post h-card col _h-gap-lg _h-p-2 __fill-white">
-    <a :href="'post/' + id" class="u-url _h-d-f">
+    <a :href="`/post/${id}`" class="u-url _h-d-f">
       <picture>
+        <span class="picture-badge"></span>
         <img width="280" height="150" :src="img" :alt="name">
       </picture>
     </a>
 
-    <a :href="'post/' + id" class="title p-name _t-fz-h6">
-      {{ name }}
+    <a :href="`/post/${id}`" class="title p-name _t-fz-h6">
+      {{ header }}
     </a>
     <div class="text p-note _t-fz-text">
-      {{ desc }}
+      {{ $filters.truncate(descriptor, 150)}}
     </div>
-    <ul class="tag-list">
-      <li>Badge</li>
-      <li>Badge 2</li>
-      <li>Badge 3</li>
-    </ul>
+<!--    <ul class="tag-list">-->
+<!--      <li>Badge</li>-->
+<!--      <li>Badge 2</li>-->
+<!--      <li>Badge 3</li>-->
+<!--    </ul>-->
   </div>
 </template>
 
 <script setup lang="ts">
 import { usePostCollectionStore } from "@app/store/store.post.collection";
+import { IPost } from "@app/module/post/post.collection";
 const store = usePostCollectionStore();
 
 const { postImageURL } = store;
 
 const post = defineProps<{
-  id: string,
-  name: string,
-  desc?: string
-  miniature: string
+  id:           string;
+  status:       string;
+  sort:         null;
+  user_created: string;
+  date_created: Date;
+  user_updated: string;
+  date_updated: Date;
+  header:       string;
+  miniature:    string;
+  descriptor:   string;
+  blocklist:    number[];
 }>();
 
 const img = postImageURL(post.miniature);

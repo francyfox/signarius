@@ -7,10 +7,19 @@
     z-index: 10;
 
     &--wrap {
+        position: relative;
         width: 100%;
         max-width: var(--b-container-w);
         padding: 2em;
         background: var(--c-dark-700);
         border-radius: 3px;
+
+        .close {
+            top: 0;
+            right: 0;
+            position: absolute;
+            color: rgb(var(--c-rgb-white));
+            border: 0;
+        }
     }
 }

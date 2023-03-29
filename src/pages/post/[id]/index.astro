@@ -1,0 +1,14 @@
+---
+import '@app/styles/base.css'
+import AdminLayout from '@app/layouts/admin.astro'
+import '@app/styles/dashboard/index.css'
+import Dashboard from "@components/dashboard/dashboard.vue";
+import PostContainer from "@components/post/post-container.vue";
+
+---
+
+<AdminLayout>
+    <Dashboard client:only>
+        <PostContainer client:only/>
+    </Dashboard>
+</AdminLayout>

@@ -3,6 +3,11 @@
     <div class="_h-d-f _h-jc-c _h-ai-c">
       <div class="modal--wrap">
         <form class="col _h-gap-md" method="dialog">
+          <div class="row _h-jc-sb _h-gap-md">
+            <button class="close __fill-error" id="closeModal">
+              <span class="mdi mdi-close"></span>
+            </button>
+          </div>
           <template v-if="component">
             <keep-alive>
               <ModalComponent/>
@@ -11,17 +16,6 @@
           <template v-if="schema">
             <FormKitSchema :schema="schema"/>
           </template>
-
-          <div class="row _h-jc-sb _h-gap-md">
-            <button class="btn __secondary _h-gap-sm" value="cancel">
-              <span class="mdi mdi-cube-off"></span>
-              Cancel
-            </button>
-            <button class="btn __primary _h-gap-sm" id="confirmBtn" value="default">
-              Confirm
-              <span class="mdi mdi-cube-send"></span>
-            </button>
-          </div>
         </form>
       </div>
     </div>
