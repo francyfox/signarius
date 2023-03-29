@@ -24,7 +24,7 @@ const store = useEditorStore();
 const { JSONContent, headingNode } = storeToRefs(store);
 
 const editor = useEditor({
-  content: '<h2>Tiptap</h2><h3>is</h3><h3>fuck</h3><h4>awesome</h4><h2>test</h2><p>I’m running Tiptap with Vue.js. 🎉</p>',
+  content: '<h2>Tiptap</h2><h3>is</h3><h3>huge</h3><h3>fuck</h3><h4>awesome</h4><h2>test</h2><p>I’m running Tiptap with Vue.js. 🎉</p>',
   extensions: [
     StarterKit,
     Link.configure(),

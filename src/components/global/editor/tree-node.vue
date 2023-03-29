@@ -11,13 +11,7 @@
                 @click="activeIndex = index"
         >
         <span v-if="item.content" class="_t-fz-h6">
-          {{ treeLevelIcon({
-            prevLvl: headingNode[index - 1]?.attrs.level,
-            nextLvl: headingNode[index + 1]?.attrs.level,
-            index,
-            lvl: headingNode[index].attrs.level,
-            length: headingNode.length
-          })}}
+            {{ treeRowIcon(headingNode, index) }}
             #{{ index }}. {{ item.content[0].text  }}
         </span>
         </button>
@@ -33,9 +27,12 @@
 import { reactive, Ref, ref, toRaw } from "vue";
 import { useEditorStore } from "@app/store/store.editor";
 import { storeToRefs } from "pinia";
-import { empty } from "@apollo/client";
+import { treeRowIcon } from "@app/module/treeNode/treeNode.icon";
 const store = useEditorStore();
 const { headingNode } = storeToRefs(store);
+// const node = ref();
+// node.value = toRaw(headingNode.value);
+// const treeDir = new TreeDirRowGenerator(headingNode);
 
 interface ListModifyItem {
   attrs: {
@@ -48,65 +45,6 @@ interface ListModifyItem {
 const activeIndex = ref(0);
 const isActive = (index: number) => {
   return index === activeIndex.value ? 'is-active' : null;
-}
-
-enum TreePositionIcon {
-  root = '├──',
-  middle = '├──',
-  bottom = '└──',
-  next = '──',
-  down = '│',
-  empty = '\u00a0 \u00a0 \u00a0 \u00a0'
-}
-
-const treeLevelIcon = (opt: {
-  prevLvl: number,
-  nextLvl: number,
-  index: number,
-  lvl: number,
-  length: number
-}): string => {
-  const {
-    prevLvl,
-    nextLvl,
-    index,
-    length,
-    lvl,
-  } = opt;
-
-  let out = '';
-
-  if (index === 0 && nextLvl <= lvl) {
-    out += TreePositionIcon.root;
-  }
-
-  if (index === 0 && nextLvl > lvl) {
-    out += TreePositionIcon.bottom;
-  }
-
-  if (lvl > prevLvl || lvl === prevLvl) {
-    for (let i = 0; i < lvl - 2; i++) {
-      out += TreePositionIcon.empty;
-    }
-
-    if (lvl < nextLvl || lvl !== nextLvl) {
-      out += TreePositionIcon.bottom;
-    }
-
-    if (lvl === nextLvl) {
-      out += TreePositionIcon.middle;
-    }
-  }
-
-  if (index === length - 1 && prevLvl > lvl) {
-    out += TreePositionIcon.next;
-  }
-
-  if (index === length - 1 && prevLvl < lvl) {
-    out += TreePositionIcon.bottom;
-  }
-
-  return out;
 }
 
 </script>
