@@ -31,7 +31,6 @@ const activeIndex = (routeName: string): number => {
 }
 
 const currentActiveIndex = activeIndex(routeName());
-console.log(currentActiveIndex);
 </script>
 
 <style lang="postcss">

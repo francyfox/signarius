@@ -13,6 +13,9 @@
         min-width: calc(1440px - (2 * 280px));
         max-width: calc(1440px - 280px);
         box-sizing: border-box;
+        animation: openUp ease-in-out .1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
 
     aside {
@@ -31,5 +34,14 @@
 
     .right-panel {
         display: none;
+    }
+}
+
+@keyframes openUp {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
     }
 }

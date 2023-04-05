@@ -4,36 +4,22 @@ import {
   EditorContent,
   BubbleMenu,
 } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
-import Link from '@tiptap/extension-link'
-import CharacterCount from '@tiptap/extension-character-count'
-import Image from '@tiptap/extension-image'
-import { Color } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
+
 import MenuBar from "@components/global/editor/menu-bar.vue"
 import MenuBarBtn from "@components/global/editor/btn/menu-bar-btn.vue"
 import { SchemaBubbleMenu } from "@app/schema/editor/schema.editor.bar"
-import { ResizableMedia } from '@components/global/editor/extension/resizableMedia'
 import { Editor } from "@tiptap/vue-3";
 import TreeNode from "@components/global/editor/tree-node.vue";
 import { useEditorStore } from "@app/store/store.editor";
 import { storeToRefs } from 'pinia'
-import { toRaw } from "vue";
+import { extensions } from "@app/module/editor/editor.extensions";
 
 const store = useEditorStore();
-const { JSONContent, headingNode } = storeToRefs(store);
+const { JSONContent, HTMLContent, headingNode } = storeToRefs(store);
 
 const editor = useEditor({
-  content: '<h2>Tiptap</h2><h3>is</h3><h3>huge</h3><h3>fuck</h3><h4>awesome</h4><h2>test</h2><p>I’m running Tiptap with Vue.js. 🎉</p>',
-  extensions: [
-    StarterKit,
-    Link.configure(),
-    CharacterCount.configure(),
-    TextStyle,
-    Color,
-    Image,
-    ResizableMedia,
-  ],
+  content: '<h2> test </h2> <p>Test message</p> <h3>Test</h3> <p> Lorem ipsum</p>',
+  extensions,
   onCreate: ({ editor }) => {
     const json = editor.getJSON().content;
     JSONContent.value = json;

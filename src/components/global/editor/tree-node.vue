@@ -1,6 +1,7 @@
 <template>
   <ul class="list-modify col _h-gap-sm">
-    <template v-if="headingNode">
+
+    <template v-if="headingNode.length !== 0">
       <li v-for="(item, index) in headingNode" :key="index"
           class="row _h-gap-smx"
       >
@@ -18,7 +19,7 @@
       </li>
     </template>
     <template v-else>
-      Block List is empty
+      <span class="_c-white">--- Block List is empty</span>
     </template>
   </ul>
 </template>

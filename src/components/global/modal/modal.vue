@@ -1,5 +1,5 @@
 <template>
-  <dialog class="modal" :id="id" open>
+  <dialog class="modal" :id="id">
     <div class="_h-d-f _h-jc-c _h-ai-c">
       <div class="modal--wrap">
         <form class="col _h-gap-md" method="dialog">

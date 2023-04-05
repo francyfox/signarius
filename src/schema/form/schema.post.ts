@@ -7,15 +7,30 @@ export default [
     children: 'New post'
   },
   {
+    $formkit: 'select',
+    name: 'status',
+    label: 'Status',
+    options: {
+      draft: 'Draft',
+      published: 'Published',
+      deleted: 'Deleted'
+    }
+  },
+  {
     $formkit: 'text',
-    name: 'name',
+    name: 'header',
     label: 'Header',
     validation: 'required',
   },
   {
     $formkit: 'textarea',
-    name: 'desc',
+    name: 'descriptor',
     label: 'Descriptor',
     maxlength: 100
   },
+  {
+    $formkit: 'file',
+    label: 'Miniature',
+    name: 'file'
+  }
 ]

@@ -57,6 +57,9 @@ html {
 
 body {
     position: relative;
+    animation: fadeInAnimation ease-in-out .1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 a {
@@ -152,5 +155,14 @@ button:disabled {
 
 ._h-100 {
     height: 100%;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 

@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { IndexDBUser, User } from "@app/module/db/db.user";
-import { useDirectus } from "vue-directus";
+import { useDirectus } from "@app/consts";
 import { getCookie, setCookie } from "@app/helpers";
 import { DIRECTUS_HOST, REFRESH_TOKEN_NAME } from "@app/consts";
 
@@ -10,7 +10,7 @@ export const useUserStore = defineStore('user', () => {
   const avatar = ref('/img/logo_mini.svg');
   const fullname = ref('');
   const token = ref('')
-  const sdk = useDirectus();
+  const sdk = useDirectus;
 
   async function setUserData (user: User) {
     if (user.avatar) {

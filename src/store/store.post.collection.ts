@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import { useDirectus } from "vue-directus";
+import { useDirectus } from "@app/consts";
 import { DIRECTUS_HOST } from "@app/consts";
 import { IndexDBPostCollection, IPost } from "@app/module/post/post.collection";
 
 export const usePostCollectionStore = defineStore('postCollection', () => {
-  const sdk = useDirectus();
+  const sdk = useDirectus;
   const posts = ref();
   const post = ref()
 

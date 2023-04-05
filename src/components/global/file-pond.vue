@@ -32,21 +32,11 @@ const props = withDefaults(defineProps<{
   acceptedFileTypes: 'image/jpeg, image/png',
 });
 
-const fileInput = ref()
-const filesData = ref<Array<string>>([])
-
-function filesChange() {
-  filesData.value = fileInput.value.getFiles();
-  console.log(filesData.value)
-}
-
 </script>
 
 <template>
   <file-pond
-      ref="fileInput"
       v-bind="props"
-      v-on:addfile="filesChange"
   />
 </template>
 
