@@ -3,6 +3,7 @@ import { computed, reactive, Ref, ref, toRaw } from "vue";
 import { JSONContent, HTMLContent, generateHTML } from "@tiptap/vue-3";
 import { extensions } from "@app/module/editor/editor.extensions";
 import { useDirectus } from "@app/consts";
+import { Textblock, PostTextblock } from "@app/schema/schema.signarius";
 
 export const useEditorStore = defineStore('editor', () => {
   const HTMLContent: Ref<HTMLContent[] | undefined> = ref([]);
@@ -18,24 +19,22 @@ export const useEditorStore = defineStore('editor', () => {
     miniature.value = await sdk.files.createOne(data);
   }
   async function sendPost(form) {
-    // const chucks = await HTMLChunks();
-    form.textblock = [
-      { textblock_id: { id: '02877f3b-f8b3-4ec3-8ab7-fd800634b200' } }
-    ];
-
-
     const post = await sdk.items('post').createOne(form);
+    if (post) {
+      const relation = await HTMLChunks(post.id);
+      const list = relation?.map(i => i.id)
+      if (list) {
+        await sdk.items('post').updateOne(post.id, {
+          textblock: list
+        })
+      }
 
-    // chucks.data?.forEach((chuck) => {
-    //   form.textblock.push(chuck?.id)
-    // });
-
-
+    }
   }
 
- async function HTMLChunks() {
+ async function HTMLChunks(postId: string) {
     const json = toRaw(JSONContent.value);
-    const chunks: Array<string> = [];
+    const chunks: Array<Textblock> = [];
 
     json?.forEach((block) => {
       const content = generateHTML({
@@ -50,22 +49,26 @@ export const useEditorStore = defineStore('editor', () => {
       chunks.push({ text: content })
     });
 
-    const textblockList = await sdk.items('textblock').createMany(chunks);
-    const list: any = [];
+    const { data: ListTextBlock } = await sdk.items('textblock').createMany(chunks);
+    // @ts-ignore
+   const list: PostTextblock[] | undefined = ListTextBlock?.reduce(
+      (acc, item) => [
+        ...acc,
+        {
+          post_id: postId,
+          item: item.id,
+          collection: 'textblock'
+        }
+      ], []
+    );
 
-    textblockList.data?.forEach((textblock) => {
-      list.push({
-        post_id: textblock.id,
-        collection: 'textblock'
-      })
-    });
-    const response = await sdk.items('post_textblock').createMany(list);
+    if (list) {
+      const { data: relation} = await sdk.items('post_textblock').createMany(list);
 
-    response.data?.reduce((acc, item) => {
-      return [...acc, item.id];
-    });
-
-    return list;
+      return relation;
+    } else {
+      return null;
+    }
  }
 
   return {

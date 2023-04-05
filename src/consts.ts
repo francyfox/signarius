@@ -1,10 +1,11 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 import { Directus } from '@directus/sdk'
-import { Post, Textblock } from "@app/schema/schema.signarius";
+import { Post, PostTextblock, Textblock } from "@app/schema/schema.signarius";
 type SchemaSignarius = {
   post: Post,
-  textblock: Textblock
+  textblock: Textblock,
+  post_textblock: PostTextblock
 }
 
 export const REFRESH_TOKEN_NAME = 'directus_refresh_token';

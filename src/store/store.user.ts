@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
   async function setUserData (user: User) {
     if (user.avatar) {
       id.value = user.id;
-      avatar.value = (user.avatar !== null || true)
+      avatar.value = (user.avatar !== null)
         ?  `${DIRECTUS_HOST}/assets/${user.avatar}`
         : '/img/logo_mini.svg';
       fullname.value = `${user?.first_name} ${user?.last_name}`;
@@ -35,7 +35,7 @@ export const useUserStore = defineStore('user', () => {
   async function auth (email: string, password: string) {
     const response = await sdk.auth.login({ email, password });
     const userClient = await IndexDBUser.users.where({ email }).first();
-    const userServer = await sdk.users.me.read() as User;
+    const userServer = await sdk.users.me.read() as unknown as User;
 
     userServer.token = response.access_token;
     setCookie(REFRESH_TOKEN_NAME , response.refresh_token, { expires: 60*60, secure: true })

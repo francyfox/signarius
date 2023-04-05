@@ -19,7 +19,7 @@ export const usePostCollectionStore = defineStore('postCollection', () => {
     const response = await sdk.items('post').readByQuery({
       sort: [], fields: ['*']
     });
-    posts.value = response?.data as Array<IPost>
+    posts.value = response?.data
   }
 
   async function loadPostFromSdk(id: string) {
@@ -27,7 +27,7 @@ export const usePostCollectionStore = defineStore('postCollection', () => {
       fields: ['*', 'textblock.item.text'],
     });
 
-    post.value = response as IPost
+    post.value = response
   }
 
   async function loadPostsFromDb() {

@@ -9,7 +9,7 @@ export interface Post {
   header:       string;
   miniature:    string;
   descriptor:   string;
-  textblock:    Array<{ item: { text: string }}>;
+  textblock:    Array<{ item: { text: string }}> | Array<number>;
 }
 
 export interface Textblock {
@@ -19,4 +19,11 @@ export interface Textblock {
   user_updated: string;
   date_updated: Date;
   text: string;
+}
+
+export interface PostTextblock {
+  id?: number;
+  post_id: string;
+  item: string;
+  collection: string;
 }
