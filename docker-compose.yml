@@ -56,29 +56,29 @@ services:
       # (see https://docs.directus.io/self-hosted/config-options#general)
       # PUBLIC_URL: 'https://directus.example.com'
 
-  pgbackups:
-    container_name: Backup
-    image: prodrigestivill/postgres-backup-local
-    restart: always
-    volumes:
-      - ./dump:/backups
-    links:
-      - database
-    depends_on:
-      - database
-    environment:
-      - POSTGRES_HOST=database
-      - POSTGRES_DB=signarius
-      - POSTGRES_USER=fox
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_EXTRA_OPTS=-Z9 --schema=public --blobs
-      - SCHEDULE=@daily
-      - BACKUP_KEEP_DAYS=7
-      - BACKUP_KEEP_WEEKS=4
-      - BACKUP_KEEP_MONTHS=6
-      - HEALTHCHECK_PORT=81
-    networks:
-      - directus
+#  pgbackups:
+#    container_name: Backup
+#    image: prodrigestivill/postgres-backup-local
+#    restart: always
+#    volumes:
+#      - ./dump:/backups
+#    links:
+#      - database
+#    depends_on:
+#      - database
+#    environment:
+#      - POSTGRES_HOST=database
+#      - POSTGRES_DB=signarius
+#      - POSTGRES_USER=fox
+#      - POSTGRES_PASSWORD=123
+#      - POSTGRES_EXTRA_OPTS=-Z9 --schema=public --blobs
+#      - SCHEDULE=@daily
+#      - BACKUP_KEEP_DAYS=7
+#      - BACKUP_KEEP_WEEKS=4
+#      - BACKUP_KEEP_MONTHS=6
+#      - HEALTHCHECK_PORT=81
+#    networks:
+#      - directus
 
 volumes:
   pgadmin-data:

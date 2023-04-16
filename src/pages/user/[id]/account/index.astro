@@ -1,0 +1,12 @@
+---
+import '@app/styles/base.css'
+import AdminLayout from '@app/layouts/admin.astro'
+import '@app/styles/dashboard/index.css'
+import Dashboard from "../../../../components/dashboard/dashboard.vue";
+import AccountContainer from "../../../../components/account/account-container.vue";
+---
+<AdminLayout>
+	<Dashboard client:only>
+      <AccountContainer client:only />
+  </Dashboard>
+</AdminLayout>

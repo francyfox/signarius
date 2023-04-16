@@ -27,3 +27,7 @@ export interface PostTextblock {
   item: string;
   collection: string;
 }
+
+export interface User {
+
+}

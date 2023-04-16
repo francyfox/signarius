@@ -88,6 +88,9 @@ dependencies:
   dexie:
     specifier: ^3.2.3
     version: 3.2.3
+  directus-extension-field-actions:
+    specifier: ^1.5.1
+    version: 1.5.1
   filepond:
     specifier: ^4.30.4
     version: 4.30.4
@@ -2510,6 +2513,10 @@ packages:
   /diff@5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
     engines: {node: '>=0.3.1'}
+    dev: false
+
+  /directus-extension-field-actions@1.5.1:
+    resolution: {integrity: sha512-gSLUb0vVA6pbTMj7nK2n1HvBQTSUFnwObjoDjbnq5KEPwWkgVuxxHiaUszRwvktHEzKdse4/a5Py1IrB2EUqPw==}
     dev: false
 
   /dlv@1.1.3:

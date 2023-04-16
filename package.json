@@ -39,6 +39,7 @@
     "autoprefixer": "^10.4.14",
     "cssnano": "^5.1.15",
     "dexie": "^3.2.3",
+    "directus-extension-field-actions": "^1.5.1",
     "filepond": "^4.30.4",
     "filepond-plugin-file-encode": "^2.1.10",
     "filepond-plugin-file-validate-size": "^2.2.8",
