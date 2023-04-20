@@ -7,6 +7,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@app/*": ["src/*"]
-    }
+    },
+    "types": ["bun-types"]
   }
 }

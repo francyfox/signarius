@@ -1,11 +1,13 @@
 <template>
-  <div class="row _h-gap-md _h-fw-w _h-ai-fs _h-100 __scrolled">
-    <template v-for="post in posts">
-      <Suspense>
-        <Post v-bind="post"/>
-      </Suspense>
-    </template>
-  </div>
+    <div class="_h-100">
+      <div class="post-container row _h-gap-md _h-fw-w __scrolled">
+        <template v-for="post in posts">
+          <Suspense>
+            <Post v-bind="post"/>
+          </Suspense>
+        </template>
+      </div>
+      </div>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +19,8 @@ const store = usePostCollectionStore();
 const { posts } = storeToRefs(store);
 </script>
 
-<style scoped>
-
+<style scoped lang="postcss">
+  .post-container {
+      max-height: calc(100vh - 54px);
+  }
 </style>
