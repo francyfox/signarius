@@ -26,6 +26,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function loadUserDataFromDB (id: string) {
+    console.log(await sdk.fields.readMany('post'));
     const user = await IndexDBUser.users.get(id);
     if (user) {
       await setUserData(user)

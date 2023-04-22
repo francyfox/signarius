@@ -2,9 +2,29 @@ import { resolve } from 'node:path'
 import { access } from 'node:fs/promises'
 import { write, stdout, file } from 'bun'
 
+type FormKitElement = {
+  $formkit: string,
+  name: string,
+  label: string,
+  validation?: string
+}
+
+// TODO: REMOVE USE FIELDS
+
 export default class FormkitSchemaGenerator {
   fileContent: Blob
-  outputJSON: [any]
+  outputJSON = []
+  FormKitTypes = {
+    text: 'string | null',
+    file: 'string | DirectusFiles | null'
+  }
+  excludeMatch = [
+    'id',
+    'date_created',
+    'date_updated',
+    'user_created',
+    'user_updated'
+  ]
 
   constructor(path: string) {
     this.parse(path)
@@ -32,14 +52,11 @@ export default class FormkitSchemaGenerator {
         .trim()
         .split(/(?<=\})/)
 
-      const filtred = blocks.reduce((acc, currentValue) => {
-        currentValue.replace('export type ', '')
-        const arrName= currentValue.substring(0, currentValue.indexOf(" "))
-        const template = "\r\n|\n\r|[\n\r\v\f\x1c\x1d\x1e\x85\u2028\u2029\x00]"
-        const splited = currentValue.split(template)
-        console.log(splited[0])
-        return `export const ${arrName} = {`
-      })
+      for (const block of blocks) {
+        this.filterBlocks(this.outputJSON, block)
+      }
+
+      console.log(this.outputJSON)
 
     } else {
       console.log('[ERROR] - File not found')
@@ -48,4 +65,49 @@ export default class FormkitSchemaGenerator {
     // await this.write()
   }
 
+  filterBlocks(acc, currentValue) {
+    currentValue.replace('export type ', '')
+    const arrName = currentValue.substring(0, currentValue
+      .indexOf(" = {"))
+      .trim()
+      .split(' ').pop()
+
+    if (arrName && !arrName.match('Directus')) {
+      let params: Array<FormKitElement> = []
+      currentValue
+        .replace(/.+({)/, '')
+        .replace(/(})/, '')
+        .split(';')
+
+
+      for (const param of currentValue) {
+        params.push(this.translateElementToFormkit(param))
+      }
+
+      const elementJSON = {
+        name: arrName,
+        params
+      }
+
+      acc.push(elementJSON)
+
+      // return `export const ${arrName} = {`
+    }
+  }
+
+  translateElementToFormkit(directusEl: string): FormKitElement {
+    let FormkitElement: FormKitElement = {
+      $formkit: '',
+      name: '',
+      label: '',
+    }
+    if (!directusEl.match('?')) {
+      FormkitElement = {
+        ...FormkitElement,
+        validation: 'required'
+      }
+    }
+
+    return FormkitElement
+  }
 }
