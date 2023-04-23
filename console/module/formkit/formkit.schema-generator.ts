@@ -11,6 +11,14 @@ type FormKitElement = {
 
 export default class FormkitSchemaGenerator {
   collections: string[]
+  excludeFields = [
+    'id',
+    'user_created',
+    'user_updated',
+    'date_created',
+    'date_updated',
+    'sort',
+  ]
   constructor(collections: string[]) {
     this.collections = collections
 
@@ -36,7 +44,7 @@ export default class FormkitSchemaGenerator {
 
   async FieldList() {
     const token = await this.token()
-    const response = await fetch(`http://127.0.0.1:8055/fields`, {
+    const response = await fetch(`http://127.0.0.1:8055/fields?fields=collection,meta.*,field`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Credentials': 'true',
@@ -50,7 +58,10 @@ export default class FormkitSchemaGenerator {
       [])
 
     return data.filter(
-      (i) => i.collection.match(new RegExp(`^${patterns.join('|')}$`), 'g')
+      (i) => {
+        return i.collection.match(new RegExp(`${patterns.join('|')}`), 'g')
+          && !i.field.match(new RegExp(`${this.excludeFields.join('|')}`), 'g')
+      }
     )
   }
 
