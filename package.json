@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "arius:formkit": "bun run console/command.ts"
+    "arius:formkit": "bun run console/command.ts",
+    "arius:cms": "docker-compose up"
   },
   "dependencies": {
     "@apollo/client": "^3.7.11",

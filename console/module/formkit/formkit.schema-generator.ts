@@ -9,105 +9,53 @@ type FormKitElement = {
   validation?: string
 }
 
-// TODO: REMOVE USE FIELDS
-
 export default class FormkitSchemaGenerator {
-  fileContent: Blob
-  outputJSON = []
-  FormKitTypes = {
-    text: 'string | null',
-    file: 'string | DirectusFiles | null'
-  }
-  excludeMatch = [
-    'id',
-    'date_created',
-    'date_updated',
-    'user_created',
-    'user_updated'
-  ]
+  collections: string[]
+  constructor(collections: string[]) {
+    this.collections = collections
 
-  constructor(path: string) {
-    this.parse(path)
+    this.translate2FormKitSchema()
   }
 
-  async read(path: string) {
-    try {
-      await access(path)
-      this.fileContent = file(path)
-      return this.fileContent
-    } catch (e) {
-      console.log(e);
-    }
+  async token() {
+    const response = await fetch('http://127.0.0.1:8055/auth/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: '7info7web@gmail.com',
+        password: '123'
+      })
+    })
+
+    const { data } = await response.json()
+
+    return data.access_token
   }
 
-  async write() {
-    write('../src/_directus2formkit.schema.json', this.outputJSON)
-  }
-
-  async parse(path: string) {
-    const file = await this.read(path)
-    if (file) {
-      const text = await file.text()
-      const blocks = text
-        .trim()
-        .split(/(?<=\})/)
-
-      for (const block of blocks) {
-        this.filterBlocks(this.outputJSON, block)
+  async FieldList() {
+    const token = await this.token()
+    const response = await fetch(`http://127.0.0.1:8055/fields`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Credentials': 'true',
+        Authorization: `Bearer ${token}`
       }
+    })
 
-      console.log(this.outputJSON)
+    const { data } = await response.json()
+    const patterns = this.collections.reduce(((acc, currentValue) =>
+      [...acc, `^${currentValue}$`]),
+      [])
 
-    } else {
-      console.log('[ERROR] - File not found')
-    }
-
-    // await this.write()
+    return data.filter(
+      (i) => i.collection.match(new RegExp(`^${patterns.join('|')}$`), 'g')
+    )
   }
 
-  filterBlocks(acc, currentValue) {
-    currentValue.replace('export type ', '')
-    const arrName = currentValue.substring(0, currentValue
-      .indexOf(" = {"))
-      .trim()
-      .split(' ').pop()
-
-    if (arrName && !arrName.match('Directus')) {
-      let params: Array<FormKitElement> = []
-      currentValue
-        .replace(/.+({)/, '')
-        .replace(/(})/, '')
-        .split(';')
-
-
-      for (const param of currentValue) {
-        params.push(this.translateElementToFormkit(param))
-      }
-
-      const elementJSON = {
-        name: arrName,
-        params
-      }
-
-      acc.push(elementJSON)
-
-      // return `export const ${arrName} = {`
-    }
-  }
-
-  translateElementToFormkit(directusEl: string): FormKitElement {
-    let FormkitElement: FormKitElement = {
-      $formkit: '',
-      name: '',
-      label: '',
-    }
-    if (!directusEl.match('?')) {
-      FormkitElement = {
-        ...FormkitElement,
-        validation: 'required'
-      }
-    }
-
-    return FormkitElement
+  async translate2FormKitSchema() {
+    const fields = await this.FieldList()
+    console.log(await fields)
   }
 }
