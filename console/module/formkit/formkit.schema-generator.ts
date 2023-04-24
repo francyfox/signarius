@@ -1,13 +1,6 @@
-import { resolve } from 'node:path'
-import { access } from 'node:fs/promises'
-import { write, stdout, file } from 'bun'
-
-type FormKitElement = {
-  $formkit: string,
-  name: string,
-  label: string,
-  validation?: string
-}
+import path from 'path'
+import { writeFile, mkdir, exists } from 'node:fs/promises'
+import { FormkitElement } from "./formkit.element";
 
 export default class FormkitSchemaGenerator {
   collections: string[]
@@ -21,8 +14,6 @@ export default class FormkitSchemaGenerator {
   ]
   constructor(collections: string[]) {
     this.collections = collections
-
-    this.translate2FormKitSchema()
   }
 
   async token() {
@@ -44,7 +35,7 @@ export default class FormkitSchemaGenerator {
 
   async FieldList() {
     const token = await this.token()
-    const response = await fetch(`http://127.0.0.1:8055/fields?fields=collection,meta.*,field`, {
+    const response = await fetch(`http://127.0.0.1:8055/fields?fields=collection,field,meta.*`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Credentials': 'true',
@@ -65,8 +56,37 @@ export default class FormkitSchemaGenerator {
     )
   }
 
-  async translate2FormKitSchema() {
+  async translate2FormKitSchema(): Promise<{}> {
     const fields = await this.FieldList()
-    console.log(await fields)
+    const schema = {}
+
+    for (const field of fields) {
+      const el = FormkitElement(field)
+
+      if (el !== null) {
+        if (!schema[field.collection]) {
+          schema[field.collection] = []
+        }
+
+        schema[field.collection].push(el)
+      }
+    }
+
+    return schema
+  }
+
+  async saveFile() {
+    const collectionList = await this.translate2FormKitSchema()
+
+    for (const schema in collectionList) {
+      const filename = `./console/module/formkit/export/schema.${schema}.json`
+      const dirname = path.dirname(filename);
+
+      if (!await exists(dirname)) {
+        await mkdir(dirname, { recursive: true })
+      }
+
+      await writeFile(filename, JSON.stringify(collectionList[schema], null, 2))
+    }
   }
 }

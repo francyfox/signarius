@@ -1,8 +1,9 @@
 import FormkitSchemaGenerator from "./module/formkit/formkit.schema-generator";
 
-function start() {
-  new FormkitSchemaGenerator(['post', 'textblock']);
+async function start() {
+  const generator = new FormkitSchemaGenerator(['post', 'textblock']);
+  const FormKitSchema = await generator.saveFile()
 }
 
 
-start()
+await start()
