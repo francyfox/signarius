@@ -8,10 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import SchemaAccount from "@app/schema/account/schema.account";
 import { reactive, ref, Ref } from "vue";
 import FormkitSchemaGenerator from "../../../console/module/formkit/formkit.schema-generator";
 import { DirectusUsers } from "@app/types";
+import SchemaAccount from "@schema/schema.directus_users.json";
+
+console.log(SchemaAccount)
 
 const errors: Ref<Array<string>> = ref([]);
 const form = ref({

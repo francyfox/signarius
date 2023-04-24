@@ -1,0 +1,94 @@
+[
+  {
+    "$formkit": "text",
+    "name": "first_name",
+    "label": "First_name",
+    "prefixIcon": "account_circle",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "text",
+    "name": "last_name",
+    "label": "Last_name",
+    "prefixIcon": "account_circle",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "text",
+    "name": "email",
+    "label": "Email",
+    "prefixIcon": "email",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "password",
+    "name": "password",
+    "label": "Password",
+    "prefixIcon": "lock",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "text",
+    "name": "location",
+    "label": "Location",
+    "prefixIcon": "place",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "text",
+    "name": "title",
+    "label": "Title",
+    "prefixIcon": "work",
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "textarea",
+    "name": "description",
+    "label": "Description"
+  },
+  {
+    "$formkit": "file",
+    "name": "avatar",
+    "label": "Avatar"
+  },
+  {
+    "$formkit": "select",
+    "name": "theme",
+    "label": "Theme",
+    "options": {
+      "auto": "Auto",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "config": {
+      "outerClass": "half"
+    }
+  },
+  {
+    "$formkit": "select",
+    "name": "status",
+    "label": "Status",
+    "options": {
+      "draft": "Draft",
+      "invited": "Invited",
+      "active": "Active",
+      "suspended": "Suspended",
+      "archived": "Archived"
+    },
+    "config": {
+      "outerClass": "half"
+    }
+  }
+]

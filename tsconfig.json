@@ -6,7 +6,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@app/*": ["src/*"]
+      "@app/*": ["src/*"],
+      "@schema/*": ["console/module/formkit/export/*"]
     },
     "types": ["bun-types"]
   }

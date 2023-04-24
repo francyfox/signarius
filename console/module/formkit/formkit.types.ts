@@ -3,8 +3,12 @@
  */
 export const InterfaceTranslate = {
   'input': 'text',
+  'file': 'file',
+  'language': 'text',
+  'input-hash': 'password',
   'input-multiline': 'textarea',
-  'select-dropdown': 'select'
+  'select-dropdown': 'select',
+  // 'tags': 'taglist'
 }
 
 export interface IFormKitElement {

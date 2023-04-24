@@ -20,14 +20,22 @@ export const FormkitElement = (el: IFormKitElement): FormKitElementBase | null =
 
   switch (output.$formkit) {
     case 'select':
-      const options = el.meta.options.choices.map((i) => {
+      const options = el.meta.options.choices.reduce((acc, i) => {
         const capitalized = i.value.charAt(0).toUpperCase() + i.value.slice(1)
         const option = {}
-        option[i.value] = capitalized
+        acc[i.value] = capitalized
+        return acc
+      }, {})
+      console.log(options)
+      output['options'] = options
+  }
 
-        return option
-      })
-      output = {...output, options}
+  if (el.meta?.options?.iconRight) {
+    output['prefixIcon'] = el.meta?.options?.iconRight
+  }
+
+  if (el.meta.width === 'half') {
+    output['config'] = { outerClass: 'half' }
   }
 
   if (el.meta.required) {
