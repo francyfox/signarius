@@ -55,6 +55,7 @@
     "graphql": "^16.6.0",
     "pinia": "^2.0.33",
     "postcss": "^8.4.21",
+    "postcss-for": "^2.1.1",
     "postcss-nested": "^6.0.1",
     "prosemirror-model": "^1.19.0",
     "prosemirror-view": "^1.30.2",

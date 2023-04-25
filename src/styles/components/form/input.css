@@ -18,7 +18,7 @@ input {
 
     &[type="text"], &[type="email"], &[type="password"], &[type="url"] {
         padding: 5px 5px;
-        min-height: 30px;
+        min-height: 40px;
         border-radius: 3px;
         background-color: var(--c-dark-900);
         color: rgb(var(--c-rgb-white));
@@ -46,7 +46,7 @@ select {
     appearance: none;
     border: none;
     font-size: var(--t-fz-text);
-    min-height: 30px;
+    min-height: 40px;
     border-radius: 3px;
     background-color: var(--c-dark-900);
     color: rgb(var(--c-rgb-white));
@@ -165,6 +165,19 @@ select {
         display: flex;
         margin-bottom: 0.5em;
         font-size: var(--t-fz-h6);
+    }
+
+    &-icon {
+        padding: 0 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--c-dark-900);
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &-help {

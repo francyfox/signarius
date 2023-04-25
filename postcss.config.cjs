@@ -3,5 +3,6 @@ module.exports = {
         require('autoprefixer'),
         require('cssnano'),
         require('postcss-nested'),
+        require('postcss-for')
     ],
 };

@@ -3,7 +3,7 @@
     "$formkit": "text",
     "name": "first_name",
     "label": "First_name",
-    "prefixIcon": "account_circle",
+    "prefixIcon": "avatarMan",
     "config": {
       "outerClass": "half"
     }
@@ -12,7 +12,7 @@
     "$formkit": "text",
     "name": "last_name",
     "label": "Last_name",
-    "prefixIcon": "account_circle",
+    "prefixIcon": "avatarMan",
     "config": {
       "outerClass": "half"
     }
@@ -30,7 +30,7 @@
     "$formkit": "password",
     "name": "password",
     "label": "Password",
-    "prefixIcon": "lock",
+    "prefixIcon": "password",
     "config": {
       "outerClass": "half"
     }
@@ -39,7 +39,7 @@
     "$formkit": "text",
     "name": "location",
     "label": "Location",
-    "prefixIcon": "place",
+    "prefixIcon": "bookmark",
     "config": {
       "outerClass": "half"
     }

@@ -1,13 +1,15 @@
 <template>
-  <div class="post-body">
-    <h1>{{ header }}</h1>
-    <div class="row _h-gap-sm">
-      <code>Created: <time :datetime="date_created">{{ formatDate(new Date(date_created))}}</time></code>
-      <code v-if="date_updated">Updated: <time :datetime="date_updated">{{ date_updated }}</time></code>
+  <div class="post-wrap">
+    <div class="post-body">
+      <h1>{{ header }}</h1>
+      <div class="row _h-gap-sm _h-mb-3">
+        <code>Created: <time :datetime="date_created">{{ formatDate(new Date(date_created))}}</time></code>
+        <code v-if="date_updated">Updated: <time :datetime="date_updated">{{ date_updated }}</time></code>
+      </div>
+      <main>
+        <div class="post-body--block content" v-for="block in textblock" v-html="block.item.text"></div>
+      </main>
     </div>
-    <main>
-      <div class="post-body--block content" v-for="block in textblock" v-html="block.item.text"></div>
-    </main>
   </div>
 </template>
 
@@ -49,6 +51,6 @@ function formatDate(date: Date) {
 }
 </script>
 
-<style scoped>
-
+<style lang="postcss">
+@import "../../styles/components/post.css";
 </style>

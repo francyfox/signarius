@@ -5,6 +5,7 @@
 @import "helpers/flex.css";
 @import "helpers/block.css";
 @import "helpers/inline.css";
+@import "helpers/offset.css";
 @import "offset.css";
 @import "components/form/input.css";
 

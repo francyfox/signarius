@@ -2,7 +2,7 @@
   <div class="container _h-p-2 __fill-white">
       <form-kit v-model="form" type="form" :actions="false" :errors="errors" @submit="handleSubmit">
 		    <form-kit-schema :schema="SchemaAccount"/>
-<!--		    <form-kit type="submit" :disabled="(form.url.length === 0)" label="Paste" />-->
+		    <form-kit type="submit" label="Change" />
       </form-kit>
   </div>
 </template>

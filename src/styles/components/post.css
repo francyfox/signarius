@@ -1,0 +1,21 @@
+.post {
+    position: relative;
+    &-body {
+        overflow: auto;
+        max-height: calc(100vh - 100px);
+    }
+
+    &-wrap {
+        &:after {
+            position: absolute;
+            content: '';
+            bottom: 20px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(0deg, #29272a, transparent 100%);
+            z-index: 1;
+        }
+    }
+}

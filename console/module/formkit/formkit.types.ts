@@ -11,6 +11,13 @@ export const InterfaceTranslate = {
   // 'tags': 'taglist'
 }
 
+export const IconTranslate = {
+  'lock': 'password',
+  'account_circle': 'avatarMan',
+  'place': 'bookmark',
+  'job': 'people',
+}
+
 export interface IFormKitElement {
   collection: string
   field: string
@@ -45,4 +52,5 @@ export type FormKitElementBase = {
   label: string,
   validation?: string
   options?: object
+  prefixIcon?: string
 }

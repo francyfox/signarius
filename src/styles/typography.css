@@ -45,7 +45,8 @@
 
 .content {
     h2, h3, h4, h5, h6 {
-        margin-bottom: 0.2em;
+        margin-top: 0.3em;
+        margin-bottom: 0.6em;
     }
 
     p {
