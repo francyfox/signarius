@@ -1,15 +1,16 @@
 .post {
     position: relative;
+
     &-body {
         overflow: auto;
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - 170px);
     }
 
     &-wrap {
         &:after {
             position: absolute;
             content: '';
-            bottom: 20px;
+            bottom: 90px;
             left: 0;
             display: block;
             width: 100%;

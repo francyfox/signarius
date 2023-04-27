@@ -21,6 +21,18 @@
     color: var(--c-light);
 }
 
+._c-dark {
+    color: var(--c-dark-900);
+}
+
+.__fill-primary {
+    background: var(--c-primary);
+}
+
+.__fill-primary-border {
+    background: var(--c-primary-border);
+}
+
 .__fill-error {
     background: var(--c-secondary-dark);
 }

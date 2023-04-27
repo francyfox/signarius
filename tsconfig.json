@@ -5,10 +5,16 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@app/*": ["src/*"],
-      "@schema/*": ["console/module/formkit/export/*"]
-    },
-    "types": ["bun-types"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@app/*": [
+        "src/*"
+      ],
+      "@schema/*": [
+        "console/module/formkit/export/*"
+      ]
+    }
+    //    "types": ["bun-types"]
   }
 }
