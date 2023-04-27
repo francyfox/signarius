@@ -1,5 +1,5 @@
 <template>
-  <slot/>
+  <slot />
 </template>
 
 <script setup lang="ts">
@@ -11,18 +11,17 @@ const storeEvent = useEventStore();
 const { notifyStack } = storeToRefs(storeEvent);
 
 const store = useUserStore();
-const { loadUserDataFromDB } = store;
-
-const urlChunks = window.location.href.split('/')
-const userId = urlChunks[urlChunks.findIndex(path => path === 'user') + 1]
+const { loadUserTokenFromDB } = store;
 
 try {
-  await loadUserDataFromDB(userId)
+  await loadUserTokenFromDB();
 } catch (e) {
-  notifyStack.value.push(e.message)
+  notifyStack.value.push(e.message);
+
+  setTimeout(() => {
+    window.location.href = "/security/login";
+  }, 1500);
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

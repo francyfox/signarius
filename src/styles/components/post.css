@@ -3,7 +3,7 @@
 
     &-body {
         overflow: auto;
-        max-height: calc(100vh - 170px);
+        height: calc(100vh - 170px);
     }
 
     &-wrap {

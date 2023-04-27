@@ -3,15 +3,24 @@
     <div class="row _h-gap-sm">
       <div class="col _h-gap-sm">
         <figure class="avatar col" :style="`border-color: ${color()}`">
-          <img src="/img/logo_mini.svg" alt="" width="50" height="50" />
+          <img
+            width="30"
+            height="30"
+            :src="`http://127.0.0.1:8055/assets/${data.item.user_created.avatar}`"
+            :alt="data.item.user_created.id"
+          />
         </figure>
       </div>
       <div class="col _h-gap-sm">
         <div class="col">
           <div class="row _h-jc-sb _h-gap-sm">
             <div class="col _h-gap-sm">
-              <strong>Francy Fox</strong>
-              <code class="__fill-error"> Administrator </code>
+              <strong>{{
+                `${data.item.user_created.first_name} ${data.item.user_created.last_name}`
+              }}</strong>
+              <code class="__fill-error">
+                {{ data.item.user_created.title }}
+              </code>
             </div>
             <div class="time col _h-gap-sm">
               <code
@@ -37,13 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="post-body--block content">
-          <p>
-            Длина взрослых самцов - чуть более 2 м, а масса - до 270 кг, самки -
-            длиной до 1,5 м и массой - до 50 кг. Щенки рождаются длиной до 65 см
-            и весят до 6 кг.
-          </p>
-        </div>
+        <div class="post-body--block content" v-html="data.item.text"></div>
       </div>
     </div>
   </div>
@@ -51,13 +54,14 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { Textblock } from "@app/types";
 
 const props = defineProps<{
-  lvl: number;
+  data: { item: Textblock };
 }>();
 
 function color() {
-  switch (props.lvl) {
+  switch (props.data.item.comment_lvl) {
     case 0:
       return "orange";
     case 1:
@@ -69,7 +73,9 @@ function color() {
 
 const border = computed({
   get() {
-    return `margin-left: ${props.lvl * 5}px; border-left: 3px solid ${color()}`;
+    return `margin-left: ${
+      props.data.item.comment_lvl * 5
+    }px; border-left: 3px solid ${color()}`;
   },
 });
 </script>

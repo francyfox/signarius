@@ -1,38 +1,76 @@
 <template>
   <div class="post-wrap">
-    <comment class="_h-mb-2" v-if="isCommentShow" />
-    <div v-else class="post-body _h-mb-2">
-      <h1>{{ header }}</h1>
-      <div class="row _h-gap-sm _h-mb-3">
-        <code
-          >Created:
-          <time :datetime="date_created"
-            >{{ formatDate(new Date(date_created)) }}
-          </time>
-        </code>
-        <code v-if="date_updated"
-          >Updated:
-          <time :datetime="date_updated"
-            >{{ formatDate(new Date(date_updated)) }}
-          </time>
-        </code>
+    <div class="post-body _h-mb-2">
+      <div class="comment _h-mb-2" v-if="isCommentShow">
+        <comment-list :data="comments" />
       </div>
-      <main>
-        <div
-          class="post-body--block content"
-          v-for="block in textblock"
-          v-html="block.item.text"
-        ></div>
-      </main>
+
+      <div v-else class="content">
+        <div class="row _h-mb-1">
+          <figure class="_h-d-f _h-ai-c _h-gap-sm">
+            <img
+              width="30"
+              height="30"
+              :src="`http://127.0.0.1:8055/assets/${user_created.avatar}`"
+              :alt="user_created.id"
+            />
+            <figcaption>
+              <strong>Author: </strong>
+              {{ `${user_created.first_name} ${user_created.last_name}` }}
+              <code class="__fill-error">{{ user_created.title }}</code>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="_h-d-f _h-mb-2">
+          <strong>Status:</strong> <code>{{ status }}</code>
+        </div>
+        <div class="row _h-gap-sm _h-mb-1">
+          <strong>Created: </strong>
+          <code>
+            <time :datetime="date_created"
+              >{{ formatDate(new Date(date_created)) }}
+            </time>
+          </code>
+          <strong>Updated: </strong>
+          <code v-if="date_updated">
+            <time :datetime="date_updated"
+              >{{ formatDate(new Date(date_updated)) }}
+            </time>
+          </code>
+        </div>
+        <h1 class="_h-mb-1">{{ header }}</h1>
+
+        <main>
+          <div
+            class="post-body--block content"
+            v-for="block in textblock"
+            v-html="block.item.text"
+          ></div>
+        </main>
+      </div>
     </div>
-    <comment-btn @click="isCommentShow = !isCommentShow" />
+    <div class="row _h-gap-sm">
+      <comment-btn />
+      <button
+        type="button"
+        class="btn __primary __sm _h-gap-sm"
+        @click="isCommentShow = !isCommentShow"
+      >
+        <span class="mdi mdi mdi-pac-man"></span>
+        <span v-if="!isCommentShow">Show comments</span>
+        <span v-else>Show post</span>
+      </button>
+      <comment-editor style="margin-left: auto" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import CommentBtn from "@components/post/comments/comment-btn.vue";
 import Comment from "@components/post/comments/comment.vue";
 import { ref } from "vue";
+import CommentEditor from "@components/post/comments/comment-editor.vue";
+import CommentList from "@components/post/comments/comment-list.vue";
+import Avatar from "@components/dashboard/avatar.vue";
 
 defineProps<{
   id: string;
@@ -46,6 +84,7 @@ defineProps<{
   miniature: string;
   descriptor: string;
   textblock: Array<{ item: { text: string } }>;
+  comments: Array<{ item: { text: string } }>;
 }>();
 
 const isCommentShow = ref(false);
@@ -75,4 +114,5 @@ function formatDate(date: Date) {
 
 <style lang="postcss">
 @import "../../styles/components/post.css";
+@import "../../styles/components/comment.css";
 </style>

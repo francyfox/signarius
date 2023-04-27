@@ -29,9 +29,8 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  async function loadUserDataFromDB(id: string) {
-    console.log(await sdk.fields.readMany("post"));
-    const user = await IndexDBUser.users.get(id);
+  async function loadUserTokenFromDB() {
+    const user = await IndexDBUser.users.toCollection().first();
     if (user) {
       await setUserData(user);
     }
@@ -66,7 +65,7 @@ export const useUserStore = defineStore("user", () => {
     fullname,
     directus_user,
     setUserData,
-    loadUserDataFromDB,
+    loadUserTokenFromDB,
     auth,
     refresh,
   };
