@@ -16,9 +16,6 @@ export default defineConfig({
     vite: {
         css: {
             devSourcemap: true,
-        },
-        ssr: {
-            noExternal: ['tippy.js'],
         }
     },
     output: "server",
