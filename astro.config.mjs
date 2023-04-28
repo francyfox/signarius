@@ -13,6 +13,11 @@ export default defineConfig({
         sitemap(),
         vue({appEntrypoint: '/src/_app'})
     ],
+    build: {
+        rollupOptions: {
+            external: ['tippy.js']
+        }
+    },
     vite: {
         css: {
             devSourcemap: true,
