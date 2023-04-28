@@ -6,6 +6,8 @@
       </div>
 
       <div v-else class="content">
+        <hr />
+        <br />
         <div class="row _h-mb-1">
           <figure class="_h-d-f _h-ai-c _h-gap-sm">
             <img
@@ -38,6 +40,8 @@
             </time>
           </code>
         </div>
+        <br />
+        <hr />
         <h1 class="_h-mb-1">{{ header }}</h1>
 
         <main>

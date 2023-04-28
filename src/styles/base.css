@@ -8,6 +8,7 @@
 @import "helpers/offset.css";
 @import "offset.css";
 @import "components/form/input.css";
+@import "tippy.js/dist/tippy.css";
 
 :root {
     --b-container-w: 1440px;
@@ -17,32 +18,40 @@
     width: 10px;
     height: 10px;
 }
+
 ::-webkit-scrollbar-button {
     width: 0px;
     height: 0px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--c-secondary);
     border: 0px none #ffffff;
     border-radius: 50px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--c-primary);
 }
+
 ::-webkit-scrollbar-thumb:active {
     background: var(--c-light);
 }
+
 ::-webkit-scrollbar-track {
     background: #666666;
     border: 0px none #ffffff;
     border-radius: 50px;
 }
+
 ::-webkit-scrollbar-track:hover {
     background: #666666;
 }
+
 ::-webkit-scrollbar-track:active {
     background: #333333;
 }
+
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
