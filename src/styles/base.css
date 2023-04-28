@@ -8,7 +8,6 @@
 @import "helpers/offset.css";
 @import "offset.css";
 @import "components/form/input.css";
-@import "tippy.js/dist/tippy.css";
 
 :root {
     --b-container-w: 1440px;

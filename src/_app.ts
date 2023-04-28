@@ -4,6 +4,7 @@ import * as gql from "gql-query-builder";
 import { createAutoAnimatePlugin } from "@formkit/addons";
 import { plugin, defaultConfig } from "@formkit/vue";
 import VueTippy from "vue-tippy";
+import "../node_modules/tippy.js/dist/tippy.css";
 
 const pinia = createPinia();
 export default (app: App) => {
