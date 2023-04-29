@@ -55,6 +55,10 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
+  async function register(form) {
+    await sdk.users.createOne(form);
+  }
+
   async function refresh() {
     await sdk.auth.refresh();
   }
@@ -67,6 +71,7 @@ export const useUserStore = defineStore("user", () => {
     setUserData,
     loadUserTokenFromDB,
     auth,
+    register,
     refresh,
   };
 });

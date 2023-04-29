@@ -11,6 +11,7 @@
 
     &.__panel-menu {
         padding-top: 0.7em;
+
         li {
             a {
                 padding: 20px;
@@ -29,6 +30,11 @@
 
                 &.is-active {
                     background: var(--c-primary-border);
+                }
+
+                &.disabled {
+                    pointer-events: none;
+                    opacity: 0.3;
                 }
 
                 &.action {

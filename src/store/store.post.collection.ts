@@ -17,7 +17,13 @@ export const usePostCollectionStore = defineStore("postCollection", () => {
   async function loadPostsFromSdk() {
     const response = await sdk.items("post").readByQuery({
       sort: [],
-      fields: ["*"],
+      fields: [
+        "*",
+        "user_created.first_name",
+        "user_created.last_name",
+        "user_created.avatar",
+        "user_created.title",
+      ],
     });
     posts.value = response?.data;
   }

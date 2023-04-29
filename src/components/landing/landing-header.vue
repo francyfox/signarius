@@ -2,8 +2,8 @@
   <header class="header-bar">
     <div class="container">
       <div class="_h-d-f _h-ai-c _h-gap-md">
-        <a href="#" class="logo">
-          <img src="/img/logo_mini.svg" alt="logo"/>
+        <a href="/" class="logo">
+          <img src="/img/logo_mini.svg" alt="logo" />
         </a>
         <div class="bar _t-ff-primary">
           Free open source project based on Astro
@@ -11,6 +11,10 @@
         <div class="actions">
           <a href="/security/login" class="_c-white">
             <strong>Login</strong>
+          </a>
+          <span>|</span>
+          <a href="/security/register" class="_c-white">
+            <strong>Register</strong>
           </a>
         </div>
       </div>
@@ -20,8 +24,8 @@
 
 <script>
 export default {
-  name: "landing-header"
-}
+  name: "landing-header",
+};
 </script>
 
 <style lang="postcss">

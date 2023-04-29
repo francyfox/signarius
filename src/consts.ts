@@ -5,7 +5,7 @@ import { CustomDirectusTypes } from "./types";
 
 export const REFRESH_TOKEN_NAME = "directus_refresh_token";
 
-export const DIRECTUS_HOST = "http://127.0.0.1:8055";
+export const DIRECTUS_HOST = import.meta.env.PUBLIC_DIRECTUS_HOST;
 
 export const useDirectus = new Directus<CustomDirectusTypes>(DIRECTUS_HOST, {
   auth: {

@@ -2,8 +2,8 @@
 import '@app/styles/base.css'
 import BaseLayout from '../../layouts/base.astro'
 import '../../styles/landing/index.css'
-import AuthForm from "../../components/security/auth-form.vue"
-import NotifyStack from "@components/global/notify-stack.vue";
+import RegForm from "../../components/security/reg-form.vue"
+import NotifyStack from "../../components/global/notify-stack.vue";
 ---
 
 <BaseLayout>
@@ -11,7 +11,7 @@ import NotifyStack from "@components/global/notify-stack.vue";
         <div class="container">
             <div class="row _h-jc-c _h-gap-md">
                 <div class="col _h-jc-c _h-gap-lg __fill-white">
-                    <AuthForm client:idle client:only/>
+                    <RegForm client:idle client:only/>
                 </div>
             </div>
         </div>

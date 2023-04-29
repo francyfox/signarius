@@ -1,5 +1,5 @@
 <template>
-  <slot/>
+  <slot />
 </template>
 
 <script setup lang="ts">
@@ -14,15 +14,13 @@ const { notifyStack } = storeToRefs(storeEvent);
 
 const postId = (): string => {
   return window.location.pathname.split("/")[2];
-}
+};
 
 try {
-  await loadPostFromSdk(postId())
+  await loadPostFromSdk(postId());
 } catch (e) {
-  notifyStack.value.push(e.message)
+  notifyStack.value.push(e.message);
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

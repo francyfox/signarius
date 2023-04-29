@@ -7,7 +7,7 @@ input {
         outline: 0 !important;
         box-shadow: 0 0 0 2px var(--c-primary);
     }
-    
+
     &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0px 1000px rgb(var(--c-rgb-white)) inset;
     }
@@ -17,9 +17,9 @@ input {
     }
 
     &[type="text"], &[type="email"], &[type="password"], &[type="url"] {
+        width: 100%;
         padding: 5px 5px;
         min-height: 40px;
-        border-radius: 3px;
         background-color: var(--c-dark-900);
         color: rgb(var(--c-rgb-white));
         transition: box-shadow .1s ease-in-out;
@@ -202,7 +202,7 @@ select {
 
 }
 
-.btn, button[type="submit"]  {
+.btn, button[type="submit"] {
     display: flex;
     align-items: center;
     border: 0;
@@ -212,6 +212,7 @@ select {
     transition: background-color .1s ease-in-out, box-shadow .1s ease-in-out;
     max-width: 100%;
     box-sizing: border-box;
+    text-decoration: none;
 
     &.__primary {
         background: var(--c-primary-border);
@@ -234,6 +235,7 @@ select {
             color: var(--c-dark-900);
         }
     }
+
     &.__secondary {
         background: var(--c-secondary);
         color: rgb(var(--c-rgb-white));

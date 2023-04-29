@@ -3,7 +3,7 @@
     <li v-for="(item, index) in SchemaLeftSide">
       <a
         :href="`/user/${id}/${item.link}`"
-        :class="{ 'is-active': currentActiveIndex === index }"
+        :class="[{ 'is-active': currentActiveIndex === index }]"
       >
         <span :class="`mdi mdi-${item.icon}`"></span>
         {{ item.name }}

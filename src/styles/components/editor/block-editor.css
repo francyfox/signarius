@@ -53,7 +53,7 @@
             color: #FFF;
             background: var(--c-dark-900);
             border-radius: 3px;
-            box-shadow: 0 0 0 2px rgba(var(--c-rgb-white),20%);
+            box-shadow: 0 0 0 2px rgba(var(--c-rgb-white), 20%);
             outline: 0;
             border: 0;
 
@@ -76,6 +76,9 @@
             transition: background-color .1s ease-in-out;
             font-size: var(--t-fz-text);
             line-height: 1.4;
+            min-height: 150px;
+            max-height: 50vh;
+            overflow-y: auto;
 
             &-focused {
                 outline: 0;
@@ -112,7 +115,7 @@
         position: relative;
 
         &:hover {
-            .horizontal-resize-handle, .vertical-resize-handle{
+            .horizontal-resize-handle, .vertical-resize-handle {
                 opacity: 1;
             }
         }
