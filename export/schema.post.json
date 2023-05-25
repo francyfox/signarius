@@ -1,0 +1,23 @@
+[
+  {
+    "$formkit": "select",
+    "name": "status",
+    "label": "Status",
+    "options": {
+      "published": "Published",
+      "draft": "Draft",
+      "archived": "Archived"
+    }
+  },
+  {
+    "$formkit": "text",
+    "name": "header",
+    "label": "Header H1 | Post name",
+    "validation": "required"
+  },
+  {
+    "$formkit": "textarea",
+    "name": "descriptor",
+    "label": "Descriptor"
+  }
+]
