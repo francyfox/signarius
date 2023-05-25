@@ -1,0 +1,8 @@
+---
+import BaseLayout from 'src/layouts/base-layout.astro';
+import Login from '@components/form/security/login.vue'
+---
+
+<BaseLayout>
+    <Login client:only="vue"/>
+</BaseLayout>
