@@ -1,4 +1,4 @@
-import { NaiveUISchema } from "@francyfox/fn-forms/dist";
+import { NaiveUISchema } from "@francyfox/fn-forms/src/lib";
 export default [
   {
     $type: "n-form",
@@ -7,16 +7,54 @@ export default [
       {
         $type: "n-form-item",
         $props: {
-          label: "Name",
-          path: "user.name",
+          label: "Email",
+          path: "user.email",
         },
         $children: [
           {
             $type: "n-input",
             $props: {
-              placeholder: "Input Name",
-              value: "$data.user.name",
+              type: "email",
+              placeholder: "Email",
+              value: "$data.user.email",
             },
+          },
+        ],
+      },
+      {
+        $type: "n-form-item",
+        $props: {
+          label: "Password",
+          path: "user.email",
+        },
+        $children: [
+          {
+            $type: "n-input",
+            $props: {
+              type: "password",
+              placeholder: "Password",
+              value: "$data.user.password",
+            },
+          },
+        ],
+      },
+      {
+        $type: "n-space",
+        $children: [
+          {
+            $type: "n-button",
+            $children: "Next",
+            $props: {
+              type: "primary",
+            },
+          },
+          {
+            $type: "n-button",
+            $children: "Remind Password",
+          },
+          {
+            $type: "n-button",
+            $children: "New Account",
           },
         ],
       },
