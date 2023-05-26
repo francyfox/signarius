@@ -39,6 +39,23 @@ export default [
         ],
       },
       {
+        $type: "n-form-item",
+        $props: {
+          label: "Password Repeat",
+          path: "user.passwordRepeat",
+        },
+        $children: [
+          {
+            $type: "n-input",
+            $props: {
+              type: "password",
+              placeholder: "Repeat password",
+              value: "$data.user.passwordRepeat",
+            },
+          },
+        ],
+      },
+      {
         $type: "n-space",
         $children: [
           {

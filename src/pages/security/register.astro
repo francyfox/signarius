@@ -1,10 +1,8 @@
 ---
-
+import Register   from 'src/components/form/security/register/register.vue'
 import BaseLayout from 'src/layouts/base-layout.astro';
 ---
 
 <BaseLayout>
-    <div class="columns-3">
-
-    </div>
+    <Register client:only="vue"/>
 </BaseLayout>

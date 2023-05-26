@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { FnSchema } from "@francyfox/fn-forms/src/lib";
-import LoginSchema from "@components/form/security/login.schema";
+import LoginSchema from "@components/form/security/login/login.schema";
 import PConfig from "@components/provider/config/p-config.vue";
 
 const formData = ref({
   user: {
-    email: "7info7web@gmail.com",
-    password: "123",
+    // email: "7info7web@gmail.com",
+    // password: "123",
   },
 });
 </script>
