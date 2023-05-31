@@ -10,6 +10,7 @@ export const InputEmail = maker
 
 export const InputPassword = maker
   .input("Password", "password", null, {
+    type: "password",
     placeholder: "******",
   })
   .validate(password);

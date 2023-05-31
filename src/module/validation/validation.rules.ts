@@ -1,6 +1,11 @@
 import { Ref } from "vue";
 import { FormItemRule } from "naive-ui";
-export const password: FormItemRule[] = [];
+export const password: FormItemRule[] = [
+  {
+    required: true,
+    message: "Password is required",
+  },
+];
 
 export const email: FormItemRule = {
   required: true,

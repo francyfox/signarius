@@ -3,19 +3,16 @@ import { ref } from "vue";
 import LoginSchema from "@components/form/security/login/login.schema";
 import PConfig from "@components/provider/config/p-config.vue";
 import { FormInst } from "naive-ui";
+import LoginSubmitHandler from "@components/form/security/login/login.submit-handler";
 
 // console.log(window.$message);
 // window.$message.info("te");
 
 const formRef = ref<FormInst | null>(null);
 const formData = ref({
-  user: {
-    email: "7info7web@gmail.com",
-    password: "1",
-  },
+  email: "7info7web@gmail.com",
+  password: "1",
 });
-
-const value = ref();
 const option = {
   submitBtn: {
     innerHTML: "Next",
@@ -35,11 +32,11 @@ try {
       <h1 class="text-4xl font-light mb-8">Sign in</h1>
       <form-create
         ref="formRef"
-        v-model="value"
+        v-model="formData"
         :rule="LoginSchema"
         :option="option"
+        @submit="LoginSubmitHandler"
       ></form-create>
-      <pre style="text-align: left">{{ value }}</pre>
     </p-config>
   </div>
 </template>
