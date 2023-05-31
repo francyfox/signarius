@@ -1,20 +1,14 @@
 import { Ref } from "vue";
 import { FormItemRule } from "naive-ui";
-export const password: FormItemRule[] = [
-  {
-    required: true,
-    message: "Password is required",
-  },
-];
+export const password: FormItemRule[] = [];
 
-export const email: FormItemRule[] = [
-  {
-    required: true,
-    message: "Email is required. Example name@mail.ru",
-    validator: (rule, value: string) =>
-      new RegExp(value).test("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
-  },
-];
+export const email: FormItemRule = {
+  required: true,
+  trigger: "input",
+  message: "Email is required. Wrong format",
+  validator: (rule, value: string) =>
+    /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,30}$/.test(value),
+};
 
 export const passwordRepeat = (fistPass: Ref<string>): FormItemRule[] => {
   return [

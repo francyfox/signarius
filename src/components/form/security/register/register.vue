@@ -4,6 +4,7 @@ import { FnSchema } from "@francyfox/fn-forms/src/lib";
 import RegisterSchema from "@components/form/security/register/register.schema";
 import PConfig from "@components/provider/config/p-config.vue";
 
+const formRef = ref<FormInst | null>(null);
 const formData = ref({
   user: {
     email: "7info7web@gmail.com",

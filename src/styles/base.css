@@ -1,10 +1,13 @@
 @import "preflight.css";
+@import "vars.css";
 
 body {
+    background: var(--bg-gradient);
     animation: fadeInAnimation ease 800ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
+
 
 @keyframes fadeInAnimation {
     0% {

@@ -14,11 +14,13 @@ export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), vue({
     appEntrypoint: '/src/_app'
-  }), AutoImport({
+  }),
+    AutoImport({
     imports: ['vue', {
       'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar']
     }]
-  }), Components({
+  }),
+    Components({
     resolvers: [NaiveUiResolver()]
   }), tailwind({
     applyBaseStyles: true

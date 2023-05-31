@@ -4,7 +4,11 @@ import HeadMeta       from '@app/components/head-meta.astro'
 import Header     from 'src/components/header.astro';
 import Footer         from 'src/components/footer.astro';
 import '@app/styles/base.css'
-const title = 'Simple title'
+type Props = {
+    title: string;
+};
+
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
