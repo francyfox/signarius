@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '@app/layouts/base-layout.astro'
+import LPostList   from 'src/components/layout/l-post-list.vue'
 ---
 
 <BaseLayout title="Home">
-    <div class="columns-3">
-
+    <div class="text-4xl font-light mb-8">
+        Sign.Arius
     </div>
+    <LPostList client:idle/>
 </BaseLayout>

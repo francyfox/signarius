@@ -20,6 +20,7 @@ export default async function LoginSubmitHandler(data: ILoginSchema) {
   try {
     await auth(data);
     message.success(`Login success. Redirect`);
+    window.location.href = "/dashboard";
   } catch (e: Error | any) {
     message.error(e.message);
   }

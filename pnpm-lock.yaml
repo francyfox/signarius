@@ -59,6 +59,9 @@ dependencies:
   postcss-nested:
     specifier: ^6.0.1
     version: 6.0.1(postcss@8.4.23)
+  secure-ls:
+    specifier: ^1.2.6
+    version: 1.2.6
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -1899,6 +1902,10 @@ packages:
       which: 2.0.2
     dev: false
 
+  /crypto-js@3.3.0:
+    resolution: {integrity: sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==}
+    dev: false
+
   /css-declaration-sorter@6.4.0(postcss@8.4.23):
     resolution: {integrity: sha512-jDfsatwWMWN0MODAFuHszfjphEXfNw9JUAhmY4pLu3TyTU+ohUpsbVtbU+1MZn4a47D9kqh03i4eyOm+74+zew==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3037,6 +3044,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lz-string@1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
+    hasBin: true
     dev: false
 
   /magic-string@0.27.0:
@@ -4729,6 +4741,13 @@ packages:
     dependencies:
       extend-shallow: 2.0.1
       kind-of: 6.0.3
+    dev: false
+
+  /secure-ls@1.2.6:
+    resolution: {integrity: sha512-g8vUSKl6elSfyAUHodybnNkuZW+mUYEOWj4SZIDg+xoQ1dq5ddktBoOFrtxQBUl88ZyAJOtGWQ1PRaOxkTAuZQ==}
+    dependencies:
+      crypto-js: 3.3.0
+      lz-string: 1.5.0
     dev: false
 
   /seemly@0.3.6:

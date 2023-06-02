@@ -5,13 +5,10 @@ import PConfig from "@components/provider/config/p-config.vue";
 import { FormInst } from "naive-ui";
 import LoginSubmitHandler from "@components/form/security/login/login.submit-handler";
 
-// console.log(window.$message);
-// window.$message.info("te");
-
 const formRef = ref<FormInst | null>(null);
 const formData = ref({
   email: "7info7web@gmail.com",
-  password: "1",
+  password: "123",
 });
 const option = {
   submitBtn: {
