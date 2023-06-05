@@ -1,5 +1,6 @@
 import { Ref } from "vue";
 import { FormItemRule } from "naive-ui";
+
 export const password: FormItemRule[] = [
   {
     required: true,

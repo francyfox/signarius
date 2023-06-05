@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '@app/layouts/base-layout.astro'
-import LPostList   from 'src/components/layout/l-post-list.vue'
+import BaseLayout  from '@app/layouts/base-layout.astro';
+import SgnPostList from '@components/layout/post/sgn-post-list.vue';
 ---
 
 <BaseLayout title="Home">
     <div class="text-4xl font-light mb-8">
-        Sign.Arius
+        Related posts
     </div>
-    <LPostList client:idle/>
+    <SgnPostList client:idle/>
 </BaseLayout>

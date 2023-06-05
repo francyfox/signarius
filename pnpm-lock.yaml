@@ -70,6 +70,9 @@ dependencies:
     version: 3.3.4
 
 devDependencies:
+  '@vicons/material':
+    specifier: ^0.12.0
+    version: 0.12.0
   naive-ui:
     specifier: ^2.34.4
     version: 2.34.4(vue@3.3.4)
@@ -1207,6 +1210,10 @@ packages:
       - encoding
       - supports-color
     dev: false
+
+  /@vicons/material@0.12.0:
+    resolution: {integrity: sha512-chv1CYAl8P32P3Ycwgd5+vw/OFNc2mtkKdb1Rw4T5IJmKy6GVDsoUKV3N2l208HATn7CCQphZtuPDdsm7K2kmA==}
+    dev: true
 
   /@vitejs/plugin-vue-jsx@3.0.1(vite@4.3.8)(vue@3.3.4):
     resolution: {integrity: sha512-+Jb7ggL48FSPS1uhPnJbJwWa9Sr90vQ+d0InW+AhBM22n+cfuYqJZDckBc+W3QSHe1WDvewMZfa4wZOtk5pRgw==}

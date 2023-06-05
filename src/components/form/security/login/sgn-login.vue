@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import LoginSchema from "@components/form/security/login/login.schema";
-import PConfig from "@components/provider/config/p-config.vue";
+import SgnConfig from "@components/provider/config/sgn-config.vue";
 import { FormInst } from "naive-ui";
 import LoginSubmitHandler from "@components/form/security/login/login.submit-handler";
 
@@ -25,7 +25,7 @@ try {
 
 <template>
   <div class="max-w-md mx-auto md:px-0 px-2">
-    <p-config>
+    <sgn-config>
       <h1 class="text-4xl font-light mb-8">Sign in</h1>
       <form-create
         ref="formRef"
@@ -34,7 +34,7 @@ try {
         :option="option"
         @submit="LoginSubmitHandler"
       ></form-create>
-    </p-config>
+    </sgn-config>
   </div>
 </template>
 

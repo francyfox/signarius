@@ -17,6 +17,7 @@ export const useUserStore = defineStore("user", () => {
   function isAuth(): boolean {
     return !!data.value;
   }
+
   async function auth(formData: ILoginSchema) {
     const { email, password } = formData;
     await sdk.auth.login({ email, password });
@@ -24,6 +25,7 @@ export const useUserStore = defineStore("user", () => {
     data.value = user;
     ls.set("user", user);
   }
+
   async function register(form) {
     const user = await sdk.users.createOne(form);
 
@@ -40,6 +42,7 @@ export const useUserStore = defineStore("user", () => {
   function logout() {
     localStorage.clear();
     window.location.href = "/";
+    data.value = null;
   }
 
   return {

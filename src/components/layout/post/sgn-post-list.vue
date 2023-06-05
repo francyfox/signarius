@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PConfig from "@components/provider/config/p-config.vue";
+import SgnConfig from "@components/provider/config/sgn-config.vue";
 import { storeToRefs } from "pinia";
 import { usePost } from "@app/module/store/store.post";
 import { useConfigStore } from "@app/module/store/store.config";
@@ -15,14 +15,12 @@ try {
   const response = await getPostCollection();
   postList.value = response.data;
 } catch (e) {
-  message.error(e);
+  message.error(e.message);
 }
-
-console.log(postList.value);
 </script>
 
 <template>
-  <p-config>
+  <sgn-config>
     <div class="grid grid-cols-3 gap-4">
       <Suspense>
         <n-card v-for="post in postList" :title="post.header">
@@ -33,7 +31,7 @@ console.log(postList.value);
           <div class="flex mt-5">
             <a
               class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 bg-slate-500 rounded shadow outline-none active:bg-teal-600 hover:shadow-md focus:outline-none ease"
-              :href="`/post/${post.id}`"
+              :href="`/post/${post.slug}`"
             >
               I wanna see more ->
             </a>
@@ -48,7 +46,7 @@ console.log(postList.value);
             </template>
             <template #header>
               <n-skeleton text width="60%" />
-              <template> Lorem Ipsum </template>
+              <template> Lorem Ipsum</template>
             </template>
             <n-skeleton text :repeat="6" />
             <template>
@@ -63,7 +61,7 @@ console.log(postList.value);
         </template>
       </Suspense>
     </div>
-  </p-config>
+  </sgn-config>
 </template>
 
 <style scoped lang="postcss"></style>

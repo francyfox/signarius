@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { FnSchema } from "@francyfox/fn-forms/src/lib";
 import RegisterSchema from "@components/form/security/register/register.schema";
-import PConfig from "@components/provider/config/p-config.vue";
+import SgnConfig from "@components/provider/config/sgn-config.vue";
 
 const formRef = ref<FormInst | null>(null);
 const formData = ref({
@@ -15,10 +15,10 @@ const formData = ref({
 
 <template>
   <div class="max-w-md mx-auto md:px-0 px-2">
-    <p-config>
+    <sgn-config>
       <h1 class="text-4xl font-light mb-8">Sign UP</h1>
       <fn-schema v-model:data="formData" :schema="RegisterSchema" />
-    </p-config>
+    </sgn-config>
   </div>
 </template>
 

@@ -8,8 +8,13 @@ export const usePost = defineStore("post", () => {
   const data: Ref<Post | null> = ref(null);
   const postList: Ref<Post[] | null> = ref(null);
 
-  async function getPost(id: string) {
-    const response = await sdk.items("post").readOne(id, {
+  async function getPost(slug: string) {
+    const response = await sdk.items("post").readByQuery({
+      filter: {
+        slug: {
+          _eq: slug,
+        },
+      },
       fields: [
         "*",
         "textblock.item.text",
@@ -40,6 +45,8 @@ export const usePost = defineStore("post", () => {
         "user_created.title",
       ],
     });
+
+    console.log(response);
 
     return response;
   }

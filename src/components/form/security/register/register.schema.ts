@@ -1,4 +1,5 @@
 import { NaiveUISchema } from "@francyfox/fn-forms/src/lib";
+
 export default [
   {
     $type: "n-form",

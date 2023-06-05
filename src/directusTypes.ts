@@ -319,11 +319,13 @@ export type Post = {
   header?: string | null;
   id: string;
   miniature?: (string & DirectusFiles) | null;
+  slug?: string | null;
   sort?: number | null;
-  status: string;
+  status?: string | null;
   textblock?: (any[] & PostTextblock[]) | null;
   user_created?: (string & DirectusUsers) | null;
   user_updated?: (string & DirectusUsers) | null;
+  visability?: string | null;
 };
 
 export type PostComments = {
