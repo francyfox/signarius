@@ -46,8 +46,6 @@ export const usePost = defineStore("post", () => {
       ],
     });
 
-    console.log(response);
-
     return response;
   }
 

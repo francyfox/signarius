@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FnSchema } from "@francyfox/fn-forms/src/lib";
 import RegisterSchema from "@components/form/security/register/register.schema";
 import SgnConfig from "@components/provider/config/sgn-config.vue";
 

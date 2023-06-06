@@ -1,9 +1,29 @@
 ---
 import BaseLayout from 'src/layouts/base-layout.astro';
+
+const pages = [
+    {
+        link: "/post/add",
+        name: "Add new post"
+    },
+    {
+        link: "/post/me",
+        name: "My posts"
+    },
+    {
+        link: "/post/leader",
+        name: "Leader Board"
+    },
+]
 ---
 
 <BaseLayout title="Dashboard">
     <div class="text-4xl font-light mb-8">
         Dashboard
+    </div>
+    <div class="flex flex-col align-start max-w-screen-xl">
+        { pages.map((i) => (
+                <a href={ i.link } class="text-lg font-medium hover:text-white">{ i.name }</a>
+        )) }
     </div>
 </BaseLayout>

@@ -1,0 +1,23 @@
+---
+import HeadMeta from 'src/components/head-meta.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <HeadMeta/>
+    <title> 404 Not Found </title>
+</head>
+<body class="min-h-full text-slate-100 m-0">
+<main class="h-screen w-full flex flex-col justify-center items-center bg-zinc-800">
+    <h1 class="text-9xl font-extrabold text-white tracking-widest">404</h1>
+    <div class="bg-[#FF6A3D] px-2 text-xl rounded rotate-12 absolute">
+        Page Not Found
+    </div>
+    <div class="flex flex-col mt-5 text-3xl text-white no-underline">
+        You shall not pass
+        <a class="text-white" href="/">Go home</a>
+    </div>
+</main>
+</body>
+</html>

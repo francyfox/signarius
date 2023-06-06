@@ -70,7 +70,7 @@ const pages = [
         v-if="data"
         :name="`${data.first_name} ${data.last_name}`"
         :url="`${DIRECTUS_HOST}/assets/${data.avatar}`"
-        status-class="bg-black"
+        status-class="bg-lime-500"
       />
     </div>
   </sgn-config>

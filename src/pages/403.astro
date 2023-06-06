@@ -1,0 +1,23 @@
+---
+import HeadMeta from 'src/components/head-meta.astro';
+import { SgnLocales } from 'src/middleware';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <HeadMeta/>
+    <title> Access Denied </title>
+</head>
+<body class="min-h-full text-slate-100 m-0">
+<main class="h-screen w-full flex flex-col justify-center items-center bg-zinc-800">
+    <h1 class="text-9xl font-extrabold text-white tracking-widest">403</h1>
+    <div class="subtext bg-[#FF6A3D] px-2 text-xl rounded rotate-12 absolute">
+        Access Denied
+    </div>
+    <div class="mt-5 text-xl text-white no-underline">
+        You shall not pass, Go to <a class="text-white" href="/">Home</a> or <a class="text-white" href="/security/login">Login</a>
+    </div>
+</main>
+</body>
+</html>

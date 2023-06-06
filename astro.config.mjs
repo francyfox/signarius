@@ -30,6 +30,6 @@ export default defineConfig({
       devSourcemap: true
     }
   },
-  output: "server",
+  output: 'server',
   adapter: vercel({})
 });
