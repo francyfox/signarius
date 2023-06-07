@@ -1,0 +1,50 @@
+---
+import BaseLayout from 'src/layouts/base-layout.astro';
+import SgnWorks from '@components/porfolio/sgn-works.vue'
+import SgnFeedback  from '@components/porfolio/sgn-feedback.vue'
+---
+<script src="https://cdn.jsdelivr.net/npm/slapform@latest/dist/index.min.js"></script>
+
+<BaseLayout title="Portfolio">
+    <div class="py-6 px-3 lg:px-0">
+        <div class="text-6xl font-light mb-8">
+            Portfolio
+        </div>
+        <div class="text-lg">
+            <p class="text-3xl mb-6">
+                <span># <a href="https://drive.google.com/file/d/1iqnVri9oDR7SJNOPNJY1pjV-makTbHCL/view?usp=sharing" target="_blank" class="underline hover:no-underline">CV</a></span>
+                |
+                # <a href="https://hh.kz/resume/1a91a626ff044cf3650039ed1f414e65743168" target="_blank" class="underline hover:no-underline">HeadHunter</a>
+                |
+                # <a href="https://github.com/francyfox" class="underline hover:no-underline" target="_blank">Github</a>
+            </p>
+            <p>
+                Hi, my name is Danil. Vue/JS frontend developer from Qazaqstan. Nice see you on my page. <br>
+            </p>
+
+            <ol class="list-decimal pl-5 pt-5">
+                <li><a href="#myWorks" class="underline hover:no-underline">My works</a></li>
+                <li><a href="#feedback" class="underline hover:no-underline">Feedback</a></li>
+            </ol>
+        </div>
+    </div>
+    <div id="myWorks" class="py-8 px-3 lg:px-0">
+        <div class="text-4xl font-light mb-8">
+            My works
+        </div>
+        <SgnWorks client:idle/>
+    </div>
+
+    <div id="feedback" class="py-8 px-3 lg:px-0">
+        <div class="max-w-md mx-auto md:px-0">
+            <div class="text-4xl font-light mb-8">
+                Feedback
+            </div>
+            <SgnFeedback client:only="vue"/>
+        </div>
+
+    </div>
+
+</BaseLayout>
+
+

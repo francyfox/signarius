@@ -26,7 +26,7 @@ const pages = [
 
 <template>
   <sgn-config>
-    <div class="flex items-center space-x-4">
+    <div class="hidden md:flex items-center space-x-4">
       <div class="items-center h-full text-slate-300">
         <a
           href="/security/login"
@@ -37,7 +37,7 @@ const pages = [
         <a
           href="/security/register"
           v-if="!data"
-          class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 bg-slate-500 rounded shadow outline-none active:bg-teal-600 hover:shadow-md focus:outline-none ease"
+          class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 border border-slate-300 rounded shadow outline-none hover:bg-teal-600 hover:shadow-md focus:outline-none ease"
         >
           Sign Up
         </a>
