@@ -4,7 +4,9 @@ import { FormInst } from "naive-ui";
 import PostSchema from "./post.schema";
 import SgnConfig from "@components/provider/config/sgn-config.vue";
 import LoginSubmitHandler from "@components/form/security/login/login.submit-handler";
+import SgnTiptap from "@components/tiptap/sgn-tiptap.vue";
 
+const editorShow = ref(true);
 const formRef = ref<FormInst | null>(null);
 const formData = ref();
 const option = {
@@ -23,7 +25,26 @@ const option = {
         :rule="PostSchema"
         :option="option"
         @submit="LoginSubmitHandler"
-      ></form-create>
+      >
+      </form-create>
+      <n-button @click="editorShow = true">Content editor</n-button>
+      <n-modal v-model:show="editorShow">
+        <n-card
+          style="width: 600px"
+          title="Modal"
+          :bordered="false"
+          :mask-closable="true"
+          size="huge"
+          role="dialog"
+          aria-modal="true"
+        >
+          <template #header-extra>
+            <n-button @click="editorShow = false">Close</n-button>
+          </template>
+          <sgn-tiptap />
+          <template #footer> Footer </template>
+        </n-card>
+      </n-modal>
     </sgn-config>
   </div>
 </template>
