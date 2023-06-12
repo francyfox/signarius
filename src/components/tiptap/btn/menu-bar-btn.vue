@@ -1,20 +1,22 @@
 <template>
-  <button
-    type="button"
+  <n-button
+    size="small"
     :title="label"
     @click.prevent="click"
     :disabled="disabled()"
-    :class="{ 'is-active': isActive() ? isActive() : null }"
+    :focusable="isActive()"
   >
-    <span :class="`mdi mdi-${mdi}`"></span>
-  </button>
+    <n-icon size="24" :component="icon" />
+  </n-button>
 </template>
 
 <script setup lang="ts">
+import { resolveComponent, h } from "vue";
+
 const props = withDefaults(
   defineProps<{
     label: string;
-    mdi: string;
+    icon: object;
     click?: null | (() => boolean);
     isActive?: (() => null) | (() => boolean);
     disabled?: (() => null) | (() => boolean);

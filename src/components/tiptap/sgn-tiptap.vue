@@ -7,6 +7,7 @@ import SgnTiptapTreeNode from "@components/tiptap/tree-node/sgn-tree-node.vue";
 import { useTiptapStore } from "@app/module/store/store.tiptap";
 import { storeToRefs } from "pinia";
 import { extensions } from "@components/tiptap/tiptap.extensions";
+import { PaletteFilled } from "@vicons/material";
 
 const store = useTiptapStore();
 const { JSONContent, HTMLContent, headingNode } = storeToRefs(store);
@@ -44,40 +45,55 @@ function showTextBubble(editor: Editor) {
 </script>
 
 <template>
-  <div class="block-list _h-d-f _h-gap-sm">
-    <div class="col _h-ai-fs _h-gap-sm _h-w-100">
-      <div class="block-editor col _h-gap-sm">
-        <template v-if="editor">
-          <bubble-menu
-            class="block-editor--bubble-menu"
-            :tippy-options="{
-              placement: 'bottom',
-              duration: 200,
-            }"
-            :editor="editor"
-            :should-show="({ editor: e }) => e.isActive('paragraph')"
-          >
-            <ul class="row _h-fw-w _h-gap-sm">
-              <template v-if="editor">
-                <li v-for="btn in SchemaBubbleMenu(editor)">
-                  <menu-bar-btn v-bind="btn" />
-                </li>
-              </template>
-            </ul>
-          </bubble-menu>
-        </template>
-        <editor-content
+  <div class="block-list grid grid-cols-4 gap-4">
+    <div class="block-editor col-span-3">
+      <template v-if="editor">
+        <bubble-menu
+          class="block-editor--bubble-menu"
+          :tippy-options="{
+            placement: 'bottom',
+            duration: 200,
+          }"
           :editor="editor"
-          class="block-editor--content content"
-        />
-        <div class="block-editor--counter _h-d-f _t-fz-text _c-white">
-          <span class="_h-d-f">
-            {{ editor?.storage.characterCount.characters() }} characters /
-            {{ editor?.storage.characterCount.words() }} words
-          </span>
-        </div>
+          :should-show="({ editor: e }) => e.isActive('paragraph')"
+        >
+          <ul
+            class="flex flex-wrap bg-zinc-800 shadow-sm gap-4 py-2 px-1 rounded"
+          >
+            <template v-if="editor">
+              <li v-for="btn in SchemaBubbleMenu(editor)">
+                <menu-bar-btn v-bind="btn" />
+              </li>
+            </template>
+          </ul>
+        </bubble-menu>
+      </template>
+      <editor-content
+        :editor="editor"
+        class="block mb-2 w-full text-lg text-slate-300 border-0 bg-white/5 focus:ring-0 dark:text-white dark:placeholder-gray-400 rounded"
+      />
+      <div class="flex">
+        <span class="flex p-1 text-slate-300 text-sm bg-white/5 rounded">
+          {{ editor?.storage.characterCount.characters() }} characters /
+          {{ editor?.storage.characterCount.words() }} words
+        </span>
       </div>
     </div>
     <sgn-tiptap-tree-node v-if="hasTree" />
   </div>
 </template>
+
+<style lang="postcss">
+.ProseMirror {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  transition: box-shadow 0.1s ease-in-out;
+  max-height: 300px;
+  overflow-y: auto;
+
+  &-focused {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(203 213 225/0.3);
+  }
+}
+</style>

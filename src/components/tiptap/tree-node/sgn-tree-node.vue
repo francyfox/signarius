@@ -1,5 +1,5 @@
 <template>
-  <ul class="list-modify col _h-gap-sm">
+  <ul class="list-modify col-span-1">
     <template v-if="headingNode.length !== 0">
       <li
         v-for="(item, index) in headingNode"
@@ -7,13 +7,13 @@
         class="row _h-gap-smx"
       >
         <button
-          class="list-modify--item _h-clip _h-ai-fs"
+          class="flex bg-transparent text-slate-300 text-lg"
           :class="isActive(index)"
           type="button"
           :title="item.type + ' ' + item.attrs.level"
           @click="activeIndex = index"
         >
-          <span v-if="item.content" class="_t-fz-h6">
+          <span v-if="item.content">
             {{ treeRowIcon(headingNode, index) }}
             #{{ index }}. {{ item.content[0].text }}
           </span>
@@ -21,7 +21,7 @@
       </li>
     </template>
     <template v-else>
-      <span class="_c-white">--- Block List is empty</span>
+      <span class="text-white text-lg">--- Block List is empty</span>
     </template>
   </ul>
 </template>

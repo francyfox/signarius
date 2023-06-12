@@ -30,8 +30,8 @@ const option = {
       <n-button @click="editorShow = true">Content editor</n-button>
       <n-modal v-model:show="editorShow">
         <n-card
-          style="width: 600px"
-          title="Modal"
+          style="max-width: 1024px"
+          title="Content editor"
           :bordered="false"
           :mask-closable="true"
           size="huge"
@@ -42,7 +42,7 @@ const option = {
             <n-button @click="editorShow = false">Close</n-button>
           </template>
           <sgn-tiptap />
-          <template #footer> Footer </template>
+          <template #footer> * Auto-save works </template>
         </n-card>
       </n-modal>
     </sgn-config>

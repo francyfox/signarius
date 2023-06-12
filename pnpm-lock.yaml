@@ -95,9 +95,15 @@ dependencies:
   postcss-for:
     specifier: ^2.1.1
     version: 2.1.1
+  postcss-import:
+    specifier: ^15.1.0
+    version: 15.1.0(postcss@8.4.24)
   postcss-nested:
     specifier: ^6.0.1
     version: 6.0.1(postcss@8.4.24)
+  postcss-nesting:
+    specifier: ^11.2.2
+    version: 11.2.2(postcss@8.4.24)
   prosemirror-model:
     specifier: ^1.19.2
     version: 1.19.2
@@ -708,6 +714,15 @@ packages:
     dependencies:
       vue: 3.3.4
     dev: true
+
+  /@csstools/selector-specificity@2.2.0(postcss-selector-parser@6.0.13):
+    resolution: {integrity: sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss-selector-parser: ^6.0.10
+    dependencies:
+      postcss-selector-parser: 6.0.13
+    dev: false
 
   /@directus/sdk@10.3.3:
     resolution: {integrity: sha512-58gw+QjkuIr0lJFRx5HwSp1ewAf7rjfV++eJqAmC13p7vif9wfJEcWcJwqXstYdvtJVUg+nB4O/CE0OBEtp5HQ==}
@@ -4885,6 +4900,17 @@ packages:
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
+      postcss: 8.4.24
+      postcss-selector-parser: 6.0.13
+    dev: false
+
+  /postcss-nesting@11.2.2(postcss@8.4.24):
+    resolution: {integrity: sha512-aOTiUniAB1bcPE6GGiynWRa6PZFPhOTAm5q3q5cem6QeSijIHHkWr6gs65ukCZMXeak8yXeZVbBJET3VM+HlhA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 2.2.0(postcss-selector-parser@6.0.13)
       postcss: 8.4.24
       postcss-selector-parser: 6.0.13
     dev: false

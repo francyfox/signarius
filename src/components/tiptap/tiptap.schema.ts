@@ -1,4 +1,13 @@
 import { Editor } from "@tiptap/vue-3";
+import {
+  UndoFilled,
+  RedoFilled,
+  PaletteFilled,
+  FormatBoldFilled,
+  FormatItalicFilled,
+  FormatStrikethroughFilled,
+  CodeSharp,
+} from "@vicons/material";
 
 export enum BtnTypes {
   btn = "menu-bar-btn",
@@ -7,7 +16,7 @@ export enum BtnTypes {
 
 export interface IEditorBarIcon {
   label: string;
-  mdi: string;
+  icon: object;
   disabled?: () => boolean;
 }
 
@@ -29,21 +38,21 @@ export const SchemaEditorBar = (editor: Editor): Array<IEditorBarComponent> => {
     {
       type: BtnTypes.btn,
       label: "Undo",
-      mdi: "undo-variant",
+      icon: UndoFilled,
       click: () => editor.chain().focus().undo().run(),
       disabled: () => !editor.can().undo(),
     },
     {
       type: BtnTypes.btn,
       label: "Redo",
-      mdi: "redo-variant",
+      icon: RedoFilled,
       click: () => editor.chain().focus().redo().run(),
       disabled: () => !editor.can().redo(),
     },
     {
       type: BtnTypes.palette,
       label: "color",
-      mdi: "palette",
+      icon: PaletteFilled,
       editor: editor,
       color: () => editor.getAttributes("textStyle").color ?? "#FFFFFF",
     },
@@ -54,25 +63,25 @@ export const SchemaBubbleMenu = (editor: Editor): Array<IEditorBarBtn> => {
   return [
     {
       label: "bold",
-      mdi: "format-bold",
+      icon: FormatBoldFilled,
       click: () => editor.chain().focus().toggleBold().run(),
       isActive: () => editor.isActive("bold"),
     },
     {
       label: "italic",
-      mdi: "format-italic",
+      icon: FormatItalicFilled,
       click: () => editor.chain().focus().toggleItalic().run(),
       isActive: () => editor.isActive("italic"),
     },
     {
       label: "strike",
-      mdi: "format-strikethrough",
+      icon: FormatStrikethroughFilled,
       click: () => editor.chain().focus().toggleStrike().run(),
       isActive: () => editor.isActive("strike"),
     },
     {
       label: "code",
-      mdi: "code-braces-box",
+      icon: CodeSharp,
       click: () => editor.chain().focus().toggleCode().run(),
       isActive: () => editor.isActive("code"),
     },
