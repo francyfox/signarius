@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@app/layouts/base-layout.astro';
-import SgnPost from '@components/layout/post/sgn-post.vue'
+import SgnPost    from 'src/components/post/sgn-post.vue'
 const { slug } = Astro.params;
 
 const pageTitle = slug.charAt(0).toUpperCase() + slug.slice(1).replaceAll('-', ' ')

@@ -8,6 +8,7 @@ import { useTiptapStore } from "@app/module/store/store.tiptap";
 import { storeToRefs } from "pinia";
 import { extensions } from "@components/tiptap/tiptap.extensions";
 import { PaletteFilled } from "@vicons/material";
+import SgnTiptapMenuBar from "@components/tiptap/sgn-tiptap-menu-bar.vue";
 
 const store = useTiptapStore();
 const { JSONContent, HTMLContent, headingNode } = storeToRefs(store);
@@ -58,7 +59,7 @@ function showTextBubble(editor: Editor) {
           :should-show="({ editor: e }) => e.isActive('paragraph')"
         >
           <ul
-            class="flex flex-wrap bg-zinc-800 shadow-sm gap-4 py-2 px-1 rounded"
+            class="flex flex-wrap bg-zinc-800 shadow-sm border border-slate-300 gap-4 pt-2 pb-1 px-2 rounded"
           >
             <template v-if="editor">
               <li v-for="btn in SchemaBubbleMenu(editor)">
@@ -68,9 +69,10 @@ function showTextBubble(editor: Editor) {
           </ul>
         </bubble-menu>
       </template>
+      <sgn-tiptap-menu-bar :editor="editor" class="block-editor--bar" />
       <editor-content
         :editor="editor"
-        class="block mb-2 w-full text-lg text-slate-300 border-0 bg-white/5 focus:ring-0 dark:text-white dark:placeholder-gray-400 rounded"
+        class="post-content block mb-2 w-full text-lg text-slate-300 border-0 bg-white/5 focus:ring-0 dark:text-white dark:placeholder-gray-400 rounded"
       />
       <div class="flex">
         <span class="flex p-1 text-slate-300 text-sm bg-white/5 rounded">
@@ -84,16 +86,17 @@ function showTextBubble(editor: Editor) {
 </template>
 
 <style lang="postcss">
+@import "/src/styles/post-content.pcss";
 .ProseMirror {
   padding: 0.75rem;
   border-radius: 0.25rem;
   transition: box-shadow 0.1s ease-in-out;
   max-height: 300px;
   overflow-y: auto;
+}
 
-  &-focused {
-    outline: none;
-    box-shadow: 0 0 0 2px rgb(203 213 225/0.3);
-  }
+.ProseMirror-focused {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(203 213 225/0.3);
 }
 </style>

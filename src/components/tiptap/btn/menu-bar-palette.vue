@@ -1,39 +1,30 @@
 <template>
-  <div
-    class="btn-palette _h-d-f _h-ai-c"
-    :style="{ 'box-shadow': `0 0 0 2px ${paletteColor}` }"
-  >
-    <button
-      type="button"
-      class="btn-palette--action"
-      :title="label"
+  <n-space>
+    <n-button
+      :title="`Set ${label}`"
       @click="editor.chain().focus().setColor(paletteColor).run()"
     >
-      <span :class="`mdi mdi-${mdi}`"></span>
-    </button>
-    <button
-      type="button"
-      class="btn-palette--arrow"
-      :title="`${label} settings`"
-    >
-      <span class="mdi mdi-tune-vertical"></span>
-      <input
-        type="color"
-        @input="inputHandler($event.target.value)"
-        :value="color"
+      <n-icon size="24" :component="icon" />
+    </n-button>
+    <n-button class="btn-palette" :title="`${label} settings`">
+      <span class="unvisible">#0000000</span>
+      <n-color-picker
+        v-model:value="paletteColor"
+        class="btn-palette--picker"
       />
-    </button>
-  </div>
+    </n-button>
+  </n-space>
 </template>
 
 <script setup lang="ts">
 import { Editor } from "@tiptap/vue-3";
-import { computed, ref } from "vue";
+import { computed, ref, Ref, defineProps, withDefaults } from "vue";
+import { TuneFilled } from "@vicons/material";
 
 const props = withDefaults(
   defineProps<{
     label: string;
-    mdi: string;
+    icon: any;
     editor: Editor;
     color: () => string;
     click?: null | (() => boolean);
@@ -47,40 +38,19 @@ const props = withDefaults(
   }
 );
 
-const paletteColor = ref("#FFFFFF");
-
-function inputHandler(color: string) {
-  paletteColor.value = color;
-  props.editor.chain().focus().setColor(color).run();
-}
+const paletteColor: Ref<string> = ref("#FFFFFF");
 </script>
 
 <style scoped lang="postcss">
 .btn-palette {
-  border-radius: 3px;
+  position: relative;
+}
 
-  &--action {
-    border-radius: 3px 0 0 3px;
-  }
-
-  &--arrow {
-    position: relative;
-    background: var(--c-dark-800);
-    box-shadow: none;
-    border-radius: 0 3px 3px 0;
-
-    &:hover {
-      background: var(--c-secondary-dark);
-    }
-
-    input {
-      top: 0;
-      left: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-    }
-  }
+.btn-palette--picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100%;
 }
 </style>

@@ -1,13 +1,13 @@
 import { Editor } from "@tiptap/vue-3";
 import {
-  UndoFilled,
-  RedoFilled,
   PaletteFilled,
   FormatBoldFilled,
   FormatItalicFilled,
   FormatStrikethroughFilled,
   CodeSharp,
 } from "@vicons/material";
+
+import { ArrowUndo24Filled, ArrowRedo24Filled } from "@vicons/fluent";
 
 export enum BtnTypes {
   btn = "menu-bar-btn",
@@ -38,14 +38,14 @@ export const SchemaEditorBar = (editor: Editor): Array<IEditorBarComponent> => {
     {
       type: BtnTypes.btn,
       label: "Undo",
-      icon: UndoFilled,
+      icon: ArrowUndo24Filled,
       click: () => editor.chain().focus().undo().run(),
       disabled: () => !editor.can().undo(),
     },
     {
       type: BtnTypes.btn,
       label: "Redo",
-      icon: RedoFilled,
+      icon: ArrowRedo24Filled,
       click: () => editor.chain().focus().redo().run(),
       disabled: () => !editor.can().redo(),
     },

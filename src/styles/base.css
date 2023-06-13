@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(144, 144, 208);
+    background: rgb(210, 98, 144);
     border: 0px none #5d3c56;
     border-radius: 50px;
 }
@@ -42,8 +42,8 @@
     background: transparent;
 }
 
-.content, body {
-    background: var(--bg-gradient);
+body {
+    background: var(--bg-gradient) center center / auto fixed;
 }
 
 .content {
@@ -52,6 +52,11 @@
     animation-fill-mode: forwards;
 }
 
+#app {
+    animation: BackgroundAnimation ease 3s infinite;
+}
+
+
 
 @keyframes fadeInAnimation {
     0% {
@@ -59,5 +64,17 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes BackgroundAnimation {
+    0% {
+        backdrop-filter: grayscale(0);
+    }
+    50% {
+        backdrop-filter: grayscale(0.1);
+    }
+    100% {
+        backdrop-filter: grayscale(0);
     }
 }

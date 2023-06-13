@@ -4,7 +4,7 @@
     :title="label"
     @click.prevent="click"
     :disabled="disabled()"
-    :focusable="isActive()"
+    :tertiary="isActive()"
   >
     <n-icon size="24" :component="icon" />
   </n-button>
