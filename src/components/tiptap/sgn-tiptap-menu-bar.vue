@@ -8,7 +8,7 @@
           <menu-bar-item :editor="editor" :btn="btn" />
         </keep-alive>
       </li>
-      <n-popover v-if="headerMenu" placement="bottom" trigger="click">
+      <n-popover placement="bottom" trigger="click">
         <template #trigger>
           <n-button>
             <n-icon size="24" :component="TitleFilled"></n-icon>
@@ -23,34 +23,13 @@
         </ul>
       </n-popover>
 
-      <n-popover v-if="imageOpened" placement="bottom" trigger="click">
-        <template #trigger
-          >fff
+      <n-popover placement="bottom" trigger="click">
+        <template #trigger>
           <n-button>
             <n-icon size="24" :component="ImageRound" />
           </n-button>
         </template>
-        <n-upload
-          multiple
-          directory-dnd
-          action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-          :max="5"
-        >
-          <n-upload-dragger>
-            <div style="margin-bottom: 12px">
-              <n-icon size="48" :depth="3">
-                <archive-icon />
-              </n-icon>
-            </div>
-            <n-text style="font-size: 16px">
-              Click or drag a file to this area to upload
-            </n-text>
-            <n-p depth="3" style="margin: 8px 0 0 0">
-              Strictly prohibit from uploading sensitive information. For
-              example, your bank card PIN or your credit card expiry date.
-            </n-p>
-          </n-upload-dragger>
-        </n-upload>
+        <sgn-tiptap-uploader :editor="editor" />
       </n-popover>
     </template>
   </ul>
@@ -60,15 +39,13 @@
 import { SchemaEditorBar } from "./tiptap.schema";
 import { Editor } from "@tiptap/vue-3";
 import MenuBarItem from "@components/tiptap/btn/menu-bar-item.vue";
-import { TitleFilled, ImageRound } from "@vicons/material";
+import { TitleFilled, ImageRound, ArchiveFilled } from "@vicons/material";
 import { ref } from "vue";
+import SgnTiptapUploader from "@components/tiptap/sgn-tiptap-uploader.vue";
 
 const props = defineProps<{
   editor: Editor;
 }>();
-
-const headerOpened = ref(false);
-const imageOpened = ref(false);
 
 const headerMenu = [
   {

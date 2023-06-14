@@ -134,9 +134,9 @@ try {
         </div>
       </div>
 
-      <main>
+      <main class="pt-4">
         <div
-          class="post-content px-4 lg:px-0 mt-12 max-w-screen-xl mx-auto text-xl leading-relaxed"
+          class="post-content px-4 lg:px-0 max-w-screen-xl mx-auto text-xl leading-relaxed"
           v-for="block in data.textblock"
           v-html="block.item.text"
         ></div>
@@ -146,4 +146,6 @@ try {
   </Suspense>
 </template>
 
-<style scoped lang="postcss"></style>
+<style lang="postcss">
+@import "/src/styles/post-content.pcss";
+</style>
