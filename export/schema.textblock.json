@@ -1,0 +1,18 @@
+[
+  {
+    "$formkit": "select",
+    "name": "type",
+    "label": "Type",
+    "options": {
+      "mention": "Mention",
+      "extend": "Extend",
+      "mark": "Mark"
+    },
+    "validation": "required"
+  },
+  {
+    "$formkit": "text",
+    "name": "comment_lvl",
+    "label": "Comment_lvl"
+  }
+]

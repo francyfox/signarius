@@ -1,13 +1,11 @@
 ---
-import '../styles/base.css'
-import '../styles/landing/index.css'
-import BaseLayout from '../layouts/base.astro'
-import SectionHero from '../sections/landing/section-hero.astro'
-import SectionFeatures from '../sections/landing/section-features.astro'
-
+import BaseLayout  from '@app/layouts/base-layout.astro';
+import SgnPostList from 'src/components/post/sgn-post-list.vue';
 ---
 
-<BaseLayout>
-    <SectionHero/>
-	<SectionFeatures/>
+<BaseLayout title="Home">
+    <div class="text-4xl font-light mb-8">
+        Related posts
+    </div>
+    <SgnPostList client:only="vue"/>
 </BaseLayout>

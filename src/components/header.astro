@@ -1,0 +1,52 @@
+---
+import HBar from 'src/components/layout/header/sgn-account-bar.vue';
+import { SgnLocales } from 'src/middleware';
+const data = Astro.locals as SgnLocales;
+
+const pages = [
+    {
+        link: '/dashboard',
+        name: 'Dashboard',
+        show: data.isAuth
+    },
+    {
+        link: '/post/category/superhot',
+        name: 'SuperHot Posts',
+        show: true
+    },
+];
+
+pages.filter((i) => !!i.show)
+---
+
+<header class="sticky top-0 w-full bg-zinc-800 text-gray-700 shadow-sm body-font z-10">
+    <div class="container flex flex-col items-center justify-between py-3 mx-auto md:flex-row">
+        <div class="site-logo">
+            <a href="/" class="site-logo--icon rounded flex items-center mb-4 font-medium text-slate-300 title-font md:mb-0">
+                <img src="/img/logo_mini.svg" width="90" height="90">
+            </a>
+        </div>
+        <nav class="hidden md:flex flex-wrap items-center justify-center pl-6 ml-6 text-slate-300 border-l border-gray-200 gap-5 md:mr-auto">
+            { pages.map((i) => (
+                   i.show && <a href={ i.link } class="text-lg font-medium hover:text-white">{ i.name }</a>
+            )) }
+        </nav>
+        <HBar client:only="vue"/>
+    </div>
+</header>
+
+<style>
+    .site-logo {
+        width: 80px;
+        position: relative;
+    }
+
+    .site-logo--icon {
+        width: 80px;
+        height: 80px;
+        top: -20px;
+        left: 0;
+        position: absolute;
+        border: 2px solid white;
+    }
+</style>

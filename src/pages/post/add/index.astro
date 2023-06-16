@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@app/layouts/base-layout.astro';
+import SgnMakePost      from 'src/components/form/post/sgn-make-post.vue';
+---
+
+<BaseLayout title="New post">
+    <div class="max-w-md mx-auto text-6xl font-light mb-8">
+        <h1>New post</h1>
+    </div>
+    <SgnMakePost client:only="vue"/>
+</BaseLayout>

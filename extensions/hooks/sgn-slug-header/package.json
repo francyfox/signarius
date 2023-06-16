@@ -1,0 +1,29 @@
+{
+  "name": "sgn-slug-header",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify"
+  },
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-hook"
+  ],
+  "directus:extension": {
+    "type": "hook",
+    "path": "index.js",
+    "source": "src/index.ts",
+    "host": "^10.1.4"
+  },
+  "author": "francyfox",
+  "license": "ISC",
+  "devDependencies": {
+    "@directus/extensions-sdk": "^10.1.4",
+    "@sindresorhus/slugify": "^2.2.1",
+    "@types/node": "^20.3.1",
+    "typescript": "^5.1.3"
+  }
+}

@@ -1,6 +1,8 @@
+/// <reference types="astro/client" />
 /// <reference path="../.astro/types.d.ts" />
+
 interface ImportMetaEnv {
-  readonly PUBLIC_DIRECTUS_HOST: string;
+  readonly VITE_STORAGE_SECRET: string;
 }
 
 interface ImportMeta {
