@@ -10,8 +10,7 @@ export const usePost = defineStore("post", () => {
 
   async function sendPost(data: Post) {
     const response = await sdk.items("post").createOne(data);
-    const post = await sdk.items("post").readOne(response.id);
-    return post;
+    return response;
   }
   async function getPost(slug: string) {
     const response = await sdk.items("post").readByQuery({

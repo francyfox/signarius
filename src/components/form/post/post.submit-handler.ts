@@ -1,6 +1,8 @@
 import { Post } from "@app/directusTypes";
 import { usePost } from "@app/module/store/store.post";
 import { useConfigStore } from "@app/module/store/store.config";
+import { storeToRefs } from "pinia";
+import { useMedia } from "@app/module/store/store.media";
 
 export default async function postSubmitHandler(data: Post) {
   const postStore = usePost();
@@ -8,7 +10,14 @@ export default async function postSubmitHandler(data: Post) {
   const { sendPost } = postStore;
   const { message } = configStore;
 
-  delete data.miniature;
+  const mediaStore = useMedia();
+  const { files } = storeToRefs(mediaStore);
+
+  if (files.value) {
+    data.miniature = files.value;
+  } else {
+    delete data.miniature;
+  }
 
   try {
     let post = await sendPost(data);
