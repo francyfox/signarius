@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { SchemaEditorBar } from "./tiptap.schema";
 import { Editor } from "@tiptap/vue-3";
-import MenuBarItem from "@components/tiptap/btn/menu-bar-item.vue";
+import MenuBarItem from "@components/tiptap/menu-bar-item.vue";
 import { TitleFilled, ImageRound, ArchiveFilled } from "@vicons/material";
 import { ref } from "vue";
 import SgnTiptapUploader from "@components/tiptap/sgn-tiptap-uploader.vue";

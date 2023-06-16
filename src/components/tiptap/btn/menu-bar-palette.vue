@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { Editor } from "@tiptap/vue-3";
-import { computed, ref, Ref, defineProps, withDefaults } from "vue";
+import { computed, ref, Ref, withDefaults } from "vue";
 import { TuneFilled } from "@vicons/material";
 
 const props = withDefaults(
