@@ -7,7 +7,6 @@ import SgnTiptapTreeNode from "@components/tiptap/tree-node/sgn-tree-node.vue";
 import { useTiptapStore } from "@app/module/store/store.tiptap";
 import { storeToRefs } from "pinia";
 import { extensions } from "@components/tiptap/tiptap.extensions";
-import { PaletteFilled } from "@vicons/material";
 import SgnTiptapMenuBar from "@components/tiptap/sgn-tiptap-menu-bar.vue";
 
 const store = useTiptapStore();

@@ -8,6 +8,11 @@ export const usePost = defineStore("post", () => {
   const data: Ref<Post | null> = ref(null);
   const postList: Ref<Post[] | null> = ref(null);
 
+  async function sendPost(data: Post) {
+    const response = await sdk.items("post").createOne(data);
+    const post = await sdk.items("post").readOne(response.id);
+    return post;
+  }
   async function getPost(slug: string) {
     const response = await sdk.items("post").readByQuery({
       filter: {
@@ -54,5 +59,6 @@ export const usePost = defineStore("post", () => {
     postList,
     getPostCollection,
     getPost,
+    sendPost,
   };
 });

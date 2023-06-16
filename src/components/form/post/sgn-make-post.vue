@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 import { FormInst } from "naive-ui";
 import PostSchema from "./post.schema";
 import SgnConfig from "@components/provider/config/sgn-config.vue";
-import LoginSubmitHandler from "@components/form/security/login/login.submit-handler";
 import SgnTiptap from "@components/tiptap/sgn-tiptap.vue";
+import postSubmitHandler from "@components/form/post/post.submit-handler";
+import { Post } from "@app/directusTypes";
 
-const editorShow = ref(true);
+const editorShow = ref(false);
 const formRef = ref<FormInst | null>(null);
-const formData = ref();
+const formData: Ref<Post> = ref();
 const option = {
   submitBtn: {
     innerHTML: "Next",
@@ -24,7 +25,7 @@ const option = {
         v-model="formData"
         :rule="PostSchema"
         :option="option"
-        @submit="LoginSubmitHandler"
+        @submit="postSubmitHandler"
       >
       </form-create>
       <n-button @click="editorShow = true">Content editor</n-button>
