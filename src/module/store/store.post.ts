@@ -1,17 +1,18 @@
 import { defineStore } from "pinia";
-import { Ref, ref } from "vue";
+import { Ref, ref, toRaw } from "vue";
 import { Post } from "@app/directusTypes";
 import { useDirectus } from "@app/const";
+import { JSONContent, HTMLContent, generateHTML } from "@tiptap/vue-3";
+import { extensions } from "@components/tiptap/tiptap.extensions";
 
 export const usePost = defineStore("post", () => {
   const sdk = useDirectus;
   const data: Ref<Post | null> = ref(null);
   const postList: Ref<Post[] | null> = ref(null);
 
-  async function sendPost(data: Post) {
-    const response = await sdk.items("post").createOne(data);
-    return response;
-  }
+  const HTMLContent: Ref<HTMLContent[] | undefined> = ref([]);
+  const JSONContent: Ref<JSONContent[] | undefined> = ref([]);
+  const headingNode: Ref<JSONContent[] | null> = ref([]);
   async function getPost(slug: string) {
     const response = await sdk.items("post").readByQuery({
       filter: {
@@ -58,6 +59,5 @@ export const usePost = defineStore("post", () => {
     postList,
     getPostCollection,
     getPost,
-    sendPost,
   };
 });

@@ -2,7 +2,6 @@ import { useDirectus } from "@app/const";
 import { Ref, ref, toRaw } from "vue";
 import { defineStore } from "pinia";
 import { Textblock } from "@app/directusTypes";
-import { generateHTML } from "@tiptap/core";
 import { extensions } from "@components/tiptap/tiptap.extensions";
 import { JSONContent, HTMLContent, generateHTML } from "@tiptap/vue-3";
 
@@ -11,17 +10,10 @@ export const useTiptapStore = defineStore("tiptap", () => {
   const JSONContent: Ref<JSONContent[] | undefined> = ref([]);
   const headingNode: Ref<JSONContent[] | null> = ref([]);
   const sdk = useDirectus;
-  const miniature: any = ref(null);
-
-  async function fileUpload(title: string, file: File) {
-    const data = new FormData();
-    data.append("title", title);
-    data.append("file", file);
-    miniature.value = await sdk.files.createOne(data);
-  }
 
   async function sendPost(form) {
     const post = await sdk.items("post").createOne(form);
+
     if (post) {
       const relation = await HTMLChunks(post.id);
       const list = relation?.map((i) => i.id);
@@ -31,6 +23,7 @@ export const useTiptapStore = defineStore("tiptap", () => {
         });
       }
     }
+    return post;
   }
 
   async function HTMLChunks(postId: string) {
@@ -79,11 +72,9 @@ export const useTiptapStore = defineStore("tiptap", () => {
   }
 
   return {
-    miniature,
     HTMLContent,
     JSONContent,
     headingNode,
     sendPost,
-    fileUpload,
   };
 });
