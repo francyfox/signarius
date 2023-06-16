@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { works } from "./portfolio.works";
 import SgnConfig from "@components/provider/config/sgn-config.vue";
+
+function modifyImage(str, mode) {
+  return str.replace("/upload/", `/upload/${mode}/`);
+}
 </script>
 
 <template>
@@ -8,7 +12,12 @@ import SgnConfig from "@components/provider/config/sgn-config.vue";
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <n-card v-for="work in works" :title="work.title">
         <template #cover>
-          <n-image :src="work.poster" />
+          <n-image
+            :src="modifyImage(work.poster, 'f_auto,w_500,h_250,c_scale/')"
+            :lazy="true"
+            object-fit="cover"
+            :preview-src="work.poster"
+          />
         </template>
         {{ work.bio }}
 

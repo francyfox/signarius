@@ -3,7 +3,7 @@ export const works = [
     title: "Ar-parts (auto-rus)",
     url: "https://www.auto-rus.ru/",
     poster:
-      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686127191/2023-06-07_14-35_xepheu.png",
+      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686127191/2023-06-07_14-35_xepheu",
     bio:
       "Сайт выполнен на laravel. Нужно было доверстать сайт, до меня была выполнена только главная страница. Сверстал остальные " +
       "страницы, переписал функционал магазина с jquery на native js. Выполнил пожелание от клиента, сделать реализацию корзины " +
@@ -15,7 +15,7 @@ export const works = [
   {
     title: "Etf-Flashtrade #GIT",
     poster:
-      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686127191/2023-06-07_14-38_lreq0u.png",
+      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686127191/2023-06-07_14-38_lreq0u",
     url: "https://github.com/francyfox/etf-flashtrade.ru2",
     bio:
       "Верстка сайта по макету. Заказчик приостановил проект после презентации верстки, на второй этап (бекенд) не " +
@@ -24,7 +24,7 @@ export const works = [
   {
     title: "Lummetti",
     poster:
-      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128706/2023-06-07_15-03_nefogw.png",
+      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128706/2023-06-07_15-03_nefogw",
     url: "https://www.lumetti.ru/",
     bio:
       "Переверстка шапки, подвала, страницы товара. Адаптация некоторых секций, модальное окно поиск городов " +
@@ -33,14 +33,14 @@ export const works = [
   {
     title: "I-keys",
     poster:
-      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128706/2023-06-07_15-04_jpnvm0.png",
+      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128706/2023-06-07_15-04_jpnvm0",
     url: "https://new.i-keys.ru/landing",
     bio: "Верстка лендинга и внутренних страниц",
   },
   {
     title: "Darall menu #GIT",
     poster:
-      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128707/2023-06-07_15-04_1_f6zelj.png",
+      "https://res.cloudinary.com/dr5gcup5n/image/upload/v1686128707/2023-06-07_15-04_1_f6zelj",
     url: "https://github.com/francyfox/darall-menu",
     bio: "Пэт проект для darall. Реализация приложения меню, для бэкенда использовал Express + Prisma. Для фронтенда Vue NaiveUI",
   },
