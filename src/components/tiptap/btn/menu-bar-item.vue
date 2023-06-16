@@ -12,6 +12,7 @@ const props = defineProps<{
 }>();
 
 const MenuBarComponent = defineAsyncComponent(
-  () => import(`./${props.btn.type}.vue`)
+  () =>
+    import(`/src/components/tiptap/btn/menu-bar-item.vue/${props.btn.type}.vue`)
 );
 </script>
