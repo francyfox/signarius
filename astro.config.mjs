@@ -5,7 +5,7 @@ import vue from "@astrojs/vue";
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import AutoImport from 'unplugin-auto-import/vite';
-import vercel from "@astrojs/vercel/serverless";
+import netlify from '@astrojs/netlify/functions';
 
 import tailwind from "@astrojs/tailwind";
 
@@ -31,5 +31,5 @@ export default defineConfig({
     }
   },
   output: 'server',
-  adapter: vercel({})
+  adapter: netlify(),
 });
