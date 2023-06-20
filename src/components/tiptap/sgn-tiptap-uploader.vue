@@ -5,6 +5,7 @@ import { Editor } from "@tiptap/vue-3";
 import { UploadCustomRequestOptions, UploadFileInfo } from "naive-ui";
 import { DIRECTUS_HOST, useDirectus } from "@app/const";
 import { useConfigStore } from "@app/module/store/store.config";
+import { DirectusAsset } from "@app/utils/utils.image";
 
 const props = defineProps<{
   editor: Editor;
@@ -37,7 +38,7 @@ async function uploadImageToTiptap({ file, data }) {
   try {
     const image = await sdk.files.createOne(formData);
     props.editor.commands.setMedia({
-      src: `${DIRECTUS_HOST}/assets/${image.id}`,
+      src: new DirectusAsset(image.id).size(600, 600).url,
       "media-type": "img",
       width: "300",
       height: "300",

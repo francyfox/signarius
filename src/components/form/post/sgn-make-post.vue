@@ -7,7 +7,7 @@ import SgnTiptap from "@components/tiptap/sgn-tiptap.vue";
 import postSubmitHandler from "@components/form/post/post.submit-handler";
 import { Post } from "@app/directusTypes";
 
-const editorShow = ref(false);
+const editorShow = ref(true);
 const formRef = ref<FormInst | null>(null);
 const formData: Ref<Post> = ref();
 const option = {

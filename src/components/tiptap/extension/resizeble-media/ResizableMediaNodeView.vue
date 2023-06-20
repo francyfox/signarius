@@ -3,7 +3,6 @@ import { Editor, Node, NodeViewWrapper } from "@tiptap/vue-3";
 import { ref, onMounted, computed, watch } from "vue";
 import { Node as ProseMirrorNode } from "prosemirror-model";
 import { Decoration } from "prosemirror-view";
-import InlineSvg from "vue-inline-svg";
 import { Tippy } from "vue-tippy";
 
 import { resizableMediaActions } from "./resizableMedia.util";

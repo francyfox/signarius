@@ -3,7 +3,7 @@ import SgnConfig from "@components/provider/config/sgn-config.vue";
 import { storeToRefs } from "pinia";
 import { usePost } from "@app/module/store/store.post";
 import { useConfigStore } from "@app/module/store/store.config";
-import { DIRECTUS_HOST } from "@app/const";
+import { DirectusAsset } from "@app/utils/utils.image";
 
 const configStore = useConfigStore();
 const { message } = configStore;
@@ -25,7 +25,11 @@ try {
       <Suspense>
         <n-card v-for="post in postList" :title="post.header">
           <template #cover>
-            <n-image :src="`${DIRECTUS_HOST}/assets/${post.miniature}`" />
+            <n-image
+              :src="new DirectusAsset(post.miniature).size(500, 300).url"
+              :lazy="true"
+              :preview-src="new DirectusAsset(post.miniature).url"
+            />
           </template>
           {{ post.descriptor }}
           <div class="flex mt-5">
