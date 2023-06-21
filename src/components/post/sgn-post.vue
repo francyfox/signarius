@@ -12,6 +12,7 @@ import {
   DoorbellSharp,
   FavoriteFilled,
 } from "@vicons/material";
+import { h, render } from "vue";
 
 const props = defineProps<{
   slug: string;
@@ -27,6 +28,28 @@ try {
   data.value = response.data[0];
 } catch (e) {
   message.error(e.message);
+}
+
+function mediaReplace(content: string) {
+  const hasMedia = content.match('media-type="img"');
+
+  if (hasMedia) {
+    const img = {
+      src: /.*src=\"(.*?)\".*/.exec(content)?.pop(),
+      width: /.*width=\"(.*?)\".*/.exec(content)?.pop(),
+      height: /.*height=\"(.*?)\".*/.exec(content)?.pop(),
+      previewSrc: /.*src=\"(.*?)\".*/.exec(content)?.pop()?.split("?")[0],
+    };
+
+    return h("n-image", img);
+  }
+
+  return h("div", { vHtml: content });
+}
+function copyDataFloatClass(content: string) {
+  return content.match("datafloat")
+    ? content.split('datafloat="')[1].replace('">', "")
+    : "";
 }
 </script>
 
@@ -134,11 +157,11 @@ try {
         </div>
       </div>
 
-      <main class="pt-4">
+      <main class="block pt-4">
         <div
-          class="post-content px-4 lg:px-0 max-w-screen-xl mx-auto text-xl leading-relaxed"
+          class="post-content inline px-4 lg:px-0 max-w-screen-xl mx-auto text-xl leading-relaxed"
+          :class="copyDataFloatClass(block.item.text)"
           v-for="block in data.textblock"
-          v-html="block.item.text"
         ></div>
       </main>
     </div>
@@ -148,4 +171,8 @@ try {
 
 <style lang="postcss">
 @import "/src/styles/post-content.pcss";
+
+main {
+  width: 100%;
+}
 </style>

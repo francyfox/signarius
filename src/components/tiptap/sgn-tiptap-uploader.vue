@@ -3,9 +3,10 @@ import { ArchiveFilled } from "@vicons/material";
 import { ref, Ref } from "vue";
 import { Editor } from "@tiptap/vue-3";
 import { UploadCustomRequestOptions, UploadFileInfo } from "naive-ui";
-import { DIRECTUS_HOST, useDirectus } from "@app/const";
+import { useDirectus } from "@app/const";
 import { useConfigStore } from "@app/module/store/store.config";
 import { DirectusAsset } from "@app/utils/utils.image";
+const emit = defineEmits(["uploaded"]);
 
 const props = defineProps<{
   editor: Editor;
@@ -14,7 +15,6 @@ const props = defineProps<{
 const images: Ref<UploadFileInfo[]> = ref();
 
 function handleChange(data: { fileList: UploadFileInfo[] }) {
-  alert(data);
   images.value = data.fileList;
 }
 
@@ -43,6 +43,7 @@ async function uploadImageToTiptap({ file, data }) {
       width: "300",
       height: "300",
     });
+    emit("uploaded");
   } catch (e) {
     message.error(e.message);
   }

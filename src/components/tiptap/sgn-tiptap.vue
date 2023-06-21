@@ -25,7 +25,7 @@ withDefaults(
 
 const editor = useEditor({
   content:
-    "<h2> test </h2> <p>Test message</p> <h3>Test</h3> <p> Lorem ipsum</p>",
+    "<h2> test </h2>  <p>Test message</p> <h3>Test</h3> <p> Lorem ipsum</p>",
   extensions,
   onCreate: ({ editor }) => {
     const json = editor.getJSON().content;
@@ -90,7 +90,7 @@ function showTextBubble(editor: Editor) {
   padding: 0.75rem;
   border-radius: 0.25rem;
   transition: box-shadow 0.1s ease-in-out;
-  max-height: 300px;
+  max-height: 500px;
   overflow-y: auto;
 }
 

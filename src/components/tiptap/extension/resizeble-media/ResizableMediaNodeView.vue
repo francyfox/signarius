@@ -253,76 +253,78 @@ const isAlign = computed<boolean>(() => !!props.node.attrs.dataAlign);
         class="block-editor--media"
         :class="[
           `${(isFloat && `${props.node.attrs.dataFloat}`) || ''}`,
-          `${(isAlign && `_h-d-f ${props.node.attrs.dataAlign}`) || ''}`,
+          `${(isAlign && `flex ${props.node.attrs.dataAlign}`) || ''}`,
         ]"
       >
-        <img
-          v-if="mediaType === 'img'"
-          v-bind="node.attrs"
-          ref="resizableImg"
-          class="rounded-lg"
-          :class="[
-            `${(isFloat && `${props.node.attrs.dataFloat}`) || ''}`,
-            `${(isAlign && `${props.node.attrs.dataAlign}`) || ''}`,
-          ]"
-          draggable="true"
-        />
+        <div class="media-img" v-if="mediaType === 'img'">
+          <img
+            v-bind="node.attrs"
+            ref="resizableImg"
+            class="rounded-lg"
+            :class="[
+              `${(isFloat && `${props.node.attrs.dataFloat}`) || ''}`,
+              `${(isAlign && `${props.node.attrs.dataAlign}`) || ''}`,
+            ]"
+            draggable="true"
+          />
 
-        <video
-          v-else-if="mediaType === 'video'"
-          v-bind="node.attrs"
-          ref="resizableImg"
-          class="rounded-lg"
-          :class="[
-            `${(isFloat && `${props.node.attrs.dataFloat}`) || ''}`,
-            `${(isAlign && `${props.node.attrs.dataAlign}`) || ''}`,
-          ]"
-          draggable="true"
-          controls="true"
-        >
-          <source :src="node.attrs.src" />
-        </video>
+          <div
+            class="horizontal-resize-handle"
+            :class="{ 'horizontal-resize-active': isHorizontalResizeActive }"
+            title="Resize"
+            @mousedown="startHorizontalResize"
+            @mouseup="stopHorizontalResize"
+          />
 
-        <div
-          class="horizontal-resize-handle"
-          :class="{ 'horizontal-resize-active': isHorizontalResizeActive }"
-          title="Resize"
-          @mousedown="startHorizontalResize"
-          @mouseup="stopHorizontalResize"
-        />
-
-        <div
-          class="vertical-resize-handle"
-          :class="{ 'vertical-resize-active': isVerticalResizeActive }"
-          title="Resize"
-          @mousedown="startVerticalResize"
-          @mouseup="stopVerticalResize"
-        />
+          <div
+            class="vertical-resize-handle"
+            :class="{ 'vertical-resize-active': isVerticalResizeActive }"
+            title="Resize"
+            @mousedown="startVerticalResize"
+            @mouseup="stopVerticalResize"
+          />
+        </div>
       </div>
+      <video
+        v-if="mediaType === 'video'"
+        v-bind="node.attrs"
+        ref="resizableImg"
+        class="rounded-lg"
+        :class="[
+          `${(isFloat && `${props.node.attrs.dataFloat}`) || ''}`,
+          `${(isAlign && `${props.node.attrs.dataAlign}`) || ''}`,
+        ]"
+        draggable="true"
+        controls="true"
+      >
+        <source :src="node.attrs.src" />
+      </video>
 
       <template #content>
-        <div class="block-editor--bubble-menu">
-          <ul class="row _h-fw-w _h-gap-sm">
-            <li v-for="(mediaAction, i) in resizableMediaActions" :key="i">
-              <button
-                :title="mediaAction.tooltip"
-                v-tippy="{ content: mediaAction.tooltip, placement: 'top' }"
-                :content="mediaAction.tooltip"
-                class="btn btn-sm btn-ghost image-action-button"
-                @click.prevent="
-                  mediaAction.tooltip === 'Delete'
-                    ? mediaAction.delete?.(deleteNode)
-                    : mediaAction.action?.(updateAttributes)
-                "
-              >
-                <span :class="`mdi mdi-${mediaAction.icon}`"></span>
-              </button>
-            </li>
-          </ul>
+        <div
+          class="block-editor--bubble-menu flex flex-wrap bg-zinc-800 shadow-sm border border-slate-300 gap-4 pt-2 pb-1 px-2 rounded"
+        >
+          <n-button
+            v-for="(mediaAction, i) in resizableMediaActions"
+            :key="i"
+            :title="mediaAction.tooltip"
+            v-tippy="{ content: mediaAction.tooltip, placement: 'top' }"
+            :content="mediaAction.tooltip"
+            class="btn btn-sm btn-ghost image-action-button"
+            @click.prevent="
+              mediaAction.tooltip === 'Delete'
+                ? mediaAction.delete?.(deleteNode)
+                : mediaAction.action?.(updateAttributes)
+            "
+          >
+            <n-icon :component="mediaAction.icon"></n-icon>
+          </n-button>
         </div>
       </template>
     </tippy>
   </node-view-wrapper>
 </template>
 
-<style lang="postcss"></style>
+<style lang="postcss">
+@import "/src/styles/media-node.pcss";
+</style>

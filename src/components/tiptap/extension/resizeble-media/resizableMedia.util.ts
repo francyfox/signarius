@@ -1,6 +1,14 @@
+import {
+  FormatAlignLeftFilled,
+  FormatAlignRightFilled,
+  FormatAlignCenterFilled,
+  DeleteFilled,
+  AlignHorizontalLeftFilled,
+  AlignHorizontalRightFilled,
+} from "@vicons/material";
 interface ResizableMediaAction {
   tooltip: string;
-  icon: string;
+  icon: any;
 
   action?: (updateAttributes: (o: Record<string, any>) => any) => void;
   isActive?: (attrs: Record<string, any>) => boolean;
@@ -12,30 +20,30 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     tooltip: "Align left",
     action: (updateAttributes) =>
       updateAttributes({
-        dataAlign: "_h-jc-fs",
+        dataAlign: "justify-start",
         dataFloat: null,
       }),
-    icon: "format-align-left",
+    icon: FormatAlignLeftFilled,
     isActive: (attrs) => attrs.dataAlign === "left",
   },
   {
     tooltip: "Align center",
     action: (updateAttributes) =>
       updateAttributes({
-        dataAlign: "_h-jc-c",
+        dataAlign: "justify-center",
         dataFloat: null,
       }),
-    icon: "format-align-center",
+    icon: FormatAlignCenterFilled,
     isActive: (attrs) => attrs.dataAlign === "center",
   },
   {
     tooltip: "Align right",
     action: (updateAttributes) =>
       updateAttributes({
-        dataAlign: "_h-jc-fe",
+        dataAlign: "justify-end",
         dataFloat: null,
       }),
-    icon: "format-align-right",
+    icon: FormatAlignRightFilled,
     isActive: (attrs) => attrs.dataAlign === "right",
   },
   {
@@ -43,9 +51,9 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     action: (updateAttributes) =>
       updateAttributes({
         dataAlign: null,
-        dataFloat: "_h-f-l",
+        dataFloat: "float-left mr-2",
       }),
-    icon: "format-float-left",
+    icon: AlignHorizontalLeftFilled,
     isActive: (attrs) => attrs.dataFloat === "left",
   },
   {
@@ -53,14 +61,14 @@ export const resizableMediaActions: ResizableMediaAction[] = [
     action: (updateAttributes) =>
       updateAttributes({
         dataAlign: null,
-        dataFloat: "_h-f-r",
+        dataFloat: "float-right ml-2",
       }),
-    icon: "format-float-right",
+    icon: AlignHorizontalRightFilled,
     isActive: (attrs) => attrs.dataFloat === "right",
   },
   {
     tooltip: "Delete",
-    icon: "delete",
+    icon: DeleteFilled,
     delete: (deleteNode) => deleteNode(),
   },
 ];

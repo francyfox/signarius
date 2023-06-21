@@ -23,13 +23,20 @@
         </ul>
       </n-popover>
 
-      <n-popover placement="bottom" trigger="click">
+      <n-popover
+        placement="bottom"
+        trigger="manual"
+        :show="showPopoverUploader"
+      >
         <template #trigger>
-          <n-button>
+          <n-button @click="showPopoverUploader = !showPopoverUploader">
             <n-icon size="24" :component="ImageRound" />
           </n-button>
         </template>
-        <sgn-tiptap-uploader :editor="editor" />
+        <sgn-tiptap-uploader
+          :editor="editor"
+          @uploaded="showPopoverUploader = false"
+        />
       </n-popover>
     </template>
   </ul>
@@ -46,6 +53,8 @@ import SgnTiptapUploader from "@components/tiptap/sgn-tiptap-uploader.vue";
 const props = defineProps<{
   editor: Editor;
 }>();
+
+const showPopoverUploader = ref(false);
 
 const headerMenu = [
   {
