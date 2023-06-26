@@ -12,11 +12,15 @@ import {
   DoorbellSharp,
   FavoriteFilled,
 } from "@vicons/material";
-import { h, render } from "vue";
+import { h, render, toRaw } from "vue";
+import PostFormatted from "@components/post/post.formatted";
+import { useUserStore } from "@app/module/store/store.user";
 
 const props = defineProps<{
   slug: string;
 }>();
+const userStore = useUserStore();
+const { data: user } = storeToRefs(userStore);
 const configStore = useConfigStore();
 const { message } = configStore;
 const store = usePost();
@@ -29,28 +33,8 @@ try {
 } catch (e) {
   message.error(e.message);
 }
-
-function mediaReplace(content: string) {
-  const hasMedia = content.match('media-type="img"');
-
-  if (hasMedia) {
-    const img = {
-      src: /.*src=\"(.*?)\".*/.exec(content)?.pop(),
-      width: /.*width=\"(.*?)\".*/.exec(content)?.pop(),
-      height: /.*height=\"(.*?)\".*/.exec(content)?.pop(),
-      previewSrc: /.*src=\"(.*?)\".*/.exec(content)?.pop()?.split("?")[0],
-    };
-
-    return h("n-image", img);
-  }
-
-  return h("div", { vHtml: content });
-}
-function copyDataFloatClass(content: string) {
-  return content.match("datafloat")
-    ? content.split('datafloat="')[1].replace('">', "")
-    : "";
-}
+const post = new PostFormatted(toRaw(data.value));
+const PostFormattedContent = post.formatted();
 </script>
 
 <template>
@@ -110,59 +94,62 @@ function copyDataFloatClass(content: string) {
           class="mr-auto bg-white/[.06] text-white shadow-lg rounded-lg px-2 py-2 mb-5 max-w-md md:max-w-2xl"
         >
           <sgn-config class="flex flex-row gap-2">
-            <div class="flex flex-col gap-2">
-              <n-button type="warning">
-                <template #icon>
-                  <n-icon size="24" :component="EditRound" />
-                </template>
+            <template v-if="user">
+              <div class="flex flex-col gap-2">
+                <n-button type="warning">
+                  <template #icon>
+                    <n-icon size="24" :component="EditRound" />
+                  </template>
 
-                Edit post
-              </n-button>
-              <n-button type="error">
-                <template #icon>
-                  <n-icon size="24" :component="DeleteFilled" />
-                </template>
-                Remove post
-              </n-button>
-            </div>
-            <div class="flex flex-col gap-2">
-              <n-button dashed>
-                <template #icon>
-                  <n-icon size="24" :component="CommentFilled" />
-                </template>
-                Show comments
-              </n-button>
-              <n-button>
-                <template #icon>
-                  <n-icon size="24" :component="ReportProblemRound" />
-                </template>
-                Report
-              </n-button>
-            </div>
-            <div class="flex flex-col gap-2">
-              <n-button dashed>
-                <template #icon>
-                  <n-icon size="24" :component="DoorbellSharp" />
-                </template>
-                Subscribe
-              </n-button>
-              <n-button secondary>
-                <template #icon>
-                  <n-icon size="24" :component="FavoriteFilled" />
-                </template>
-                Favorite
-              </n-button>
-            </div>
+                  Edit post
+                </n-button>
+                <n-button type="error">
+                  <template #icon>
+                    <n-icon size="24" :component="DeleteFilled" />
+                  </template>
+                  Remove post
+                </n-button>
+              </div>
+              <div class="flex flex-col gap-2">
+                <n-button dashed>
+                  <template #icon>
+                    <n-icon size="24" :component="CommentFilled" />
+                  </template>
+                  Show comments
+                </n-button>
+                <n-button>
+                  <template #icon>
+                    <n-icon size="24" :component="ReportProblemRound" />
+                  </template>
+                  Report
+                </n-button>
+              </div>
+              <div class="flex flex-col gap-2">
+                <n-button dashed>
+                  <template #icon>
+                    <n-icon size="24" :component="DoorbellSharp" />
+                  </template>
+                  Subscribe
+                </n-button>
+                <n-button secondary>
+                  <template #icon>
+                    <n-icon size="24" :component="FavoriteFilled" />
+                  </template>
+                  Favorite
+                </n-button>
+              </div>
+            </template>
           </sgn-config>
         </div>
       </div>
 
       <main class="block pt-4">
-        <div
-          class="post-content inline px-4 lg:px-0 max-w-screen-xl mx-auto text-xl leading-relaxed"
-          :class="copyDataFloatClass(block.item.text)"
-          v-for="block in data.textblock"
-        ></div>
+        <Suspense>
+          <post-formatted-content
+            class="post-content inline px-4 lg:px-0 max-w-screen-xl mx-auto text-xl leading-relaxed"
+          />
+          <template #fallback> Content is loading... </template>
+        </Suspense>
       </main>
     </div>
     <template #fallback>Post is loading...</template>

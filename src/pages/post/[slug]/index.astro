@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@app/layouts/base-layout.astro';
 import SgnPost    from 'src/components/post/sgn-post.vue'
+import SgnTtsGenerator from 'src/components/post/sgn-tts-generator.vue'
 const { slug } = Astro.params;
 
 const pageTitle = slug.charAt(0).toUpperCase() + slug.slice(1).replaceAll('-', ' ')
@@ -10,5 +11,6 @@ const pageTitle = slug.charAt(0).toUpperCase() + slug.slice(1).replaceAll('-', '
     <div class="text-6xl font-light mb-8">
         <h1>{pageTitle}</h1>
     </div>
+    <SgnTtsGenerator client:only="vue"/>
     <SgnPost slug={slug} client:idle/>
 </BaseLayout>
